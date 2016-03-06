@@ -1,0 +1,23 @@
+﻿@model Awesome.Models.ViewModel.GamblePageViewModel
+@{
+    ViewBag.Title = "GamblePage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<h2>Lägg ett spel</h2>
+<ul>
+    @foreach (var item in Model.GroupStageMatches)
+    {
+
+        <li id="@item.Key">@item.Value.homeTeamName <input type="text"/> @item.Value.awayTeamName <input type="text"/></li>
+    }
+</ul>
+
+<ul>
+    @foreach (var item in Model.Teams)
+    {
+
+        <li>@item.name </li>
+    }
+</ul>

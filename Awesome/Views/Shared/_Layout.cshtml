@@ -24,16 +24,26 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-        
+
                     @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("MyPage", "MyPage", "Home")</li>
+
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Min sida<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+
+                                <li>@Html.ActionLink("Start", "MyPage", "LoggedIn")</li>
+                                <li>@Html.ActionLink("Spela", "GamblePage", "LoggedIn")</li>
+                                <li>@Html.ActionLink("Mina resultat", "MyResultsPage", "LoggedIn")</li>
+                                
+                            </ul>
+                        </li>
                     }
 
 
 
                 </ul>
-               @ViewContext.HttpContext.User;
+               
             </div>
         </div>
     </div>

@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿
 using System.Web.Mvc;
+using Awesome.ApiIntegration.JsonGroupStageResult;
+using Awesome.ApiIntegration.JsonTeamResult;
+using Awesome.Models;
+using Awesome.Models.ViewModel;
 
 namespace Awesome.Controllers
 {
@@ -26,12 +27,6 @@ namespace Awesome.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
-
-        [Authorize]
-        public ActionResult MyPage()
-        {
-           return View();
         }
 
         [Authorize]

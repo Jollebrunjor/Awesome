@@ -57,6 +57,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -122,16 +126,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="ApiIntegration\JsonGroupStageResult\JsonGroupStageResult.cs" />
+    <Compile Include="ApiIntegration\JsonTeamResult\JsonTeamResult.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoggedInController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -142,6 +144,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DB\DataModel.cs" />
     <Compile Include="Models\EntityManager\UserManager.cs" />
+    <Compile Include="ApiIntegration\FootballApiClient.cs" />
+    <Compile Include="Models\ViewModel\GamblePageViewModel.cs" />
     <Compile Include="Models\ViewModel\ResultViewModel.cs" />
     <Compile Include="Models\ViewModel\UserLoginView.cs" />
     <Compile Include="Models\ViewModel\UserSignUpView.cs" />
@@ -185,7 +189,9 @@
     <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="Views\Account\LogIn.cshtml" />
-    <Content Include="Views\Home\MyPage.cshtml" />
+    <Content Include="Views\LoggedIn\MyPage.cshtml" />
+    <Content Include="Views\LoggedIn\GamblePage.cshtml" />
+    <Content Include="Views\LoggedIn\MyResultsPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
