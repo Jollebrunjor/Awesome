@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.UI.WebControls;
 using Awesome.Models.EntityManager;
 using Awesome.Models.ViewModel;
 
@@ -20,6 +22,7 @@ namespace Awesome.Controllers
         [HttpPost]
         public ActionResult SignUp(UserSignUpView USV)
         {
+
             if (ModelState.IsValid)
             {
                 UserManager UM = new UserManager();
@@ -27,8 +30,8 @@ namespace Awesome.Controllers
                 {
                    
                     UM.AddUserAccount(USV);
-                    FormsAuthentication.SetAuthCookie(USV.FirstName, false);
-                    return RedirectToAction("MyPage", "Home");
+                    FormsAuthentication.SetAuthCookie(USV.LoginName, false);
+                    return RedirectToAction("MyPage", "LoggedIn");
 
                 }
                 else
@@ -74,6 +77,7 @@ namespace Awesome.Controllers
             // If we got this far, something failed, redisplay form  
             return View(ULV);
         }
+
 
         [Authorize]
         public ActionResult SignOut()

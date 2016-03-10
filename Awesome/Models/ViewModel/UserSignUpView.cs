@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
+using System.Web.WebPages;
 using Awesome.Models.DB;
 
 namespace Awesome.Models.ViewModel
@@ -12,8 +14,9 @@ namespace Awesome.Models.ViewModel
 
         public UserSignUpView()
         {
-            
+
         }
+
 
         [Key]
         public int UserId { get; set; }

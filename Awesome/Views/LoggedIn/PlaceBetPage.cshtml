@@ -1,0 +1,44 @@
+﻿@model Awesome.Models.ViewModel.PlaceBetPageViewModel
+@{
+    ViewBag.Title = "PlaceBetPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@if (!Model.HasBetted)
+{
+    <h2>Lägg ett spel</h2>
+    using (Ajax.BeginForm("PlaceBet", "LoggedIn",
+                            new AjaxOptions { UpdateTargetId = "placeBet" }))
+    {
+
+        <div id="placeBet">
+            <ul>
+                @foreach (var item in Model.GroupStageMatches)
+                {
+                    <li id="@item.Key">@item.Value.homeTeamName <input type="text" name="homeTeam_@item.Key"> @item.Value.awayTeamName <input type="text" name="awayTeam_@item.Key" /></li>
+
+                }
+            </ul>
+            <input type="hidden" name="user" value="@Model.CurrentUser" />
+            <button>Skicka</button>
+        </div>
+
+        <ul>
+            @foreach (var item in Model.Teams)
+            {
+                <li>@item.name </li>
+            }
+        </ul>
+
+    }
+}
+else
+{
+    <h2>Ditt spel är lagt!</h2>
+    <h4>Gå in under Mitt spel för att se hur det blev</h4>
+}
+
+<script>
+    
+</script>

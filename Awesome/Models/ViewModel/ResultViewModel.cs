@@ -20,6 +20,5 @@ namespace Awesome.Models.ViewModel
         [Display(Name = "Match 3")]
         public string Match3 { get; set; }
 
-        
     }
 }

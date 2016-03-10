@@ -1,19 +1,82 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Web;
+using System.Security.Cryptography.X509Certificates;
 using System.Web.Security;
-using System.Web.UI.WebControls;
 using Awesome.Models.DB;
 using Awesome.Models.ViewModel;
+using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Awesome.Models.EntityManager
 {
     public class UserManager
     {
-        public void AddUserAccount(UserSignUpView currentUser)
+
+        public static bool HasBetted(string userName)
+        {
+            using (DataModel db = new DataModel())
+            {
+
+               User user = db.Users.Include("UserBet.Matches").FirstOrDefault(o => o.LoginName == userName);
+
+                if(user?.UserBet == null)
+                return false;
+                return true;
+
+            }
+        }
+
+        public static UserBet GetBet(string userName)
+        {
+
+            using (DataModel db = new DataModel())
+            {
+                User user = db.Users.Include("UserBet.Matches").FirstOrDefault(o => o.LoginName == userName);
+
+                var userBet = user?.UserBet;
+                return userBet;
+            }
+            
+        }
+
+        public static void EditBet(UserBet bet, string userName)
         {
             
+        }
+
+        public static void DeleteBet(UserBet bet, string userName)
+        {
+            
+        }
+        public static void AddBet(UserBet bet, string userName)
+        {
+            using (DataModel db = new DataModel())
+            {
+              
+                
+               User user = db.Users.FirstOrDefault(o => o.LoginName == userName);
+
+                if(user != null)
+                user.UserBet = new UserBet()
+                {
+                    Finalist1 = bet.Finalist1,
+                    Finalist2 = bet.Finalist2,
+                    Semifinalist1 = bet.Semifinalist1,
+                    Semifinalist2 = bet.Semifinalist2,
+                    TopScorer = bet.TopScorer,
+                    Matches = bet.Matches
+                };
+                db.Users.AddOrUpdate(user);
+                db.SaveChanges();
+
+
+            }
+        }
+
+
+        public void AddUserAccount(UserSignUpView currentUser)
+        {
+
             using (DataModel db = new DataModel())
             {
 
@@ -23,9 +86,8 @@ namespace Awesome.Models.EntityManager
                 user.FirstName = currentUser.FirstName;
                 user.LastName = currentUser.LastName;
                 user.UserId = currentUser.UserId;
-                //user.Result = currentUser.Result;
-                
-                db.Users.Add(user);
+            
+            db.Users.Add(user);
                 db.SaveChanges();
             }
 
@@ -55,27 +117,6 @@ namespace Awesome.Models.EntityManager
             }
         }
 
-        //public bool IsUserInRole(string loginName, string roleName)
-        //{
-        //    using (DataModel db = new DataModel())
-        //    {
-        //        User user = db.Users.FirstOrDefault(o => o.LoginName.ToLower().Equals(loginName));
-        //        if (user != null)
-        //        {
-        //            var roles = from q in db.SYSUserRoles
-        //                        join r in db.LOOKUPRoles on q.LOOKUPRoleID equals r.LOOKUPRoleID
-        //                        where r.RoleName.Equals(roleName) && q.SYSUserID.Equals(SU.SYSUserID)
-        //                        select r.RoleName;
-
-        //            if (roles != null)
-        //            {
-        //                return roles.Any();
-        //            }
-        //        }
-
-        //        return false;
-        //    }
-        //}
     }
 
 

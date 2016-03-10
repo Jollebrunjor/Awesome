@@ -1,0 +1,33 @@
+﻿@model Awesome.Models.ViewModel.MyBetPageViewModel
+@{
+    ViewBag.Title = "MyBetPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    @if (Model.CurrentUserBet != null)
+    {
+        <ul>
+            @foreach (var item in Model.CurrentUserBet.Matches)
+            {
+                <li>@item.HomeScore - @item.AwayScore</li>
+            }
+
+            <li>
+                @Model.CurrentUserBet.Finalist1
+            </li>
+            <li>
+                @Model.CurrentUserBet.Finalist2
+            </li>
+            <li>
+                @Model.CurrentUserBet.Semifinalist1
+            </li>
+            <li>
+                @Model.CurrentUserBet.Semifinalist2
+            </li>
+            <li> @Model.CurrentUserBet.TopScorer</li>
+        </ul>
+
+    }
+<h2>MyBetPage</h2>
+
