@@ -1,0 +1,21 @@
+﻿@model Awesome.Models.ViewModel.HomeViewModel
+
+@{
+    ViewBag.Title = "Tabell";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Ställningen just nu:</p>
+
+<ul>
+@foreach (var item in Model.ResultTable)
+{
+    <li>
+        @item.Key - @item.Value
+    </li>
+
+       
+}    
+</ul>
+

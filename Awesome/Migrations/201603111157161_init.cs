@@ -76,6 +76,7 @@ namespace Awesome.Migrations
                         Password = c.String(),
                         FirstName = c.String(),
                         LastName = c.String(),
+                        TotalPoints = c.Int(nullable: false),
                         UserBet_UserBetId = c.Int(),
                     })
                 .PrimaryKey(t => t.UserId)

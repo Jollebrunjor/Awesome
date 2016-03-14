@@ -15,11 +15,13 @@ namespace Awesome.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Standings()
         {
-            ViewBag.Message = "Your application description page.";
+            HomeViewModel currentViewModel = new HomeViewModel();
 
-            return View();
+            ViewBag.Message = "Tabellen.";
+
+            return View(currentViewModel);
         }
 
         public ActionResult Contact()

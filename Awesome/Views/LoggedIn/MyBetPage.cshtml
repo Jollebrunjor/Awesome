@@ -3,31 +3,80 @@
     ViewBag.Title = "MyBetPage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-    @if (Model.CurrentUserBet != null)
-    {
-        <ul>
-            @foreach (var item in Model.CurrentUserBet.Matches)
-            {
-                <li>@item.HomeScore - @item.AwayScore</li>
-            }
-
-            <li>
-                @Model.CurrentUserBet.Finalist1
-            </li>
-            <li>
-                @Model.CurrentUserBet.Finalist2
-            </li>
-            <li>
-                @Model.CurrentUserBet.Semifinalist1
-            </li>
-            <li>
-                @Model.CurrentUserBet.Semifinalist2
-            </li>
-            <li> @Model.CurrentUserBet.TopScorer</li>
-        </ul>
-
-    }
 <h2>MyBetPage</h2>
 
+@Model.CurrentUser
+
+@if (Model.CurrentUserBet != null)
+{
+    <ul>
+        @foreach (var item in Model.CurrentUserBet.Matches)
+        {
+            <li>@item.HomeScore - @item.AwayScore</li>
+        }
+
+        <li>
+            @Model.CurrentUserBet.Finalist1
+        </li>
+        <li>
+            @Model.CurrentUserBet.Finalist2
+        </li>
+        <li>
+            @Model.CurrentUserBet.Semifinalist1
+        </li>
+        <li>
+            @Model.CurrentUserBet.Semifinalist2
+        </li>
+        <li> @Model.CurrentUserBet.TopScorer</li>
+    </ul>
+
+}
+
+<div class="otherBet">@foreach (var item in Model.OtherUsersBet)
+{
+    <ul data-id="@item.LoginName" hidden>
+        @foreach (var match in item.UserBet.Matches)
+        {
+        <li>@match.HomeScore - @match.AwayScore</li>
+        }
+    </ul>
+}
+ 
+    </div>
+
+<li class="dropdown">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Andras spel<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        @foreach (var item in Model.OtherUsersBet)
+        {      
+            <li data-value="@item.LoginName"><a href="#">@item.LoginName</a></li>
+        }
+    </ul>
+</li>
+
+
+<script>
+    $(function () {
+        
+        $(".dropdown-menu li").click(function () {
+            var dropDownId = (this.id);
+
+       $('.otherBet ul').each(function (i) {
+          var ulId =  $(this).attr('id'); // This is your rel value
+            if (dropDownId === ulId)
+           
+            $('.otherBet ul').show();
+        });
+            $('body').find('.otherBet ul').data('id');
+
+            var otherBetId = $(".otherBet ul").id;
+            console.log(otherBetId);
+     
+            
+            
+            $(".btn:first-child").text($(this).text());
+            $(".btn:first-child").val($(this).text());
+        });
+
+    });
+</script>

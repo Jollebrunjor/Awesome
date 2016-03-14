@@ -13,7 +13,7 @@ namespace Awesome.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201603101519371_init"; }
+            get { return "201603111157161_init"; }
         }
         
         string IMigrationMetadata.Source

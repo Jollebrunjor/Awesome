@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Security;
@@ -14,20 +15,22 @@ namespace Awesome.Models.ViewModel
         {
             CurrentUser = System.Web.HttpContext.Current.User.Identity.Name;
             CurrentUserBet = GetBetForUser(CurrentUser);
-
+            OtherUsersBet = GetOtherUsersBet();
+            
         }
         
+        public List<User> OtherUsersBet { get; set; } 
         public string CurrentUser { get; set; }
         public UserBet CurrentUserBet { get; set; }
 
         public UserBet GetBetForUser(string user)
         {
-
-            return UserManager.GetBet(user);
-             
+            return UserManager.GetBet(user);         
         }
 
-   
-                
+        public List<User> GetOtherUsersBet()
+        {
+            return UserManager.GetUsers();
+        }
     }
 }

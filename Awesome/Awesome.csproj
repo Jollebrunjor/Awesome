@@ -169,14 +169,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603101519371_init.cs" />
-    <Compile Include="Migrations\201603101519371_init.Designer.cs">
-      <DependentUpon>201603101519371_init.cs</DependentUpon>
+    <Compile Include="Migrations\201603111157161_init.cs" />
+    <Compile Include="Migrations\201603111157161_init.Designer.cs">
+      <DependentUpon>201603111157161_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DB\DataModel.cs" />
     <Compile Include="Models\EntityManager\UserManager.cs" />
     <Compile Include="ApiIntegration\FootballApiClient.cs" />
+    <Compile Include="Models\ViewModel\HomeViewModel.cs" />
     <Compile Include="Models\ViewModel\MyBetPageViewModel.cs" />
     <Compile Include="Models\ViewModel\PlaceBetPageViewModel.cs" />
     <Compile Include="Models\ViewModel\ResultViewModel.cs" />
@@ -218,7 +219,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Standings.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Welcome.cshtml" />
@@ -241,8 +242,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603101519371_init.resx">
-      <DependentUpon>201603101519371_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603111157161_init.resx">
+      <DependentUpon>201603111157161_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

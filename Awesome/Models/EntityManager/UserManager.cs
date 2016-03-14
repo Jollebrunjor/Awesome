@@ -1,4 +1,6 @@
-﻿using System.Data.Entity.Migrations;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Web.Security;
@@ -99,6 +101,17 @@ namespace Awesome.Models.EntityManager
             {
                 return db.Users.Any(o => o.LoginName.Equals(loginName));
             }
+        }
+
+        public static List<User> GetUsers()
+        {
+            using (DataModel db = new DataModel())
+            {
+                if (db.Users != null)
+                    return db.Users.Include("UserBet.Matches").ToList();
+                return new List<User>();
+            }
+
         }
 
         public string GetUserPassword(string loginName)
