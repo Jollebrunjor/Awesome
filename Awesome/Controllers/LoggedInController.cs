@@ -11,7 +11,6 @@ using Awesome.Models.DB;
 using Awesome.Models.EntityManager;
 using Awesome.Models.ViewModel;
 using Microsoft.Ajax.Utilities;
-using Microsoft.AspNet.Identity;
 
 
 namespace Awesome.Controllers
