@@ -59,10 +59,11 @@
     $(function () {
         
         $(".dropdown-menu li").click(function () {
-            var dropDownId = (this.id);
-
+            var dropDownId = (this.data-id);
+            console.log(dropDownId);
+            console.log(this);
        $('.otherBet ul').each(function (i) {
-          var ulId =  $(this).attr('id'); // This is your rel value
+          var ulId =  $(this).attr('data-id'); // This is your rel value
             if (dropDownId === ulId)
            
             $('.otherBet ul').show();
