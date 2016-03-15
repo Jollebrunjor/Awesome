@@ -10,6 +10,7 @@ namespace Awesome.Models
     {
         public JsonGroupStageResult GetGroupStageMatches()
         {
+            
             var url = "http://api.football-data.org/v1/soccerseasons/424/fixtures";
             var groupstagematches = _download_serialized_json_data<JsonGroupStageResult>(url);
 

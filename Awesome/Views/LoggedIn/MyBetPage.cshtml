@@ -5,51 +5,60 @@
 }
 <h2>MyBetPage</h2>
 
-@Model.CurrentUser
+<h1>@Model.CurrentUser</h1>
 
+
+<div class="row">
 @if (Model.CurrentUserBet != null)
 {
-    <ul>
+        <div class="col-md-8">
         @foreach (var item in Model.CurrentUserBet.Matches)
         {
-            <li>@item.HomeScore - @item.AwayScore</li>
+                <div class="row">
+                    <div class="col-md-7">@item.HomeTeam - @item.AwayTeam</div>
+                    <div class="col-md-5">@item.HomeScore - @item.AwayScore</div>
+                </div>
         }
 
-        <li>
+            <div class="col-md-4">
             @Model.CurrentUserBet.Finalist1
-        </li>
-        <li>
+            </div>
+            <div class="col-md-4">
             @Model.CurrentUserBet.Finalist2
-        </li>
-        <li>
+            </div>
+            <div class="col-md-4">
             @Model.CurrentUserBet.Semifinalist1
-        </li>
-        <li>
+            </div>
+            <div class="col-md-4">
             @Model.CurrentUserBet.Semifinalist2
-        </li>
-        <li> @Model.CurrentUserBet.TopScorer</li>
-    </ul>
+            </div>
+            <div class="col-md-4"> @Model.CurrentUserBet.TopScorer</div>
+        </div>
 
 }
 
-<div class="otherBet">@foreach (var item in Model.OtherUsersBet)
+    <div class="otherBet col-md-4">
+        @foreach (var item in Model.OtherUsersBet)
 {
-    <ul data-id="@item.LoginName" hidden>
+            <div data-id="@item.LoginName" hidden>
         @foreach (var match in item.UserBet.Matches)
         {
-        <li>@match.HomeScore - @match.AwayScore</li>
+                    <div id="row">
+                        <div class="col-md-12">@match.HomeScore - @match.AwayScore</div>
+                    </div>
         }
-    </ul>
+            </div>
 }
  
     </div>
+</div>
 
 <li class="dropdown">
     <a data-toggle="dropdown" class="dropdown-toggle" href="#">Andras spel<b class="caret"></b></a>
     <ul class="dropdown-menu">
         @foreach (var item in Model.OtherUsersBet)
         {      
-            <li data-value="@item.LoginName"><a href="#">@item.LoginName</a></li>
+            <li id="@item.LoginName"><a href="#">@item.LoginName</a></li>
         }
     </ul>
 </li>
@@ -59,24 +68,10 @@
     $(function () {
         
         $(".dropdown-menu li").click(function () {
-            var dropDownId = (this.data-id);
-            console.log(dropDownId);
-            console.log(this);
-       $('.otherBet ul').each(function (i) {
-          var ulId =  $(this).attr('data-id'); // This is your rel value
-            if (dropDownId === ulId)
-           
-            $('.otherBet ul').show();
-        });
-            $('body').find('.otherBet ul').data('id');
-
-            var otherBetId = $(".otherBet ul").id;
-            console.log(otherBetId);
-     
+            var dropDownId = (this.id);
+            $('body').find('.otherBet ul').hide();
+            $('body').find('[data-id="' + dropDownId + '"]').show();
             
-            
-            $(".btn:first-child").text($(this).text());
-            $(".btn:first-child").val($(this).text());
         });
 
     });

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Security;
 using Awesome.Models.DB;
 using Awesome.Models.EntityManager;
-using Microsoft.AspNet.Identity;
 
 namespace Awesome.Models.ViewModel
 {
@@ -30,7 +30,7 @@ namespace Awesome.Models.ViewModel
 
         public List<User> GetOtherUsersBet()
         {
-            return UserManager.GetUsers();
+            return UserManager.GetUsers().Where(x => x.LoginName != CurrentUser).ToList();
         }
     }
 }
