@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 
 namespace Awesome.ApiIntegration.JsonGroupStageResult
@@ -67,8 +68,8 @@ namespace Awesome.ApiIntegration.JsonGroupStageResult
 
         public class Result
         {
-            public object goalsHomeTeam { get; set; }
-            public object goalsAwayTeam { get; set; }
+            public int? goalsHomeTeam { get; set; }
+            public int? goalsAwayTeam { get; set; }
         }
 
     

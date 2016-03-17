@@ -16,7 +16,18 @@ namespace Awesome.Migrations
                         Finalist2 = c.String(),
                         Semifinalist1 = c.String(),
                         Semifinalist2 = c.String(),
+                        Semifinalist3 = c.String(),
+                        Semifinalist4 = c.String(),
+                        QuarterFinalist1 = c.String(),
+                        QuarterFinalist2 = c.String(),
+                        QuarterFinalist3 = c.String(),
+                        QuarterFinalist4 = c.String(),
+                        QuarterFinalist5 = c.String(),
+                        QuarterFinalist6 = c.String(),
+                        QuarterFinalist7 = c.String(),
+                        QuarterFinalist8 = c.String(),
                         TopScorer = c.String(),
+                        TotalGoals = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ResultId);
             
@@ -44,7 +55,18 @@ namespace Awesome.Migrations
                         Finalist2 = c.String(),
                         Semifinalist1 = c.String(),
                         Semifinalist2 = c.String(),
+                        Semifinalist3 = c.String(),
+                        Semifinalist4 = c.String(),
+                        QuarterFinalist1 = c.String(),
+                        QuarterFinalist2 = c.String(),
+                        QuarterFinalist3 = c.String(),
+                        QuarterFinalist4 = c.String(),
+                        QuarterFinalist5 = c.String(),
+                        QuarterFinalist6 = c.String(),
+                        QuarterFinalist7 = c.String(),
+                        QuarterFinalist8 = c.String(),
                         TopScorer = c.String(),
+                        TotalGoals = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.UserBetId);
             

@@ -19,6 +19,8 @@ namespace Awesome.Models.DB
         static DataModel()
         {
             Database.SetInitializer<DataModel>(null);
+
+         
         }
 
         public virtual DbSet<User> Users { get; set; }
@@ -50,8 +52,18 @@ namespace Awesome.Models.DB
         public string Finalist2 { get; set; }
         public string Semifinalist1 { get; set; }
         public string Semifinalist2 { get; set; }
+        public string Semifinalist3 { get; set; }
+        public string Semifinalist4 { get; set; }
+        public string QuarterFinalist1 { get; set; }
+        public string QuarterFinalist2 { get; set; }
+        public string QuarterFinalist3 { get; set; }
+        public string QuarterFinalist4 { get; set; }
+        public string QuarterFinalist5 { get; set; }
+        public string QuarterFinalist6 { get; set; }
+        public string QuarterFinalist7 { get; set; }
+        public string QuarterFinalist8 { get; set; }
         public string TopScorer { get; set; }
-
+        public int TotalGoals { get; set; }
     }
 
 
@@ -78,7 +90,18 @@ namespace Awesome.Models.DB
         public string Finalist2 { get; set; }
         public string Semifinalist1 { get; set; }
         public string Semifinalist2 { get; set; }
+        public string Semifinalist3 { get; set; }
+        public string Semifinalist4 { get; set; }
+        public string QuarterFinalist1 { get; set; }
+        public string QuarterFinalist2 { get; set; }
+        public string QuarterFinalist3 { get; set; }
+        public string QuarterFinalist4 { get; set; }
+        public string QuarterFinalist5 { get; set; }
+        public string QuarterFinalist6 { get; set; }
+        public string QuarterFinalist7 { get; set; }
+        public string QuarterFinalist8 { get; set; }
         public string TopScorer { get; set; }
+        public int TotalGoals { get; set; }
     }
 
     public class MatchResult

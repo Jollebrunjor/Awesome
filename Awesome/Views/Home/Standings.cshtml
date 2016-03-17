@@ -3,19 +3,41 @@
 @{
     ViewBag.Title = "Tabell";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Ställningen just nu:</p>
 
-<ul>
-@foreach (var item in Model.ResultTable)
-{
-    <li>
-        @item.Key - @item.Value
-    </li>
+<div class="container">
+    <h2>@ViewBag.Title.</h2>
+    <h3>@ViewBag.Message</h3>
+    <p> Ställningen just nu:</p>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Namn</th>
+                <th>Poäng</th>
 
-       
-}    
-</ul>
+            </tr>
+            </thead>
+            <tbody>
+
+
+          @{int i = 1;}
+          @foreach (var item in Model.ResultTable)
+          {
+
+              <tr>
+                  <td>@i</td>
+                  <td>@item.Key </td>
+                  <td>@item.Value</td>
+              </tr>
+              i++;
+          }
+           
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
 

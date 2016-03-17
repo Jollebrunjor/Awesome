@@ -5,40 +5,75 @@
 
 }
 
-@if (!Model.HasBetted)
-{
-    <h2>Lägg ett spel</h2>
-    using (Ajax.BeginForm("PlaceBet", "LoggedIn",
-                            new AjaxOptions { UpdateTargetId = "placeBet" }))
+    @using (Html.BeginForm("PlaceBet", "LoggedIn", FormMethod.Post))
     {
 
-        <div id="placeBet">
-            <ul>
-                @foreach (var item in Model.GroupStageMatches)
-                {
-                    <li id="@item.Key">@item.Value.homeTeamName <input type="text" name="homeTeam_@item.Key"> @item.Value.awayTeamName <input type="text" name="awayTeam_@item.Key" /></li>
+    for (int i = 0; i < Model.Bet.Matches.Count; i++)
+  {
+      <ul>
+          <li>
+              @Html.HiddenFor(x => x.Bet.Matches[i].homeTeamName)
+              @Html.DisplayFor(x => x.Bet.Matches[i].homeTeamName) -
 
-                }
-            </ul>
-            <input type="hidden" name="user" value="@Model.CurrentUser" />
-            <button>Skicka</button>
-        </div>
+              @Html.HiddenFor(x => x.Bet.Matches[i].awayTeamName)
+              @Html.DisplayFor(x => x.Bet.Matches[i].awayTeamName)
 
-        <ul>
-            @foreach (var item in Model.Teams)
-            {
-                <li>@item.name </li>
-            }
-        </ul>
+              @Html.TextBoxFor(x => x.Bet.Matches[i].result.goalsHomeTeam) - @Html.TextBoxFor(x => x.Bet.Matches[i].result.goalsAwayTeam)
+          </li>
+      </ul>
+  }
+        <h6>Finalistlag 1</h6>
+        @Html.DropDownListFor(x => x.Bet.Finalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag")
 
+        <h6>Finalistlag 2</h6>
+        @Html.DropDownListFor(x => x.Bet.Finalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+
+        <h6>Semifinalistlag 1</h6>
+        @Html.DropDownListFor(x => x.Bet.Semifinalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+
+        <h6>Semifinalistlag 2</h6>
+        @Html.DropDownListFor(x => x.Bet.Semifinalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+
+        <h6>Semifinalistlag 3</h6>
+        @Html.DropDownListFor(x => x.Bet.Semifinalist3, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+
+        <h6>Semifinalistlag 4</h6>
+        @Html.DropDownListFor(x => x.Bet.Semifinalist4, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+
+        <h6>Kvartsfinalistlag 1</h6>
+        @Html.DropDownListFor(x => x.Bet.QuarterFinalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+
+        <h6>Kvartsfinalistlag 2</h6>
+        @Html.DropDownListFor(x => x.Bet.QuarterFinalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+
+        <h6>Kvartsfinalistlag 3</h6>
+        @Html.DropDownListFor(x => x.Bet.QuarterFinalist3, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+
+        <h6>Kvartsfinalistlag 4</h6>
+        @Html.DropDownListFor(x => x.Bet.QuarterFinalist4, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+
+        <h6>Kvartsfinalistlag 5</h6>
+        @Html.DropDownListFor(x => x.Bet.QuarterFinalist5, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+
+        <h6>Kvartsfinalistlag 6</h6>
+        @Html.DropDownListFor(x => x.Bet.QuarterFinalist6, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+
+        <h6>Kvartsfinalistlag 7</h6>
+        @Html.DropDownListFor(x => x.Bet.QuarterFinalist7, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+
+        <h6>Kvartsfinalistlag 8</h6>
+        @Html.DropDownListFor(x => x.Bet.QuarterFinalist8, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+
+
+        <h6>Skytteligavinnare</h6>
+        @Html.TextBoxFor(model => model.Bet.TopScorer)
+
+
+        <h6>Totalt antal mål i turneringen (utslagsfråga)</h6>
+        @Html.TextBoxFor(model => model.Bet.TotalGoals)
+
+
+        <input type="hidden" name="username" value="@Model.CurrentUser" />
+        <input type="submit" value="Skicka" class="btn btn-default" />
     }
-}
-else
-{
-    <h2>Ditt spel är lagt!</h2>
-    <h4>Gå in under Mitt spel för att se hur det blev</h4>
-}
 
-<script>
-    
-</script>

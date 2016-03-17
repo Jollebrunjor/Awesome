@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Principal;
 using System.Web.Security;
@@ -12,21 +13,33 @@ namespace Awesome.Models.ViewModel
 {
     public class PlaceBetPageViewModel
     {
-        public PlaceBetPageViewModel(JsonTeamResult teams, JsonGroupStageResult groupStageResult)
-
+        public PlaceBetPageViewModel()
         {
-            Teams = GetTeams(teams); 
+            
+        }
+
+        public PlaceBetPageViewModel(JsonTeamResult teams, JsonGroupStageResult groupStageResult)
+        {
+            Teams = GetTeams(teams);
             GroupStageMatches = GetGroupStageMatches(groupStageResult);
             CurrentUser = System.Web.HttpContext.Current.User.Identity.Name;
             HasBetted = UserManager.HasBetted(CurrentUser);
-
+            Matches = GetMatches(groupStageResult);
+            Bet = new Bet(groupStageResult);
         }
 
 
         public bool HasBetted { get; set; }
-        public Dictionary<int, Fixture> GroupStageMatches { get; set; } 
+        public Dictionary<int, Fixture> GroupStageMatches { get; set; }
         public List<Team> Teams { get; set; }
         public string CurrentUser { get; set; }
+
+        public Bet Bet { get; set; }
+        public List<Fixture> Matches { get; set; } 
+
+
+
+
 
         public Dictionary<int, Fixture> GetGroupStageMatches(JsonGroupStageResult groupStageResult)
         {
@@ -41,9 +54,24 @@ namespace Awesome.Models.ViewModel
             return groupStageMatches;
         }
 
-        public List<Team> GetTeams(JsonTeamResult team)
+        public List<Fixture> GetMatches(JsonGroupStageResult groupStageResult)
         {
-            return team.teams?.ToList();
+            List<Fixture> groupStageMatches = new List<Fixture>();
+           
+            foreach (var match in groupStageResult.fixtures)
+            {
+ 
+                groupStageMatches.Add(match);
+
+            }
+            return groupStageMatches;
         }
+
+        public List<Team> GetTeams(JsonTeamResult teams)
+        {
+            return teams.teams?.ToList();
+        }     
     }
+
+
 }

@@ -164,21 +164,23 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoggedInController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603111157161_init.cs" />
-    <Compile Include="Migrations\201603111157161_init.Designer.cs">
-      <DependentUpon>201603111157161_init.cs</DependentUpon>
+    <Compile Include="Migrations\201603172031112_init.cs" />
+    <Compile Include="Migrations\201603172031112_init.Designer.cs">
+      <DependentUpon>201603172031112_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Bet.cs" />
     <Compile Include="Models\DB\DataModel.cs" />
     <Compile Include="Models\EntityManager\UserManager.cs" />
     <Compile Include="ApiIntegration\FootballApiClient.cs" />
     <Compile Include="Models\ViewModel\HomeViewModel.cs" />
-    <Compile Include="Models\ViewModel\MyBetPageViewModel.cs" />
+    <Compile Include="Models\ViewModel\BetPageViewModel.cs" />
     <Compile Include="Models\ViewModel\PlaceBetPageViewModel.cs" />
     <Compile Include="Models\ViewModel\ResultViewModel.cs" />
     <Compile Include="Models\ViewModel\UserLoginView.cs" />
@@ -229,6 +231,7 @@
     <Content Include="Views\LoggedIn\PlaceBetPage.cshtml" />
     <Content Include="Views\LoggedIn\MyResultsPage.cshtml" />
     <Content Include="Views\LoggedIn\MyBetPage.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -242,8 +245,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603111157161_init.resx">
-      <DependentUpon>201603111157161_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603172031112_init.resx">
+      <DependentUpon>201603172031112_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

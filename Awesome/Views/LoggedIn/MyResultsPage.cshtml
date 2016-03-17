@@ -1,8 +1,9 @@
-﻿
-@{
-    ViewBag.Title = "MyResultsPage";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@model Awesome.Models.ViewModel.BetPageViewModel
+
+
+Dina resultat så här långt:
+
+@foreach (var item in Model.ResultList)
+{
+    
 }
-
-<h2>MyResultsPage</h2>
-

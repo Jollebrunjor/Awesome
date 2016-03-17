@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using Awesome.ApiIntegration.JsonGroupStageResult;
 using Awesome.ApiIntegration.JsonTeamResult;
@@ -24,6 +25,25 @@ namespace Awesome.Models
 
             return teams;
         }
+
+        public List<string> GetResults(List<string> teamList)
+        {
+            List<string> results = new List<string>();
+            var matches = GetGroupStageMatches();
+            var fixtures = matches.fixtures;
+
+            foreach (var f in fixtures)
+            {
+                string match = f.homeTeamName + f.awayTeamName;
+                if (teamList.Contains(match))
+                {
+                    results.Add(f.result.goalsHomeTeam + "-" + f.result.goalsAwayTeam);
+                }
+                return results;
+            }
+            return results;
+        }
+       
 
         private static T _download_serialized_json_data<T>(string url) where T : new()
         {

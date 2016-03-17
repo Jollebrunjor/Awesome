@@ -9,16 +9,17 @@ using Awesome.Models.EntityManager;
 
 namespace Awesome.Models.ViewModel
 {
-    public class MyBetPageViewModel
+    public class BetPageViewModel
     {
-        public MyBetPageViewModel()
+        public BetPageViewModel()
         {
             CurrentUser = System.Web.HttpContext.Current.User.Identity.Name;
             CurrentUserBet = GetBetForUser(CurrentUser);
             OtherUsersBet = GetOtherUsersBet();
-            
+            ResultList = GetResultList(CurrentUserBet);
         }
-        
+
+        public List<string> ResultList { get; set; }
         public List<User> OtherUsersBet { get; set; } 
         public string CurrentUser { get; set; }
         public UserBet CurrentUserBet { get; set; }
@@ -30,7 +31,22 @@ namespace Awesome.Models.ViewModel
 
         public List<User> GetOtherUsersBet()
         {
-            return UserManager.GetUsers().Where(x => x.LoginName != CurrentUser).ToList();
+            return UserManager.GetUsers().Where(x => x.LoginName != CurrentUser && x.UserBet != null).ToList();
         }
+
+        public List<string> GetResultList(UserBet currentUserbet)
+        {
+            FootballApiClient client = new FootballApiClient();
+
+            List<string> currentUserMatchBet = new List<string>();
+            
+            foreach (var match in currentUserbet.Matches)
+            {
+                currentUserMatchBet.Add(match.HomeTeam + match.AwayTeam);
+            }
+            
+
+            return client.GetResults(currentUserMatchBet);
+        } 
     }
 }

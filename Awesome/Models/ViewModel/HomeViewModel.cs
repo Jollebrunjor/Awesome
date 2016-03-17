@@ -19,7 +19,7 @@ namespace Awesome.Models.ViewModel
         public Dictionary<string, int> GetResultTable()
         {
             Dictionary<string, int> resultTable = new Dictionary<string, int>();
-            List<User> users = UserManager.GetUsers().Where(x => x.UserBet != null).ToList();
+            List<User> users = UserManager.GetUsers().Where(x => x.UserBet != null).OrderBy(x => x.TotalPoints).ToList();
 
             foreach (var user in users)
             {
@@ -27,7 +27,7 @@ namespace Awesome.Models.ViewModel
             }
 
             return resultTable;
-            
+
         } 
     }
 }
