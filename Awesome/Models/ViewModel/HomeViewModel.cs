@@ -12,8 +12,16 @@ namespace Awesome.Models.ViewModel
         public HomeViewModel()
         {
             ResultTable = GetResultTable();
-        }
+            UserLoginView = new UserLoginView();
+            UserSignUpView = new UserSignUpView();
+            SignupErrorMessage = string.Empty;
+            LoginErrorMessage = string.Empty;
 
+        }
+        public object LoginErrorMessage { get; set; }
+        public object SignupErrorMessage { get; set; }
+        public UserSignUpView UserSignUpView { get; set; }
+        public UserLoginView UserLoginView { get; set; }
        public Dictionary<string, int> ResultTable { get; set; }
 
         public Dictionary<string, int> GetResultTable()

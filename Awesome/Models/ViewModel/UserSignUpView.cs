@@ -16,6 +16,10 @@ namespace Awesome.Models.ViewModel
         {
 
         }
+        public UserSignUpView(object errorMessage)
+        {
+            ErrorMessage = errorMessage;
+        }
 
 
         [Key]
@@ -36,7 +40,8 @@ namespace Awesome.Models.ViewModel
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        public Result Result { get; set; }
+        public object ErrorMessage { get; set; }
+
 
 
     }

@@ -71,6 +71,5 @@ namespace Awesome.ApiIntegration.JsonGroupStageResult
             public int? goalsHomeTeam { get; set; }
             public int? goalsAwayTeam { get; set; }
         }
-
-    
+  
 }

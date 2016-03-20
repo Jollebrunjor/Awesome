@@ -1,63 +1,117 @@
-﻿@using System.Web.UI.WebControls
+﻿@using System.Diagnostics.Eventing.Reader
+@using System.Web.UI.WebControls
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @*@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")*@
+
+    <link href="/Content/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/Content/css/grayscale.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-play-circle"></i>  <span class="light">@User.Identity.Name</span>
+                </a>
             </div>
-            <div class="navbar-collapse collapse">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Tabell", "Standings", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
 
-                    @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+                    @if (Request.Url.AbsoluteUri == "http://localhost:53789/")
                     {
+                        <li> <a class="page-scroll" href="#page-top">Start</a></li>
+                        <li> <a class="page-scroll" href="#standings">Tabell</a></li>
+                        <li> <a class="page-scroll" href="#rules">Regler</a></li>
 
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Min sida<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
+                        if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+                        {
 
-                                <li>@Html.ActionLink("Start", "MyPage", "LoggedIn")</li>
-                                <li>@Html.ActionLink("Spela", "PlaceBetPage", "LoggedIn")</li>
-                                <li>@Html.ActionLink("Mina resultat", "MyResultsPage", "LoggedIn")</li>
-                                
-                            </ul>
-                        </li>
+                            <li class="dropdown">
+                                <a data-toggle="dropdown" class="dropdown-toggle " href="#">Min sida<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+
+                                    <li>@Html.ActionLink("Hem", "Index", "MyPage")</li>
+                                    <li>@Html.ActionLink("Mitt spel", "Index", "MyPage", null, null, "myBet", null, null)</li>
+                                    @*<li>@Html.ActionLink("Mina resultat", "Index", "MyPage", null, null, "myResults", null, null)</li>*@
+                                    <li>@Html.ActionLink("Andras spel", "Index", "MyPage", null, null, "othersBet", null, null)</li>
+                                    <li class="dropdown-divider"></li>
+                                    <li>@Html.ActionLink("Signout", "SignOut", "Account")</li>
+                                </ul>
+                            </li>
+                        }
                     }
+                    else
+                    {
+                        <li>@Html.ActionLink("Start", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Tabell", "Index", "Home", null, null, "standings", null, null)</li>
+                        <li>@Html.ActionLink("Regler", "Index", "Home", null, null, "rules", null, null)</li>
 
 
+                        if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+                {
 
+                            <li class="dropdown">
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Min sida<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+
+                                    <li> <a class="page-scroll dropdown-item" href="#page-top">Hem</a></li>
+                                    <li> <a class="page-scroll dropdown-item" href="#myBet">Mitt spel</a></li>
+                                    <li> <a class="page-scroll dropdown-item" href="#othersBet">Andras spel</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li>@Html.ActionLink("Signout", "SignOut", "Account")</li>
+
+
+                                </ul>
+                            </li>
+                        }
+                    }
+                   
                 </ul>
-               
             </div>
+            <!-- /.navbar-collapse -->
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+        <!-- /.container -->
+    </nav>
+    <!-- Intro Header -->
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+
+        @RenderBody()
+    <!-- Footer -->
+<footer>
+
+    <div class="container text-center">
+        <p>Copyright &copy; EM Tipset 2016</p>
+    </div>
+</footer>
+    <!-- jQuery -->
+    <script src="/Content/js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/Content/js/bootstrap.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="/Content/js/jquery.easing.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="/Content/js/grayscale.js"></script>
 </body>
 </html>

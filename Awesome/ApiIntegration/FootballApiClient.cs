@@ -39,7 +39,7 @@ namespace Awesome.Models
                 {
                     results.Add(f.result.goalsHomeTeam + "-" + f.result.goalsAwayTeam);
                 }
-                return results;
+                
             }
             return results;
         }

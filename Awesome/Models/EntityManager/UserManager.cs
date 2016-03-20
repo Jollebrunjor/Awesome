@@ -65,6 +65,17 @@ namespace Awesome.Models.EntityManager
                     Finalist2 = bet.Finalist2,
                     Semifinalist1 = bet.Semifinalist1,
                     Semifinalist2 = bet.Semifinalist2,
+                    Semifinalist3 = bet.Semifinalist3,
+                    Semifinalist4 = bet.Semifinalist4,
+                    QuarterFinalist1 = bet.QuarterFinalist1,
+                    QuarterFinalist2 = bet.QuarterFinalist2,
+                    QuarterFinalist3 = bet.QuarterFinalist3,
+                    QuarterFinalist4 = bet.QuarterFinalist4,
+                    QuarterFinalist5 = bet.QuarterFinalist5,
+                    QuarterFinalist6 = bet.QuarterFinalist6,
+                    QuarterFinalist7 = bet.QuarterFinalist7,
+                    QuarterFinalist8 = bet.QuarterFinalist8,
+                    TotalGoals = bet.TotalGoals,
                     TopScorer = bet.TopScorer,
                     Matches = bet.Matches
                 };

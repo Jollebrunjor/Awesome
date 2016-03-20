@@ -1,8 +1,11 @@
 ﻿
+using System.Linq;
 using System.Web.Mvc;
+using System.Web.Security;
 using Awesome.ApiIntegration.JsonGroupStageResult;
 using Awesome.ApiIntegration.JsonTeamResult;
 using Awesome.Models;
+using Awesome.Models.EntityManager;
 using Awesome.Models.ViewModel;
 
 namespace Awesome.Controllers
@@ -11,17 +14,30 @@ namespace Awesome.Controllers
     {
         public ActionResult Index()
         {
+            object message = string.Empty;
+   
+            HomeViewModel currentViewModel = new HomeViewModel();
             ViewData["Logout"] = TempData["Logout"];
-            return View();
+
+            if (TempData.TryGetValue("signuperror", out message))
+            {
+                currentViewModel.SignupErrorMessage = message;
+            }
+            if (TempData.TryGetValue("loginerror", out message))
+            {
+                currentViewModel.LoginErrorMessage = message;
+            }
+
+            return View(currentViewModel);
         }
 
         public ActionResult Standings()
         {
-            HomeViewModel currentViewModel = new HomeViewModel();
+            
 
             ViewBag.Message = "Tabellen.";
 
-            return View(currentViewModel);
+            return View();
         }
 
         public ActionResult Contact()
@@ -36,5 +52,7 @@ namespace Awesome.Controllers
         {
             return View();
         }
+
+
     }
 }

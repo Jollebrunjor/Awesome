@@ -1,58 +1,121 @@
-﻿
+﻿@using Awesome.Models.ViewModel
+@model Awesome.Models.ViewModel.HomeViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    
+
 }
 
-<h2>Index</h2>
-<br/>
-
-@ViewData["Logout"]
-<br/>
-
-@if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
-{
-    @Html.ActionLink("Signout", "SignOut", "Account")
-}
-else
-{
-    @Html.ActionLink("Login", "Login", "Account")
-    <br/>
-    @Html.ActionLink("Signup Now!", "SignUp", "Account")
-}
-     
 
 
-
-
-
-
-
-<div class="jumbotron">
-    <h1>Rubrik</h1>
-    <p class="lead">En rrrrriktigt tung sida. Fixar du en design Patrik? Tack!.</p>
-    <p><a href="@Url.Action("Login", "Account")" class="btn btn-primary btn-lg">Logga in &raquo;</a></p>
+<header class="intro">
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h1 class="brand-heading">EM Tipset 2016</h1>
+                    <p class="intro-text">
+                        @ViewData["Logout"]
+                        @if (@ViewData["Logout"] == null)
+                        {
+                            @String.Format("Ingen kommer ihåg en fegis!")
+                        } 
+                    </p>
+                    @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+                    {
+                        <a href="#standings" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="page-scroll btn btn-default" href="#login" id="loginButton">Logga in</a>
+                        <a class="page-scroll btn btn-default" href="#signup" id="signupButton">Registrera</a>
+                    }
+                           
 </div>
+            </div>
+        </div>
+    </div>
+</header>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+
+
+<section id="standings" class="container content-section text-center">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            @Html.Partial("StandingsPartial", Model)
+            </div>
+        </div>
+</section>
+
+
+<section id="rules" class="container content-section text-center do">
+
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            @Html.Partial("RulesPartial")
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+</section>
+
+
+<section id="login" class="container content-section text-center" hidden>
+
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            @if (!User.Identity.IsAuthenticated)
+            {
+                @Html.Partial("~/Views/Account/LogIn.cshtml", new UserLoginView(Model.LoginErrorMessage))
+            }
+
+
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+</section>
+
+<section id="signup" class="container content-section text-center" hidden>
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            @if (!User.Identity.IsAuthenticated)
+            {
+                @Html.Partial("~/Views/Account/SignUp.cshtml", new UserSignUpView(Model.SignupErrorMessage))
+            }
+          
+
+        </div>
     </div>
-</div>
+</section>
+
+
+<script>
+ 
+
+    $(document).ready(function () {
+        var loginErrorMessage = $('#loginErrorMessage');
+        var signupErrorMessage = $('#signupErrorMessage');
+        if (loginErrorMessage != null) {
+            $('#login').show();
+        }
+        if (signupErrorMessage != null) {
+            $('#signup').show();
+        }
+
+    });
+
+    $("#loginButton").click(function () {
+        $('#signup').hide();
+        $('#login').show();
+    });
+
+    $("#signupButton").click(function () {
+        $('#login').hide();
+        $('#signup').show();
+    });
+
+</script>
+
+
+
+
+

@@ -15,9 +15,9 @@ namespace Awesome.Models
         {
             
         }
-        public Bet(JsonGroupStageResult groupStageResult)
+        public Bet(JsonGroupStageResult groupStageMatches)
         {
-            Matches = GetMatches(groupStageResult);
+            Matches = TournamentUtility.CreateMatchList(groupStageMatches);
         }
 
         public int UserBetId { get; set; }
@@ -38,19 +38,6 @@ namespace Awesome.Models
         public string QuarterFinalist8 { get; set; }
         public string TopScorer { get; set; }
         public int TotalGoals { get; set; }
-
-        public List<Fixture> GetMatches(JsonGroupStageResult groupStageResult)
-        {
-            List<Fixture> groupStageMatches = new List<Fixture>();
-
-            foreach (var match in groupStageResult.fixtures)
-            {
-
-                groupStageMatches.Add(match);
-
-            }
-            return groupStageMatches;
-        }
 
 
 

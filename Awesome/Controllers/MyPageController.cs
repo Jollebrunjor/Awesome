@@ -12,14 +12,11 @@ using Awesome.Models;
 using Awesome.Models.DB;
 using Awesome.Models.EntityManager;
 using Awesome.Models.ViewModel;
-using Microsoft.Ajax.Utilities;
-using Microsoft.AspNet.Identity;
-
 
 namespace Awesome.Controllers
 {
 
-    public class LoggedInController : Controller
+    public class MyPageController : Controller
     {
         public static byte[] ObjectToByteArray(Object obj)
         {
@@ -32,21 +29,19 @@ namespace Awesome.Controllers
         }
 
         [HttpPost]
-        public ActionResult PlaceBet(Awesome.Models.ViewModel.PlaceBetPageViewModel placedBet, string username)
-            {
+        public ActionResult PlaceBet(MyPageViewModel placedBet, string username)
+        {
 
-        UserBet userBet = new UserBet();
-            
+            UserBet userBet = new UserBet();
+
             foreach (var bet in placedBet.Bet.Matches)
             {
                 Match match = new Match()
                 {
                     HomeTeam = bet.homeTeamName,
                     AwayTeam = bet.awayTeamName,
-                    HomeScore = bet.result.goalsHomeTeam??0,
-                    AwayScore = bet.result.goalsAwayTeam??0
-
-
+                    HomeScore = bet.result.goalsHomeTeam ?? 0,
+                    AwayScore = bet.result.goalsAwayTeam ?? 0
                 };
 
                 userBet.Matches.Add(match);
@@ -54,13 +49,24 @@ namespace Awesome.Controllers
                 userBet.Finalist2 = placedBet.Bet.Finalist2;
                 userBet.Semifinalist1 = placedBet.Bet.Semifinalist1;
                 userBet.Semifinalist2 = placedBet.Bet.Semifinalist2;
+                userBet.Semifinalist3 = placedBet.Bet.Semifinalist3;
+                userBet.Semifinalist4 = placedBet.Bet.Semifinalist4;
+                userBet.QuarterFinalist1 = placedBet.Bet.QuarterFinalist1;
+                userBet.QuarterFinalist2 = placedBet.Bet.QuarterFinalist2;
+                userBet.QuarterFinalist3 = placedBet.Bet.QuarterFinalist3;
+                userBet.QuarterFinalist4 = placedBet.Bet.QuarterFinalist4;
+                userBet.QuarterFinalist5 = placedBet.Bet.QuarterFinalist5;
+                userBet.QuarterFinalist6 = placedBet.Bet.QuarterFinalist6;
+                userBet.QuarterFinalist7 = placedBet.Bet.QuarterFinalist7;
+                userBet.QuarterFinalist8 = placedBet.Bet.QuarterFinalist8;
                 userBet.TopScorer = placedBet.Bet.TopScorer;
+                userBet.TotalGoals = placedBet.Bet.TotalGoals;
 
             }
-  
+
             UserManager.AddBet(userBet, username);
 
-            return RedirectToAction("MyBetPage", "LoggedIn");
+            return new RedirectResult(Url.Action("Index") + "#myBet");
         }
 
         [Authorize]
@@ -71,31 +77,18 @@ namespace Awesome.Controllers
         }
 
         [Authorize]
-        public ActionResult MyPage()
+        public ActionResult Index()
         {
-            return View();
-        }
-
-        [Authorize]
-        public ActionResult PlaceBetPage()
-        {
-         
             FootballApiClient client = new FootballApiClient();
             JsonGroupStageResult groupStageMatches = client.GetGroupStageMatches();
             JsonTeamResult teams = client.GetTeams();
 
-            PlaceBetPageViewModel currentGamlePage = new PlaceBetPageViewModel(teams, groupStageMatches);
+            MyPageViewModel currentGamlePage = new MyPageViewModel(teams, groupStageMatches);
 
-            if (!currentGamlePage.HasBetted)
-            {
-                return View(currentGamlePage);
-            }
-            else
-            {
-                return RedirectToAction("MyBetPage", "LoggedIn");
-            }
-         
+             return View(currentGamlePage);
+            
         }
+
 
         [Authorize]
         public ActionResult MyResultsPage()

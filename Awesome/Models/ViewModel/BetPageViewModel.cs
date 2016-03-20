@@ -14,7 +14,7 @@ namespace Awesome.Models.ViewModel
         public BetPageViewModel()
         {
             CurrentUser = System.Web.HttpContext.Current.User.Identity.Name;
-            CurrentUserBet = GetBetForUser(CurrentUser);
+            CurrentUserBet = GetBetForCurrentUser(CurrentUser);
             OtherUsersBet = GetOtherUsersBet();
             ResultList = GetResultList(CurrentUserBet);
         }
@@ -24,7 +24,7 @@ namespace Awesome.Models.ViewModel
         public string CurrentUser { get; set; }
         public UserBet CurrentUserBet { get; set; }
 
-        public UserBet GetBetForUser(string user)
+        public UserBet GetBetForCurrentUser(string user)
         {
             return UserManager.GetBet(user);         
         }
@@ -40,6 +40,8 @@ namespace Awesome.Models.ViewModel
 
             List<string> currentUserMatchBet = new List<string>();
             
+
+            if(currentUserbet != null)
             foreach (var match in currentUserbet.Matches)
             {
                 currentUserMatchBet.Add(match.HomeTeam + match.AwayTeam);

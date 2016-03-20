@@ -10,6 +10,14 @@ namespace Awesome.Models.ViewModel
 {
     public class UserLoginView
     {
+        public UserLoginView()
+        {
+            
+        }
+        public UserLoginView(object errorMessage)
+        {
+            ErrorMessage = errorMessage;
+        }
         
         public int UserId { get; set; }
 
@@ -20,6 +28,8 @@ namespace Awesome.Models.ViewModel
         [Required(ErrorMessage = "*")]
         [Display(Name = "Password")]
         public string Password { get; set; }
+
+        public object ErrorMessage { get; set; }
        
 
     }

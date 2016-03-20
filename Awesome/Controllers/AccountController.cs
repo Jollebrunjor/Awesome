@@ -16,7 +16,7 @@ namespace Awesome.Controllers
         // GET: Account
         public ActionResult SignUp()
         {
-            return View();
+            return RedirectToAction("Index", "MyPage");
         }
 
         [HttpPost]
@@ -31,19 +31,25 @@ namespace Awesome.Controllers
                    
                     UM.AddUserAccount(USV);
                     FormsAuthentication.SetAuthCookie(USV.LoginName, false);
-                    return RedirectToAction("MyPage", "LoggedIn");
+                    return RedirectToAction("Index", "MyPage");
 
                 }
                 else
                     ModelState.AddModelError("", "Login Name already taken.");
+                TempData.Add("signuperror", "Användarnamnet är upptaget");
             }
-            return View();
+            else
+            {
+                TempData.Add("signuperror", "Vänligen fyll i alla fält");
+            }
+
+            return new RedirectResult(Url.Action("Index", "Home") + "#signup");
         }
 
         public ActionResult LogIn()
         {
-           
-            return View();
+            
+            return RedirectToAction("Index", "MyPage");
         }
 
         [HttpPost]
@@ -58,24 +64,33 @@ namespace Awesome.Controllers
                 string password = UM.GetUserPassword(ULV.LoginName);
 
                 if (string.IsNullOrEmpty(password))
+                {
                     ModelState.AddModelError("", "The user login or password provided is incorrect.");
+                    TempData.Add("loginerror", "Felaktigt användarnamn eller lösenord");
+                }
+
                 else
                 {
                     if (ULV.Password.Equals(password))
                     {
                         FormsAuthentication.SetAuthCookie(ULV.LoginName, false);
-                       
-                        return RedirectToAction("Welcome", "Home");
+
+                        return RedirectToAction("Index", "MyPage");
                     }
                     else
                     {
                         ModelState.AddModelError("", "The password provided is incorrect.");
+                        TempData.Add("loginerror", "Felaktigt lösenord");
                     }
                 }
             }
-
+            else
+            {
+                 TempData.Add("loginerror", "Fyll i användarnamn och lösenord");
+            }
+           
             // If we got this far, something failed, redisplay form  
-            return View(ULV);
+            return new RedirectResult(Url.Action("Index", "Home") + "#login");
         }
 
 
@@ -83,7 +98,7 @@ namespace Awesome.Controllers
         public ActionResult SignOut()
         {
             FormsAuthentication.SignOut();
-            TempData.Add("Logout", "Thanks for your visit!");
+            TempData.Add("Logout", "Tack för titten!");
             return RedirectToAction("Index", "Home");
         }
 

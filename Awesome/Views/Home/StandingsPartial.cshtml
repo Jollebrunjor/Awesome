@@ -1,0 +1,36 @@
+﻿
+
+                <p> Ställningen just nu:</p>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Namn</th>
+                                <th>Poäng</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            @{int i = 1;}
+                            @foreach (var item in   Model.ResultTable)
+                            {
+
+                                <tr>
+                                    <td>@i</td>
+                                    <td>@item.Key </td>
+                                    <td>@item.Value</td>
+                                </tr>
+                                i++;
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+
