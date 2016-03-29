@@ -38,10 +38,10 @@ namespace Awesome.Controllers
             {
                 Match match = new Match()
                 {
-                    HomeTeam = bet.homeTeamName,
-                    AwayTeam = bet.awayTeamName,
-                    HomeScore = bet.result.goalsHomeTeam ?? 0,
-                    AwayScore = bet.result.goalsAwayTeam ?? 0
+                    HomeTeam = bet.HomeTeam,
+                    AwayTeam = bet.AwayTeam,
+                    HomeScore = bet.HomeScore,
+                    AwayScore = bet.AwayScore
                 };
 
                 userBet.Matches.Add(match);
@@ -67,13 +67,6 @@ namespace Awesome.Controllers
             UserManager.AddBet(userBet, username);
 
             return new RedirectResult(Url.Action("Index") + "#myBet");
-        }
-
-        [Authorize]
-        public ActionResult MyBetPage()
-        {
-            BetPageViewModel myBetPage = new BetPageViewModel();
-            return View(myBetPage);
         }
 
         [Authorize]

@@ -1,117 +1,418 @@
 ﻿@model Awesome.Models.ViewModel.MyPageViewModel
-@if (!Model.HasBetted)
+
+<div class="container">
+    <h2 class="text-center">Mitt spel</h2>
+    <div class="row">
+        @if (!Model.HasBetted)
+        {
+            using (Html.BeginForm("PlaceBet", "MyPage", FormMethod.Post))
             {
-                using (Html.BeginForm("PlaceBet", "MyPage", FormMethod.Post))
-                {
+                <div class="col-md-6">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Gruppspel</th>
+                            </tr>
+                        </thead>
 
-                    for (int i = 0; i < Model.Bet.Matches.Count; i++)
-                    {
-            <ul>
-                <li>
-                    @Html.HiddenFor(x => x.Bet.Matches[i].homeTeamName)
-                    @Html.DisplayFor(x => x.Bet.Matches[i].homeTeamName) -
+                        @for (int i = 0; i < Model.Bet.Matches.Count; i++)
+                        {
+                            <tr style="height: 25px; overflow: auto">
+                                <td>
+                                    @Html.HiddenFor(x => x.Bet.Matches[i].HomeTeam)
+                                    @Html.DisplayFor(x => x.Bet.Matches[i].HomeTeam) -
 
-                    @Html.HiddenFor(x => x.Bet.Matches[i].awayTeamName)
-                    @Html.DisplayFor(x => x.Bet.Matches[i].awayTeamName)
+                                    @Html.HiddenFor(x => x.Bet.Matches[i].AwayTeam)
+                                    @Html.DisplayFor(x => x.Bet.Matches[i].AwayTeam)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(x => x.Bet.Matches[i].HomeScore, new { @Style = "width: 60px" }) - @Html.TextBoxFor(x => x.Bet.Matches[i].AwayScore, new { @Style = "width: 60px" })
+                                </td>
+                            </tr>
+                        }
 
-                    @Html.TextBoxFor(x => x.Bet.Matches[i].result.goalsHomeTeam) - @Html.TextBoxFor(x => x.Bet.Matches[i].result.goalsAwayTeam)
-                </li>
-            </ul>
-        }
-                    <h6>Finalistlag 1</h6>
-                    @Html.DropDownListFor(x => x.Bet.Finalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Slutspel</th>
+                            <tr>
+                        </thead>
 
-                    <h6>Finalistlag 2</h6>
-                    @Html.DropDownListFor(x => x.Bet.Finalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                        <tr style="height: 26px; overflow: auto">
+                            <td>Finalistlag 1</td>
+                            <td> @Html.DropDownListFor(x => x.Bet.Finalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px" })</td>
+                        </tr>
+                        <tr>
+                            <td>Finalistlag 2</td>
+                            <td> @Html.DropDownListFor(x => x.Bet.Finalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px" })</td>
+                        </tr>
+                        <tr>
+                            <td>Semifinalistlag 1</td>
+                            <td> @Html.DropDownListFor(x => x.Bet.Semifinalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px" })</td>
+                        </tr>
 
-                    <h6>Semifinalistlag 1</h6>
-                    @Html.DropDownListFor(x => x.Bet.Semifinalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                        <tr>
+                            <td>Semifinalistlag 2</td>
+                            <td>@Html.DropDownListFor(x => x.Bet.Semifinalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px" }) </td>
+                        </tr>
 
-                    <h6>Semifinalistlag 2</h6>
-                    @Html.DropDownListFor(x => x.Bet.Semifinalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                        <tr>
+                            <td>Semifinalistlag 3</td>
+                            <td>@Html.DropDownListFor(x => x.Bet.Semifinalist3, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px" }) </td>
+                        </tr>
+                        <tr>
+                            <td>Semifinalistlag 4</td>
+                            <td>@Html.DropDownListFor(x => x.Bet.Semifinalist4, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px" }) </td>
+                        </tr>
+                        <tr>
+                            <td>Kvartsfinalistlag 1</td>
+                            <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px" })</td>
+                        </tr>
+                        <tr>
+                            <td>Kvartsfinalistlag 2</td>
+                            <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px" })</td>
+                        </tr>
+                        <tr>
+                            <td>Kvartsfinalistlag 3</td>
+                            <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist3, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px" })</td>
+                        </tr>
+                        <tr>
+                            <td>Kvartsfinalistlag 4</td>
+                            <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist4, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px" })</td>
+                        </tr>
+                        <tr>
+                            <td>Kvartsfinalistlag 5</td>
+                            <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist5, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px" })</td>
+                        </tr>
+                        <tr>
+                            <td>Kvartsfinalistlag 6</td>
+                            <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist6, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px" })</td>
+                        </tr>
+                        <tr>
+                            <td>Kvartsfinalistlag 7</td>
+                            <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist7, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px" })</td>
+                        </tr>
+                        <tr>
+                            <td>Kvartsfinalistlag 8</td>
+                            <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist8, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px" })</td>
+                        </tr>
+                        <tr>
+                            <td>Skytteligavinnare</td>
+                            <td> @Html.TextBoxFor(model => model.Bet.TopScorer)</td>
+                        </tr>
+                        <tr>
+                            <td>Totalt antal mål i turneringen (utslagsfråga)</td>
+                            <td> @Html.TextBoxFor(model => model.Bet.TotalGoals)</td>
+                        </tr>
 
-                    <h6>Semifinalistlag 3</h6>
-                    @Html.DropDownListFor(x => x.Bet.Semifinalist3, new SelectList(Model.Teams, "name", "name"), "Välj lag")
-
-                    <h6>Semifinalistlag 4</h6>
-                    @Html.DropDownListFor(x => x.Bet.Semifinalist4, new SelectList(Model.Teams, "name", "name"), "Välj lag")
-
-                    <h6>Kvartsfinalistlag 1</h6>
-                    @Html.DropDownListFor(x => x.Bet.QuarterFinalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag")
-
-                    <h6>Kvartsfinalistlag 2</h6>
-                    @Html.DropDownListFor(x => x.Bet.QuarterFinalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag")
-
-                    <h6>Kvartsfinalistlag 3</h6>
-                    @Html.DropDownListFor(x => x.Bet.QuarterFinalist3, new SelectList(Model.Teams, "name", "name"), "Välj lag")
-
-                    <h6>Kvartsfinalistlag 4</h6>
-                    @Html.DropDownListFor(x => x.Bet.QuarterFinalist4, new SelectList(Model.Teams, "name", "name"), "Välj lag")
-
-                    <h6>Kvartsfinalistlag 5</h6>
-                    @Html.DropDownListFor(x => x.Bet.QuarterFinalist5, new SelectList(Model.Teams, "name", "name"), "Välj lag")
-
-                    <h6>Kvartsfinalistlag 6</h6>
-                    @Html.DropDownListFor(x => x.Bet.QuarterFinalist6, new SelectList(Model.Teams, "name", "name"), "Välj lag")
-
-                    <h6>Kvartsfinalistlag 7</h6>
-                    @Html.DropDownListFor(x => x.Bet.QuarterFinalist7, new SelectList(Model.Teams, "name", "name"), "Välj lag")
-
-                    <h6>Kvartsfinalistlag 8</h6>
-                    @Html.DropDownListFor(x => x.Bet.QuarterFinalist8, new SelectList(Model.Teams, "name", "name"), "Välj lag")
-
-                    <h6>Skytteligavinnare</h6>
-                    @Html.TextBoxFor(model => model.Bet.TopScorer)
-
-                    <h6>Totalt antal mål i turneringen (utslagsfråga)</h6>
-                    @Html.TextBoxFor(model => model.Bet.TotalGoals)
-
+                    </table>
                     <input type="hidden" name="username" value="@Model.CurrentUser" />
-                    <input type="submit" value="Skicka" class="btn btn-default" />
-    }
-}
-
-else
-{
-
-    if (Model.CurrentUserBet != null)
-    {
-        <div class="col-md-8" style="float: left">
-            <div class="row">
-                <div class="col-md-4">
-                    <h4>@Model.CurrentUser</h4>
+                    <input type="submit" value="Skicka" class="btn btn-default center-block" />
                 </div>
-                <div class="col-md-4">
-                    <h4>Resultat</h4>
-                </div>  
-            </div>
 
-
-            @foreach (var item in Model.CurrentUserBet.Matches)
-            {
-                <div class="row">
-                    <div class="col-md-4">@item.HomeTeam - @item.AwayTeam</div>
-                    <div class="col-md-4">@item.HomeScore - @item.AwayScore</div>
-                </div>
             }
-            Finalistlag 1: @Model.CurrentUserBet.Finalist1
-            Finalistlag 2: @Model.CurrentUserBet.Finalist2
-            Semifinalistlag 1: @Model.CurrentUserBet.Semifinalist1
-            Semifinalistlag 2: @Model.CurrentUserBet.Semifinalist2
-            Semifinalistlag 3: @Model.CurrentUserBet.Semifinalist3
-            Semifinalistlag 4: @Model.CurrentUserBet.Semifinalist4
-            Kvartsfinallag 1: @Model.CurrentUserBet.QuarterFinalist1
-            Kvartsfinallag 2: @Model.CurrentUserBet.QuarterFinalist2
-            Kvartsfinallag 3: @Model.CurrentUserBet.QuarterFinalist3
-            Kvartsfinallag 4: @Model.CurrentUserBet.QuarterFinalist4
-            Kvartsfinallag 5: @Model.CurrentUserBet.QuarterFinalist5
-            Kvartsfinallag 6: @Model.CurrentUserBet.QuarterFinalist6
-            Kvartsfinallag 7: @Model.CurrentUserBet.QuarterFinalist7
-            Kvartsfinallag 8: @Model.CurrentUserBet.QuarterFinalist8
-            Skytteligavinnare: @Model.CurrentUserBet.TopScorer
-            Totalt antal mål i turneringen (utslagsfråga): @Model.CurrentUserBet.TotalGoals
-        </div>
 
-    }
+        }
 
-}
+        else
+        {
+
+            if (Model.CurrentUserBet != null)
+            {
+                <div class="col-md-12" style="">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>@Model.CurrentUser</h4>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="dropdown" style="float: right;">
+
+                                <div data-toggle="dropdown" class="wrapper-dropdown-1" href="#">Andras spel<b class="caret"></b></div>
+                                <ul class="dropdown-menu">
+                                    @foreach (var item in Model.OtherUsersBet)
+                                    {
+                                        <li id="@item.LoginName"><a href="#myBet">@item.LoginName</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="">Gruppspel</th>
+                                    <th class="text-center">Mitt spel</th>
+                                    <th></th>
+
+                                </tr>
+                            </thead>
+
+
+                            @foreach (var item in Model.CurrentUserBet.Matches)
+                            {
+                                <tr style="height: 25px; overflow: auto">
+                                    <td>
+                                        @item.HomeTeam - @item.AwayTeam
+                                    </td>
+                                    <td class="col-md-2 text-center">@item.HomeScore - @item.AwayScore</td>
+                                    <td class="col-md-1 result-color-@item.ResultColor"></td>
+                                </tr>
+                            }
+
+
+                            <tr>
+                                <td>
+                                    Kvartsfinallag 1:
+                                </td>
+                                <td> @Model.CurrentUserBet.QuarterFinalist1</td>
+                                <td class="col-md-1 result-color-@Model.CurrentUserBet.QuarterFinalist1Color"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Kvartsfinallag 2:
+                                </td>
+                                <td> @Model.CurrentUserBet.QuarterFinalist2</td>
+                                <td class="col-md-1 result-color-@Model.CurrentUserBet.QuarterFinalist2Color"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Kvartsfinallag 3:
+                                </td>
+                                <td> @Model.CurrentUserBet.QuarterFinalist3</td>
+                                <td class="col-md-1 result-color-@Model.CurrentUserBet.QuarterFinalist3Color"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Kvartsfinallag 4:
+                                </td>
+                                <td> @Model.CurrentUserBet.QuarterFinalist4</td>
+                                <td class="col-md-1 result-color-@Model.CurrentUserBet.QuarterFinalist4Color"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Kvartsfinallag 5:
+                                </td>
+                                <td> @Model.CurrentUserBet.QuarterFinalist5</td>
+                                <td class="col-md-1 result-color-@Model.CurrentUserBet.QuarterFinalist5Color"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Kvartsfinallag 6:
+                                </td>
+                                <td> @Model.CurrentUserBet.QuarterFinalist6</td>
+                                <td class="col-md-1 result-color-@Model.CurrentUserBet.QuarterFinalist6Color"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Kvartsfinallag 7:
+                                </td>
+                                <td> @Model.CurrentUserBet.QuarterFinalist7</td>
+                                <td class="col-md-1 result-color-@Model.CurrentUserBet.QuarterFinalist7Color"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Kvartsfinallag 8:
+                                </td>
+                                <td> @Model.CurrentUserBet.QuarterFinalist8</td>
+                                <td class="col-md-1 result-color-@Model.CurrentUserBet.QuarterFinalist8Color"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Semifinalistlag 1:
+                                </td>
+                                <td> @Model.CurrentUserBet.Semifinalist1</td>
+                                <td class="col-md-1 result-color-@Model.CurrentUserBet.Semifinalist1Color"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Semifinalistlag 2:
+                                </td>
+                                <td> @Model.CurrentUserBet.Semifinalist2</td>
+                                <td class="col-md-1 result-color-@Model.CurrentUserBet.Semifinalist2Color"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Semifinalistlag 3:
+                                </td>
+                                <td> @Model.CurrentUserBet.Semifinalist3</td>
+                                <td class="col-md-1 result-color-@Model.CurrentUserBet.Semifinalist3Color"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Semifinalistlag 4:
+                                </td>
+                                <td> @Model.CurrentUserBet.Semifinalist4</td>
+                                <td class="col-md-1 result-color-@Model.CurrentUserBet.Semifinalist4Color"></td>
+                            </tr>
+                            <tr>
+                                <td>Finalistlag 1:</td>
+                                <td>@Model.CurrentUserBet.Finalist1</td>
+                                <td class="col-md-1 result-color-@Model.CurrentUserBet.Finalist1Color"></td>
+                            </tr>
+                            <tr>
+                                <td> Finalistlag 2</td>
+                                <td> @Model.CurrentUserBet.Finalist2</td>
+                                <td class="col-md-1 result-color-@Model.CurrentUserBet.Finalist2Color"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Skytteligavinnare:
+                                </td>
+                                <td> @Model.CurrentUserBet.TopScorer</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Totalt antal mål i turneringen (utslagsfråga):
+                                </td>
+                                <td> @Model.CurrentUserBet.TotalGoals</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="col-md-2">
+                        <table class="table text-center">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Resultat</th>
+                                </tr>
+                            </thead>
+                            @foreach (var result in Model.Result.MatchResults)
+                            {
+                                <tr style="height: 25px; overflow: auto">
+                                    <td>
+                                        @result.HomeScore - @result.AwayScore
+                                    </td>
+                                </tr>
+                            }
+
+                            @if (Model.Result.QuarterFinalist1 != null)
+                            {
+                                <tr><td>@Model.Result.QuarterFinalist1</td> </tr>
+                            }
+                            @if (Model.Result.QuarterFinalist2 != null)
+                            {
+                                <tr><td>@Model.Result.QuarterFinalist2</td> </tr>
+                            }
+                            @if (Model.Result.QuarterFinalist3 != null)
+                            {
+                                <tr><td>@Model.Result.QuarterFinalist3</td> </tr>
+                            }
+                            @if (Model.Result.QuarterFinalist4 != null)
+                            {
+                                <tr><td>@Model.Result.QuarterFinalist4</td> </tr>
+                            }
+                            @if (Model.Result.QuarterFinalist5 != null)
+                            {
+                                <tr><td>@Model.Result.QuarterFinalist5</td> </tr>
+                            }
+                            @if (Model.Result.QuarterFinalist6 != null)
+                            {
+                                <tr><td>@Model.Result.QuarterFinalist6</td> </tr>
+                            }
+                            @if (Model.Result.QuarterFinalist7 != null)
+                            {
+                                <tr><td>@Model.Result.QuarterFinalist7</td> </tr>
+                            }
+                            @if (Model.Result.QuarterFinalist8 != null)
+                            {
+                                <tr><td>@Model.Result.QuarterFinalist8</td> </tr>
+                            }
+                            @if (Model.Result.Semifinalist1 != null)
+                            {
+                                <tr><td>@Model.Result.Semifinalist1</td> </tr>
+                            }
+                            @if (Model.Result.Semifinalist2 != null)
+                            {
+                                <tr><td>@Model.Result.Semifinalist2</td> </tr>
+                            }
+                            @if (Model.Result.Semifinalist3 != null)
+                            {
+                                <tr><td>@Model.Result.Semifinalist3</td> </tr>
+                            }
+                            @if (Model.Result.Semifinalist4 != null)
+                            {
+                                <tr><td>@Model.Result.Semifinalist4</td> </tr>
+                            }
+                            @if (Model.Result.Finalist1 != null)
+                            {
+                                <tr><td>@Model.Result.Finalist1</td> </tr>
+                            }
+                            @if (Model.Result.Finalist2 != null)
+                            {
+                                <tr><td>@Model.Result.Finalist2</td> </tr>
+                            }
+
+                            @if (Model.Result.TopScorer != null)
+                            {
+                                <tr><td>@Model.Result.TopScorer</td> </tr>
+                            }
+                            @if (Model.Result.TotalGoals != 0)
+                            {
+                                <tr><td>@Model.Result.TotalGoals</td> </tr>
+                            }
+
+
+
+
+
+
+                        </table>
+                    </div>
+                    <div class="col-md-2" >
+                      
+
+                            @foreach (var bet in Model.OtherUsersBet)
+                            {
+                                <table class="table otherBet" data-id="@bet.LoginName" hidden>
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">@String.Concat(bet.LoginName + "s spel") </th>
+                                        </tr>
+                                        @foreach (var result in bet.UserBet.Matches)
+                        {
+
+                                            <tr style="height: 25px; overflow: auto">
+                                                <td class="text-center">
+                                                    @result.HomeScore - @result.AwayScore
+                                                </td>
+                                            </tr>
+                                        }
+
+                                        <tr style="height: 25px; overflow: auto"><td> @bet.UserBet.QuarterFinalist1</td></tr>
+                                        <tr style="height: 25px; overflow: auto"><td>@bet.UserBet.QuarterFinalist2 </td></tr>
+                                        <tr style="height: 25px; overflow: auto"><td>@bet.UserBet.QuarterFinalist3 </td></tr>
+                                        <tr style="height: 25px; overflow: auto"><td>@bet.UserBet.QuarterFinalist4</td></tr>
+                                        <tr style="height: 25px; overflow: auto"><td> @bet.UserBet.QuarterFinalist5</td></tr>
+                                        <tr style="height: 25px; overflow: auto"><td> @bet.UserBet.QuarterFinalist6</td></tr>
+                                        <tr style="height: 25px; overflow: auto"><td> @bet.UserBet.QuarterFinalist7</td></tr>
+                                        <tr style="height: 25px; overflow: auto"><td> @bet.UserBet.QuarterFinalist8</td> </tr>
+                                        <tr style="height: 25px; overflow: auto"><td> @bet.UserBet.Semifinalist1</td></tr>
+                                        <tr style="height: 25px; overflow: auto"><td>@bet.UserBet.Semifinalist2 </td></tr>
+                                        <tr style="height: 25px; overflow: auto"><td>@bet.UserBet.Semifinalist3 </td></tr>
+                                        <tr style="height: 25px; overflow: auto"><td>@bet.UserBet.Semifinalist4 </td></tr>
+                                        <tr style="height: 25px; overflow: auto"><td>@bet.UserBet.Finalist1</td> </tr>
+                                        <tr style="height: 25px; overflow: auto"><td> @bet.UserBet.Finalist2 </td></tr>
+                                        <tr style="height: 25px; overflow: auto"><td> @bet.UserBet.TopScorer </td></tr>
+                                        <tr style="height: 25px; overflow: auto"><td> @bet.UserBet.TotalGoals </td></tr>
+
+
+                                    </thead>
+                                </table>
+                            }
+                              
+                    </div>
+
+                </div>
+
+
+
+            }
+
+        }
+    </div>
+</div>

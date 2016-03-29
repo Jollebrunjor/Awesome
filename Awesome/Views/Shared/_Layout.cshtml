@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @*@Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")*@
+        @Scripts.Render("~/bundles/modernizr")*@
 
-    <link href="/Content/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Content/css/bootstrap.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="/Content/css/grayscale.css" rel="stylesheet">
     <!-- Custom Fonts -->
@@ -39,55 +39,61 @@
                         <a href="#page-top"></a>
                     </li>
 
-                    @if (Request.Url.AbsoluteUri == "http://localhost:53789/")
+                    @if (Request.Url.AbsoluteUri == "http://localhost:53789/") //Ändra till faktisk url
                     {
                         <li> <a class="page-scroll" href="#page-top">Start</a></li>
                         <li> <a class="page-scroll" href="#standings">Tabell</a></li>
+                        <li> <a class="page-scroll" href="#schedule">Spelschema</a></li>
                         <li> <a class="page-scroll" href="#rules">Regler</a></li>
-
                         if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
                         {
-
-                            <li class="dropdown">
-                                <a data-toggle="dropdown" class="dropdown-toggle " href="#">Min sida<b class="caret"></b></a>
+                            <li id="dropDownList"class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-
                                     <li>@Html.ActionLink("Hem", "Index", "MyPage")</li>
                                     <li>@Html.ActionLink("Mitt spel", "Index", "MyPage", null, null, "myBet", null, null)</li>
-                                    @*<li>@Html.ActionLink("Mina resultat", "Index", "MyPage", null, null, "myResults", null, null)</li>*@
                                     <li>@Html.ActionLink("Andras spel", "Index", "MyPage", null, null, "othersBet", null, null)</li>
-                                    <li class="dropdown-divider"></li>
+                                    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                                    {
+                                        <li role="separator" class="divider"></li>
+                                        <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+                                    }
+                                    <li role="separator" class="divider"></li>
                                     <li>@Html.ActionLink("Signout", "SignOut", "Account")</li>
                                 </ul>
                             </li>
                         }
+
                     }
                     else
                     {
                         <li>@Html.ActionLink("Start", "Index", "Home")</li>
                         <li>@Html.ActionLink("Tabell", "Index", "Home", null, null, "standings", null, null)</li>
+                        <li>@Html.ActionLink("Spelschema", "Index", "Home", null, null, "schedule", null, null)</li>
                         <li>@Html.ActionLink("Regler", "Index", "Home", null, null, "rules", null, null)</li>
 
 
                         if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
-                {
+                        {
 
                             <li class="dropdown">
-                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Min sida<b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-
-                                    <li> <a class="page-scroll dropdown-item" href="#page-top">Hem</a></li>
-                                    <li> <a class="page-scroll dropdown-item" href="#myBet">Mitt spel</a></li>
-                                    <li> <a class="page-scroll dropdown-item" href="#othersBet">Andras spel</a></li>
-                                    <li class="dropdown-divider"></li>
+                                    <li> <a class="" href="#page-top">Hem</a></li>
+                                    <li> <a class="" href="#myBet">Mitt spel</a></li>
+                                    <li> <a class="" href="#othersBet">Andras spel</a></li>
+                                    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                                    {
+                                        <li role="separator" class="divider"></li>
+                                        <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+                                    }
+                                    <li role="separator" class="divider"></li>
                                     <li>@Html.ActionLink("Signout", "SignOut", "Account")</li>
-
-
                                 </ul>
                             </li>
                         }
                     }
-                   
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -97,21 +103,43 @@
     <!-- Intro Header -->
 
 
-        @RenderBody()
+    @RenderBody()
     <!-- Footer -->
-<footer>
-
-    <div class="container text-center">
-        <p>Copyright &copy; EM Tipset 2016</p>
-    </div>
-</footer>
+    <footer>
+        <div class="text-center footer">
+           
+        </div>
+    </footer>
     <!-- jQuery -->
     <script src="/Content/js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="/Content/js/bootstrap.min.js"></script>
+    <script src="/Content/js/bootstrap.js"></script>
     <!-- Plugin JavaScript -->
     <script src="/Content/js/jquery.easing.min.js"></script>
     <!-- Custom Theme JavaScript -->
-    <script src="/Content/js/grayscale.js"></script>
+<script src="/Content/js/grayscale.js"></script>
+<script>
+
+    $(document).ready(function() {
+
+        $('#login').hide();
+        $('#signup').hide();
+        var loginErrorMessage = $('#loginErrorMessage').length;
+        var signupErrorMessage = $('#signupErrorMessage').length;
+        if (loginErrorMessage != 0) {
+            $('#login').show();
+        }
+        console.log(signupErrorMessage);
+        if (signupErrorMessage != 0) {
+            $('#signup').show();
+        }
+        
+
+    });
+
+    $('#dropDownList').click(function(e) {
+        $('#dropDownList').addClass('active');
+    });
+</script>
 </body>
 </html>

@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Security;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI.WebControls;
+using Awesome.Models.DB;
 using Awesome.Models.EntityManager;
 using Awesome.Models.ViewModel;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Awesome.Controllers
 {
@@ -22,47 +26,43 @@ namespace Awesome.Controllers
         [HttpPost]
         public ActionResult SignUp(UserSignUpView USV)
         {
-
-            if (ModelState.IsValid)
-            {
-                UserManager UM = new UserManager();
-                if (!UM.IsLoginNameExist(USV.LoginName))
+                if (ModelState.IsValid)
                 {
-                   
-                    UM.AddUserAccount(USV);
-                    FormsAuthentication.SetAuthCookie(USV.LoginName, false);
-                    return RedirectToAction("Index", "MyPage");
-
+                    UserManager UM = new UserManager();
+                    if (!UM.IsLoginNameExist(USV.LoginName))
+                    {
+                        UM.AddUserAccount(USV);
+                        FormsAuthentication.SetAuthCookie(USV.LoginName, false);
+                        return RedirectToAction("Index", "MyPage");
+                    }
+                    else
+                        ModelState.AddModelError("", "Login Name already taken.");
+                        TempData.Add("signuperror", "Användarnamnet är upptaget");
                 }
                 else
-                    ModelState.AddModelError("", "Login Name already taken.");
-                TempData.Add("signuperror", "Användarnamnet är upptaget");
-            }
-            else
-            {
-                TempData.Add("signuperror", "Vänligen fyll i alla fält");
-            }
+                {
+                    TempData.Add("signuperror", "Vänligen fyll i alla fält");
+                }
 
-            return new RedirectResult(Url.Action("Index", "Home") + "#signup");
+                return new RedirectResult(Url.Action("Index", "Home") + "#signup");
+           
         }
 
         public ActionResult LogIn()
-        {
-            
+        {            
             return RedirectToAction("Index", "MyPage");
         }
 
         [HttpPost]
         public ActionResult LogIn(UserLoginView ULV, string returnUrl)
         {
-
             var errors = ModelState.SelectMany(x => x.Value.Errors.Select(z => z.Exception));
 
             if (ModelState.IsValid)
             {
                 UserManager UM = new UserManager();
                 string password = UM.GetUserPassword(ULV.LoginName);
-
+  
                 if (string.IsNullOrEmpty(password))
                 {
                     ModelState.AddModelError("", "The user login or password provided is incorrect.");

@@ -40,11 +40,38 @@ namespace Awesome.Migrations
                         AwayTeam = c.String(),
                         HomeScore = c.Int(nullable: false),
                         AwayScore = c.Int(nullable: false),
+                        Status = c.String(),
+                        ManuallyUpdated = c.Boolean(nullable: false),
                         Result_ResultId = c.Int(),
                     })
                 .PrimaryKey(t => t.MatchResultId)
                 .ForeignKey("dbo.Results", t => t.Result_ResultId)
                 .Index(t => t.Result_ResultId);
+            
+            CreateTable(
+                "dbo.Roles",
+                c => new
+                    {
+                        RoleId = c.Int(nullable: false, identity: true),
+                        Rolename = c.String(),
+                    })
+                .PrimaryKey(t => t.RoleId);
+            
+            CreateTable(
+                "dbo.Users",
+                c => new
+                    {
+                        UserId = c.Int(nullable: false, identity: true),
+                        LoginName = c.String(),
+                        Password = c.String(),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        TotalPoints = c.Int(nullable: false),
+                        UserBet_UserBetId = c.Int(),
+                    })
+                .PrimaryKey(t => t.UserId)
+                .ForeignKey("dbo.UserBets", t => t.UserBet_UserBetId)
+                .Index(t => t.UserBet_UserBetId);
             
             CreateTable(
                 "dbo.UserBets",
@@ -67,6 +94,20 @@ namespace Awesome.Migrations
                         QuarterFinalist8 = c.String(),
                         TopScorer = c.String(),
                         TotalGoals = c.Int(nullable: false),
+                        Finalist1Color = c.String(),
+                        Finalist2Color = c.String(),
+                        Semifinalist1Color = c.String(),
+                        Semifinalist2Color = c.String(),
+                        Semifinalist3Color = c.String(),
+                        Semifinalist4Color = c.String(),
+                        QuarterFinalist1Color = c.String(),
+                        QuarterFinalist2Color = c.String(),
+                        QuarterFinalist3Color = c.String(),
+                        QuarterFinalist4Color = c.String(),
+                        QuarterFinalist5Color = c.String(),
+                        QuarterFinalist6Color = c.String(),
+                        QuarterFinalist7Color = c.String(),
+                        QuarterFinalist8Color = c.String(),
                     })
                 .PrimaryKey(t => t.UserBetId);
             
@@ -75,35 +116,32 @@ namespace Awesome.Migrations
                 c => new
                     {
                         MatchId = c.Int(nullable: false, identity: true),
-                        MatchNumber = c.Int(nullable: false),
+                        ResultColor = c.String(),
                         HomeTeam = c.String(),
                         AwayTeam = c.String(),
                         HomeScore = c.Int(nullable: false),
                         AwayScore = c.Int(nullable: false),
-                        Result_ResultId = c.Int(),
+                        Status = c.String(),
+                        Matchday = c.Int(nullable: false),
+                        Date = c.String(),
                         UserBet_UserBetId = c.Int(),
                     })
                 .PrimaryKey(t => t.MatchId)
-                .ForeignKey("dbo.Results", t => t.Result_ResultId)
                 .ForeignKey("dbo.UserBets", t => t.UserBet_UserBetId)
-                .Index(t => t.Result_ResultId)
                 .Index(t => t.UserBet_UserBetId);
             
             CreateTable(
-                "dbo.Users",
+                "dbo.UserRoles",
                 c => new
                     {
-                        UserId = c.Int(nullable: false, identity: true),
-                        LoginName = c.String(),
-                        Password = c.String(),
-                        FirstName = c.String(),
-                        LastName = c.String(),
-                        TotalPoints = c.Int(nullable: false),
-                        UserBet_UserBetId = c.Int(),
+                        User_UserId = c.Int(nullable: false),
+                        Role_RoleId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.UserId)
-                .ForeignKey("dbo.UserBets", t => t.UserBet_UserBetId)
-                .Index(t => t.UserBet_UserBetId);
+                .PrimaryKey(t => new { t.User_UserId, t.Role_RoleId })
+                .ForeignKey("dbo.Users", t => t.User_UserId, cascadeDelete: true)
+                .ForeignKey("dbo.Roles", t => t.Role_RoleId, cascadeDelete: true)
+                .Index(t => t.User_UserId)
+                .Index(t => t.Role_RoleId);
             
         }
         
@@ -111,15 +149,19 @@ namespace Awesome.Migrations
         {
             DropForeignKey("dbo.Users", "UserBet_UserBetId", "dbo.UserBets");
             DropForeignKey("dbo.Matches", "UserBet_UserBetId", "dbo.UserBets");
-            DropForeignKey("dbo.Matches", "Result_ResultId", "dbo.Results");
+            DropForeignKey("dbo.UserRoles", "Role_RoleId", "dbo.Roles");
+            DropForeignKey("dbo.UserRoles", "User_UserId", "dbo.Users");
             DropForeignKey("dbo.MatchResults", "Result_ResultId", "dbo.Results");
-            DropIndex("dbo.Users", new[] { "UserBet_UserBetId" });
+            DropIndex("dbo.UserRoles", new[] { "Role_RoleId" });
+            DropIndex("dbo.UserRoles", new[] { "User_UserId" });
             DropIndex("dbo.Matches", new[] { "UserBet_UserBetId" });
-            DropIndex("dbo.Matches", new[] { "Result_ResultId" });
+            DropIndex("dbo.Users", new[] { "UserBet_UserBetId" });
             DropIndex("dbo.MatchResults", new[] { "Result_ResultId" });
-            DropTable("dbo.Users");
+            DropTable("dbo.UserRoles");
             DropTable("dbo.Matches");
             DropTable("dbo.UserBets");
+            DropTable("dbo.Users");
+            DropTable("dbo.Roles");
             DropTable("dbo.MatchResults");
             DropTable("dbo.Results");
         }

@@ -104,6 +104,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -170,16 +174,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603172031112_init.cs" />
-    <Compile Include="Migrations\201603172031112_init.Designer.cs">
-      <DependentUpon>201603172031112_init.cs</DependentUpon>
+    <Compile Include="Migrations\201603272006297_init.cs" />
+    <Compile Include="Migrations\201603272006297_init.Designer.cs">
+      <DependentUpon>201603272006297_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bet.cs" />
     <Compile Include="Models\DB\DataModel.cs" />
+    <Compile Include="Models\EntityManager\TournamentRoleProvider.cs" />
     <Compile Include="Models\EntityManager\UserManager.cs" />
     <Compile Include="ApiIntegration\FootballApiClient.cs" />
+    <Compile Include="Models\Enums\EnumReportFinalResults.cs" />
+    <Compile Include="Models\ReportedResult.cs" />
+    <Compile Include="Models\ScheduledTasks.cs" />
     <Compile Include="Models\TournamentUtility.cs" />
+    <Compile Include="Models\ViewModel\AdminViewModel.cs" />
     <Compile Include="Models\ViewModel\HomeViewModel.cs" />
     <Compile Include="Models\ViewModel\BetPageViewModel.cs" />
     <Compile Include="Models\ViewModel\MyPageViewModel.cs" />
@@ -188,8 +197,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Bootstrap\bootstrap.min.css" />
-    <Content Include="Content\bootstrap.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\grayscale.css" />
@@ -197,10 +204,15 @@
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\img\bad_icon.png" />
+    <Content Include="Content\img\error_icon.png" />
     <Content Include="Content\img\downloads-bg.jpg" />
+    <Content Include="Content\img\great_icon.png" />
     <Content Include="Content\img\intro-bg.jpg" />
     <Content Include="Content\img\map-marker.png" />
-    <Content Include="Content\img\zlatan.jpeg" />
+    <Content Include="Content\img\zlatan-ibrahimovic.jpg" />
+    <Content Include="Content\img\okay_icon.png" />
+    <Content Include="Content\img\ok_icon.png" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\grayscale.js" />
@@ -209,7 +221,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Bootstrap\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
@@ -278,9 +289,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\StandingsPartial.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="Views\Account\LogIn.cshtml" />
     <Content Include="Views\MyPage\Index.cshtml" />
@@ -289,6 +298,7 @@
     <Content Include="Views\MyPage\MyBetPagePartial.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Home\RulesPartial.cshtml" />
+    <Content Include="Views\Home\SchedulePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -302,8 +312,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603172031112_init.resx">
-      <DependentUpon>201603172031112_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603272006297_init.resx">
+      <DependentUpon>201603272006297_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

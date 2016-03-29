@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using Awesome.Models.DB;
+
 namespace Awesome.Migrations
 {
     using System;
@@ -14,6 +17,23 @@ namespace Awesome.Migrations
 
         protected override void Seed(Awesome.Models.DB.DataModel context)
         {
+            context.Users.AddOrUpdate(
+               new User
+               {
+                   FirstName = "Joakim",
+                   LastName = "Wågström",
+                   LoginName = "Jocke",
+                   Password = "asd123",
+                   Roles = new List<Role>()
+                   {
+                        new Role()
+                        {
+                            RoleId = 1,
+                            Rolename = "Admin"
+                        }
+                   }
+               });
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

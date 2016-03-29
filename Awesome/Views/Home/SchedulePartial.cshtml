@@ -1,0 +1,43 @@
+﻿<h2 class="text-center">Spelschema</h2>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th></th>
+            <th class="">Datum</th>
+            <th>Macth</th>
+            <th>Resultat</th>
+        </tr>
+        </thead>
+
+        @foreach (var match in Model.Matches)
+        {
+            <tr style="height: 25px; overflow: auto">
+                <td></td>
+                <td>
+                    @match.Date
+
+                </td>
+                <td>
+                    @match.HomeTeam -
+                    @match.AwayTeam
+                </td>
+            
+                    @if (@match.Status == "FINISHED")
+                    {
+                        <td>
+                            @match.HomeScore -
+                            @match.AwayScore
+                        </td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+
+
+            </tr>
+        }
+
+    </table>

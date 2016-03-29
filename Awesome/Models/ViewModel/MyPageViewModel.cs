@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Principal;
+using System.Web.Caching;
 using System.Web.Security;
 using Awesome.ApiIntegration.JsonGroupStageResult;
 using Awesome.ApiIntegration.JsonTeamResult;
@@ -26,7 +27,7 @@ namespace Awesome.Models.ViewModel
             HasBetted = UserManager.HasBetted(CurrentUser);
             Matches = TournamentUtility.CreateMatchList(groupStageMatches);
             Bet = new Bet(groupStageMatches);
-           
+            Result = UserManager.GetResult();
             CurrentUserBet = GetBetForCurrentUser(CurrentUser);
             OtherUsersBet = GetOtherUsersBet();
             ResultList = GetResultList(CurrentUserBet);
@@ -38,11 +39,13 @@ namespace Awesome.Models.ViewModel
         public List<Team> Teams { get; set; }
         public string CurrentUser { get; set; }
         public Bet Bet { get; set; }
-        public List<Fixture> Matches { get; set; }
+        public List<Match> Matches { get; set; }
+        public DB.Result Result { get; set; } 
 
         public List<string> ResultList { get; set; }
         public List<User> OtherUsersBet { get; set; }
         public UserBet CurrentUserBet { get; set; }
+
 
         public UserBet GetBetForCurrentUser(string user)
         {

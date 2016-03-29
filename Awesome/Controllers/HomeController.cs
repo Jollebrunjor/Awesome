@@ -15,8 +15,11 @@ namespace Awesome.Controllers
         public ActionResult Index()
         {
             object message = string.Empty;
-   
-            HomeViewModel currentViewModel = new HomeViewModel();
+
+            FootballApiClient client = new FootballApiClient();
+            JsonGroupStageResult groupStageMatches = client.GetGroupStageMatches();
+
+            HomeViewModel currentViewModel = new HomeViewModel(groupStageMatches);
             ViewData["Logout"] = TempData["Logout"];
 
             if (TempData.TryGetValue("signuperror", out message))

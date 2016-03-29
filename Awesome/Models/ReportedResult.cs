@@ -1,27 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using Awesome.ApiIntegration.JsonGroupStageResult;
 using Awesome.Models.DB;
+using Awesome.Models.EntityManager;
+using Result = Awesome.Models.DB.Result;
 
 namespace Awesome.Models
 {
-    public class Bet
+    public class ReportedResult
     {
-        public Bet()
+        public ReportedResult()
         {
-            
+
         }
-        public Bet(JsonGroupStageResult groupStageMatches)
+        public ReportedResult(JsonGroupStageResult groupStageMatches)
         {
             Matches = TournamentUtility.CreateMatchList(groupStageMatches);
+            Result = UserManager.GetResult();
         }
 
         public int UserBetId { get; set; }
         public List<Match> Matches { get; set; }
+        public Result Result { get; set; }
         public string Finalist1 { get; set; }
         public string Finalist2 { get; set; }
         public string Semifinalist1 { get; set; }
@@ -38,8 +40,6 @@ namespace Awesome.Models
         public string QuarterFinalist8 { get; set; }
         public string TopScorer { get; set; }
         public int TotalGoals { get; set; }
-
-
 
     }
 }

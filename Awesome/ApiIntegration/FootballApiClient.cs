@@ -11,7 +11,7 @@ namespace Awesome.Models
     {
         public JsonGroupStageResult GetGroupStageMatches()
         {
-            
+
             var url = "http://api.football-data.org/v1/soccerseasons/424/fixtures";
             var groupstagematches = _download_serialized_json_data<JsonGroupStageResult>(url);
 
@@ -31,19 +31,20 @@ namespace Awesome.Models
             List<string> results = new List<string>();
             var matches = GetGroupStageMatches();
             var fixtures = matches.fixtures;
-
-            foreach (var f in fixtures)
+            if (fixtures != null)
             {
-                string match = f.homeTeamName + f.awayTeamName;
-                if (teamList.Contains(match))
+                foreach (var f in fixtures)
                 {
-                    results.Add(f.result.goalsHomeTeam + "-" + f.result.goalsAwayTeam);
+                    string match = f.homeTeamName + f.awayTeamName;
+                    if (teamList.Contains(match))
+                    {
+                        results.Add(f.result.goalsHomeTeam + "-" + f.result.goalsAwayTeam);
+                    }
                 }
-                
             }
             return results;
         }
-       
+
 
         private static T _download_serialized_json_data<T>(string url) where T : new()
         {
@@ -54,7 +55,7 @@ namespace Awesome.Models
                 try
                 {
                     w.Headers.Add("X-Auth-Token", apiKey);
-                    json_data = w.DownloadString(url);    
+                    json_data = w.DownloadString(url);
                 }
 
                 catch (Exception) { }
@@ -64,4 +65,4 @@ namespace Awesome.Models
     }
 
 
-    }
+}
