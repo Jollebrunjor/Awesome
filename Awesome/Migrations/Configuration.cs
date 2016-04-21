@@ -17,6 +17,7 @@ namespace Awesome.Migrations
 
         protected override void Seed(Awesome.Models.DB.DataModel context)
         {
+
             context.Users.AddOrUpdate(
                new User
                {
@@ -33,7 +34,6 @@ namespace Awesome.Migrations
                         }
                    }
                });
-
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

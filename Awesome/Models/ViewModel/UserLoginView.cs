@@ -17,6 +17,10 @@ namespace Awesome.Models.ViewModel
         public UserLoginView(object errorMessage)
         {
             ErrorMessage = errorMessage;
+            if (errorMessage != "")
+            {
+                HasErrorMessage = true;
+            }
         }
         
         public int UserId { get; set; }
@@ -30,6 +34,7 @@ namespace Awesome.Models.ViewModel
         public string Password { get; set; }
 
         public object ErrorMessage { get; set; }
+        public bool HasErrorMessage { get; set; }
        
 
     }

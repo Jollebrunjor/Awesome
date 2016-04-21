@@ -19,6 +19,10 @@ namespace Awesome.Models.ViewModel
         public UserSignUpView(object errorMessage)
         {
             ErrorMessage = errorMessage;
+            if (errorMessage != "")
+            {
+                HasErrorMessage = true;
+            }
         }
 
 
@@ -41,6 +45,7 @@ namespace Awesome.Models.ViewModel
         public string LastName { get; set; }
 
         public object ErrorMessage { get; set; }
+        public bool HasErrorMessage { get; set; }
 
 
 

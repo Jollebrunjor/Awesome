@@ -27,12 +27,13 @@ namespace Awesome.Models.ViewModel
             HasBetted = UserManager.HasBetted(CurrentUser);
             Matches = TournamentUtility.CreateMatchList(groupStageMatches);
             Bet = new Bet(groupStageMatches);
-            Result = UserManager.GetResult();
+            Result = ResultsInVMyPage();
             CurrentUserBet = GetBetForCurrentUser(CurrentUser);
             OtherUsersBet = GetOtherUsersBet();
             ResultList = GetResultList(CurrentUserBet);
         }
 
+       
 
         public bool HasBetted { get; set; }
         public Dictionary<int, Fixture> GroupStageMatches { get; set; }
@@ -46,6 +47,27 @@ namespace Awesome.Models.ViewModel
         public List<User> OtherUsersBet { get; set; }
         public UserBet CurrentUserBet { get; set; }
 
+        public DB.Result ResultsInVMyPage()
+        {
+
+            DB.Result result = UserManager.GetResult();
+            foreach (var match in result.MatchResults)
+            {
+                if (match.Status == "TIMED")
+                {
+                    match.Status = "Ej spelad";
+                }
+                if (match.Status == "FINISHED")
+                {
+                    match.Status = "Färdigspelad";
+                }
+                if (match.Status == "IN_PLAY")
+                {
+                    match.Status = "Pågår";
+                }
+            }
+            return result;
+        }
 
         public UserBet GetBetForCurrentUser(string user)
         {

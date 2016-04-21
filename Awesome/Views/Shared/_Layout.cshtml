@@ -27,7 +27,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-play-circle"></i>  <span class="light">@User.Identity.Name</span>
+                    <i class="fa fa-play-circle"></i>  <span class="light">Em-Tipset 2016</span>
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -117,29 +117,8 @@
     <!-- Plugin JavaScript -->
     <script src="/Content/js/jquery.easing.min.js"></script>
     <!-- Custom Theme JavaScript -->
-<script src="/Content/js/grayscale.js"></script>
-<script>
-
-    $(document).ready(function() {
-
-        $('#login').hide();
-        $('#signup').hide();
-        var loginErrorMessage = $('#loginErrorMessage').length;
-        var signupErrorMessage = $('#signupErrorMessage').length;
-        if (loginErrorMessage != 0) {
-            $('#login').show();
-        }
-        console.log(signupErrorMessage);
-        if (signupErrorMessage != 0) {
-            $('#signup').show();
-        }
-        
-
-    });
-
-    $('#dropDownList').click(function(e) {
-        $('#dropDownList').addClass('active');
-    });
-</script>
+    <script src="/Content/js/grayscale.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Content/js/main.js"></script>
 </body>
 </html>

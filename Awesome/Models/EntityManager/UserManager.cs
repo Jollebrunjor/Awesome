@@ -179,6 +179,7 @@ namespace Awesome.Models.EntityManager
             using (DataModel db = new DataModel())
             {
                 Result result = db.Results.Include("MatchResults").FirstOrDefault();
+                
                 return result;
             }
 

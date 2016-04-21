@@ -1,4 +1,5 @@
-﻿
+﻿@using Microsoft.Owin.Security.DataHandler.Encoder
+
 <h2 class="text-center">Tabell</h2>
 
     <table class="table">
@@ -6,7 +7,13 @@
             <tr>
                 <th></th>
                 <th>Namn</th>
-                <th>Poäng</th>
+                <th>0p</th>
+                <th>1p</th>
+                <th>3p</th>
+                <th>Q</th>
+                <th>S</th>
+                <th>F</th>
+                <th>Totalt</th>
             </tr>
         </thead>
         <tbody>
@@ -15,8 +22,15 @@
             {
                 <tr>
                     <td>@i</td>
-                    <td>@item.Key </td>
-                    <td>@item.Value</td>
+                    <td>@item.LoginName </td>
+                    <td>@item.NumberOfZeroPoints</td>
+                    <td>@item.NumberOfOnePoints</td>
+                    <td>@item.NumberOfThreePoints</td>
+                    <th>@item.NumberOfQuarterFinals</th>
+                    <th>@item.NumberOfSemiFinals</th>
+                    <th>@item.NumberOfFinals</th>
+                    <td>@item.TotalPoints</td>
+                    
                 </tr>
                 i++;
             }

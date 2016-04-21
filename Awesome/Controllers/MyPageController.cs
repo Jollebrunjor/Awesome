@@ -31,6 +31,11 @@ namespace Awesome.Controllers
         [HttpPost]
         public ActionResult PlaceBet(MyPageViewModel placedBet, string username)
         {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "The password provided is incorrect.");
+                return new RedirectResult(Url.Action("Index") + "#myBet");
+            }
 
             UserBet userBet = new UserBet();
 
@@ -63,6 +68,8 @@ namespace Awesome.Controllers
                 userBet.TotalGoals = placedBet.Bet.TotalGoals;
 
             }
+
+
 
             UserManager.AddBet(userBet, username);
 

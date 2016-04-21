@@ -174,9 +174,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603272006297_init.cs" />
-    <Compile Include="Migrations\201603272006297_init.Designer.cs">
-      <DependentUpon>201603272006297_init.cs</DependentUpon>
+    <Compile Include="Migrations\201604200916085_init.cs" />
+    <Compile Include="Migrations\201604200916085_init.Designer.cs">
+      <DependentUpon>201604200916085_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bet.cs" />
@@ -187,6 +187,7 @@
     <Compile Include="Models\Enums\EnumReportFinalResults.cs" />
     <Compile Include="Models\ReportedResult.cs" />
     <Compile Include="Models\ScheduledTasks.cs" />
+    <Compile Include="Models\Standing.cs" />
     <Compile Include="Models\TournamentUtility.cs" />
     <Compile Include="Models\ViewModel\AdminViewModel.cs" />
     <Compile Include="Models\ViewModel\HomeViewModel.cs" />
@@ -194,12 +195,37 @@
     <Compile Include="Models\ViewModel\MyPageViewModel.cs" />
     <Compile Include="Models\ViewModel\UserLoginView.cs" />
     <Compile Include="Models\ViewModel\UserSignUpView.cs" />
+    <Compile Include="Models\ViewResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\grayscale.css" />
+    <Content Include="Content\Flags\albania.png" />
+    <Content Include="Content\Flags\austria.png" />
+    <Content Include="Content\Flags\belgium.png" />
+    <Content Include="Content\Flags\croatia.png" />
+    <Content Include="Content\Flags\czcechrepublic.png" />
+    <Content Include="Content\Flags\england.png" />
+    <Content Include="Content\Flags\france.png" />
+    <Content Include="Content\Flags\germany.png" />
+    <Content Include="Content\Flags\hungary.png" />
+    <Content Include="Content\Flags\iceland.png" />
+    <Content Include="Content\Flags\ireland.png" />
+    <Content Include="Content\Flags\italy.png" />
+    <Content Include="Content\Flags\northernirland.png" />
+    <Content Include="Content\Flags\poland.png" />
+    <Content Include="Content\Flags\portugal.png" />
+    <Content Include="Content\Flags\romaina.png" />
+    <Content Include="Content\Flags\russia.png" />
+    <Content Include="Content\Flags\slovakia.png" />
+    <Content Include="Content\Flags\spain.png" />
+    <Content Include="Content\Flags\sweden.png" />
+    <Content Include="Content\Flags\switzerland.png" />
+    <Content Include="Content\Flags\turkey.png" />
+    <Content Include="Content\Flags\ukraine.png" />
+    <Content Include="Content\Flags\wales.png" />
     <Content Include="Content\font-awesome\css\font-awesome.css" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
@@ -218,6 +244,7 @@
     <Content Include="Content\js\grayscale.js" />
     <Content Include="Content\js\jquery.easing.min.js" />
     <Content Include="Content\js\jquery.js" />
+    <Content Include="Content\js\main.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -312,8 +339,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603272006297_init.resx">
-      <DependentUpon>201603272006297_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604200916085_init.resx">
+      <DependentUpon>201604200916085_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

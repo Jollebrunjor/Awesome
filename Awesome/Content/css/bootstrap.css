@@ -2319,7 +2319,7 @@ th {
   border-bottom-width: 2px;
 }
 .table-striped > tbody > tr:nth-of-type(odd) {
-  background-color: #f9f9f9;
+  background-color: #f1f1f1;
 }
 .table-hover > tbody > tr:hover {
   background-color: #f5f5f5;
@@ -3533,11 +3533,10 @@ tbody.collapse.in {
   font-size: 14px;
   text-align: left;
   list-style: none;
-  /*background-color: #fff;*/
+  background-color: #4C4C4C;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, .15);
+  border-top: 1px solid rgba(0, 0, 0, .15);
   border-radius: 4px;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
           box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
@@ -3558,7 +3557,7 @@ tbody.collapse.in {
   clear: both;
   font-weight: normal;
   line-height: 1.42857143;
-  color: #333;
+  color: #FFF;
   white-space: nowrap;
 }
 .dropdown-menu > li > a:hover,
@@ -3570,7 +3569,7 @@ tbody.collapse.in {
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
-  color: #fff;
+  color: #262626;
   text-decoration: none;
   background-color: #337ab7;
   outline: 0;
@@ -6762,14 +6761,96 @@ button.close {
 
 .result-color-green::after {
     color: green;
-    content: "3p";
+    content: "3 p";
 
 }
 .result-color-yellow::after {
    color: yellow;
-    content: "1p";
+    content: "1 p";
 }
 .result-color-red::after {
     color: red;
-    content: "0p";
+    content: "0 p";
+}
+
+.flag {
+    height: 50px;
+}
+.flag-France  {
+    content: url('../Flags/france.png');
+
+
+}
+.flag-Albania  {
+    content: url('../Flags/albania.png');
+
+
+}
+.flag-Austria  {
+    content: url('../Flags/austria.png');
+
+
+}
+.flag-Belgium  {
+    content: url('../Flags/belgium.png');
+}
+.flag-Croatia  {
+    content: url('../Flags/croatia.png');
+}
+.flag-Czech_Republic  {
+    content: url('../Flags/czcechrepublic.png');
+}
+.flag-England  {
+    content: url('../Flags/england.png');
+}
+.flag-Germany  {
+    content: url('../Flags/germany.png');
+}
+.flag-Hungary  {
+    content: url('../Flags/hungary.png');
+}
+.flag-Iceland  {
+    content: url('../Flags/iceland.png');
+}
+.flag-Republic_of_Ireland	  {
+    content: url('../Flags/ireland.png');
+}
+.flag-Italy  {
+    content: url('../Flags/italy.png');
+}
+.flag-Northern_Ireland  {
+    content: url('../Flags/northernirland.png');
+}
+.flag-Poland  {
+    content: url('../Flags/poland.png');
+}
+.flag-Portugal  {
+    content: url('../Flags/portugal.png');
+}
+.flag-Romania  {
+    content: url('../Flags/romaina.png');
+}
+.flag-Russia  {
+    content: url('../Flags/russia.png');
+}
+.flag-Slovakia  {
+    content: url('../Flags/slovakia.png');
+}
+.flag-Spain  {
+    content: url('../Flags/spain.png');
+}
+.flag-Sweden  {
+    content: url('../Flags/sweden.png');
+}
+.flag-Switzerland  {
+    content: url('../Flags/switzerland.png');
+}
+.flag-Turkey  {
+    content: url('../Flags/turkey.png');
+}
+.flag-Ukraine  {
+    content: url('../Flags/ukraine.png');
+}
+.flag-Wales  {
+    content: url('../Flags/wales.png');
 }

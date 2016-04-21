@@ -24,11 +24,11 @@ namespace Awesome.Controllers
 
             if (TempData.TryGetValue("signuperror", out message))
             {
-                currentViewModel.SignupErrorMessage = message;
+                currentViewModel.SignupErrorMessage = message.ToString();
             }
             if (TempData.TryGetValue("loginerror", out message))
             {
-                currentViewModel.LoginErrorMessage = message;
+                currentViewModel.LoginErrorMessage = message.ToString();
             }
 
             return View(currentViewModel);

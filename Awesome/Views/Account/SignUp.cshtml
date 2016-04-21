@@ -1,10 +1,5 @@
 ﻿@model Awesome.Models.ViewModel.UserSignUpView
 
-@{
-    ViewBag.Title = "SignUp";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
 <h2>Registrera</h2>
 
  @using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
@@ -16,7 +11,7 @@
         <hr/>
         @if(Model.ErrorMessage != null)
         {
-            <h4 id="signupErrorMessage">
+            <h4 id="signupErrorMessage" value="@Model.HasErrorMessage">
                 @Model.ErrorMessage
             </h4>
         }

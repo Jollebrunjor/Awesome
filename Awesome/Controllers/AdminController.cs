@@ -46,7 +46,6 @@ namespace Awesome.Controllers
                 };
 
                 result.MatchResults.Add(match);
-
                 result.Finalist1 = viewModel.ReportedResult.Finalist1;
                 result.Finalist2 = viewModel.ReportedResult.Finalist2;
                 result.Semifinalist1 = viewModel.ReportedResult.Semifinalist1;

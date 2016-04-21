@@ -99,7 +99,7 @@ namespace Awesome.Controllers
         {
             FormsAuthentication.SignOut();
             TempData.Add("Logout", "Tack för titten!");
-            return RedirectToAction("Index", "Home");
+            return new RedirectResult(Url.Action("Index", "Home"));
         }
 
     }
