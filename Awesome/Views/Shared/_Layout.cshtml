@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @*@Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")*@
 
@@ -39,7 +39,7 @@
                         <a href="#page-top"></a>
                     </li>
 
-                    @if (Request.Url.AbsoluteUri == "http://localhost:53789/") //Ändra till faktisk url
+                    @if (Request.Url.AbsoluteUri == "http://tipset.azurewebsites.net/") //Ändra till faktisk url
                     {
                         <li> <a class="page-scroll" href="#page-top">Start</a></li>
                         <li> <a class="page-scroll" href="#standings">Tabell</a></li>
@@ -50,9 +50,9 @@
                             <li id="dropDownList"class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink("Hem", "Index", "MyPage")</li>
+                                   
                                     <li>@Html.ActionLink("Mitt spel", "Index", "MyPage", null, null, "myBet", null, null)</li>
-                                    <li>@Html.ActionLink("Andras spel", "Index", "MyPage", null, null, "othersBet", null, null)</li>
+                                    
                                     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                                     {
                                         <li role="separator" class="divider"></li>
@@ -79,9 +79,9 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li> <a class="" href="#page-top">Hem</a></li>
-                                    <li> <a class="" href="#myBet">Mitt spel</a></li>
-                                    <li> <a class="" href="#othersBet">Andras spel</a></li>
+                                   
+                                   <li>@Html.ActionLink("Mitt spel", "Index", "MyPage", null, null, "myBet", null, null)</li>
+                                   
                                     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                                     {
                                         <li role="separator" class="divider"></li>

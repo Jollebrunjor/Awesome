@@ -33,7 +33,9 @@ namespace Awesome.Controllers
                     {
                         UM.AddUserAccount(USV);
                         FormsAuthentication.SetAuthCookie(USV.LoginName, false);
-                        return RedirectToAction("Index", "MyPage");
+                        TempData.Clear();
+                        TempData.Add("Welcome", "Välkommen " + USV.LoginName);
+                    return RedirectToAction("Index", "MyPage");
                     }
                     else
                         ModelState.AddModelError("", "Login Name already taken.");
@@ -75,6 +77,8 @@ namespace Awesome.Controllers
                     {
                         FormsAuthentication.SetAuthCookie(ULV.LoginName, false);
 
+                        TempData.Clear();
+                        TempData.Add("Welcome", "Välkommen " + ULV.LoginName);
                         return RedirectToAction("Index", "MyPage");
                     }
                     else

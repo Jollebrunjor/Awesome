@@ -1,561 +1,563 @@
 ﻿@model Awesome.Models.ViewModel.MyPageViewModel
 
-<div class="container">
-    <h2 class="text-center">Mitt spel</h2>
-    <div class="row">
-        @if (!Model.HasBetted)
+<h2 class="text-center">Mitt spel</h2>
+<div class="row">
+    @if (!Model.HasBetted)
+    {
+        using (Html.BeginForm("PlaceBet", "MyPage", FormMethod.Post))
         {
-            using (Html.BeginForm("PlaceBet", "MyPage", FormMethod.Post))
-            {
-                <div class="col-md-6" id="">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th class="text-center">Gruppspel</th>
-                        </tr>
-                        </thead>
-
-                        @for (int i = 0; i < Model.Bet.Matches.Count; i++)
-                        {
-                            <tr style="height: 25px; overflow: auto">
-                                <td>
-
-                                    @Html.HiddenFor(x => x.Bet.Matches[i].HomeTeam)
-                                    @Html.DisplayFor(x => x.Bet.Matches[i].HomeTeam) -
-
-                                    @Html.HiddenFor(x => x.Bet.Matches[i].AwayTeam)
-                                    @Html.DisplayFor(x => x.Bet.Matches[i].AwayTeam)
-                                </td>
-                                <td>
-                                    @Html.TextBoxFor(x => x.Bet.Matches[i].HomeScore, new {@Style = "width: 60px", @required = true}) - @Html.TextBoxFor(x => x.Bet.Matches[i].AwayScore, new {@Style = "width: 60px", @required = true})
-                                </td>
-                            </tr>
-                        }
-
-                    </table>
-
-                </div>
-        <div class="col-md-6">
-    <table class="table">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Slutspel</th>
-            <tr>
-        </thead>
-@if (Model.Teams != null)
-{
-
-        <tr style="height: 26px; overflow: auto">
-            <td>Finalistlag 1</td>
-            <td> @Html.DropDownListFor(x => x.Bet.Finalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
-        </tr>
-        <tr>
-            <td>Finalistlag 2</td>
-            <td> @Html.DropDownListFor(x => x.Bet.Finalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
-        </tr>
-        <tr>
-            <td>Semifinalistlag 1</td>
-            <td> @Html.DropDownListFor(x => x.Bet.Semifinalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
-        </tr>
-
-        <tr>
-            <td>Semifinalistlag 2</td>
-            <td>@Html.DropDownListFor(x => x.Bet.Semifinalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true }) </td>
-        </tr>
-
-        <tr>
-            <td>Semifinalistlag 3</td>
-            <td>@Html.DropDownListFor(x => x.Bet.Semifinalist3, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true }) </td>
-        </tr>
-        <tr>
-            <td>Semifinalistlag 4</td>
-            <td>@Html.DropDownListFor(x => x.Bet.Semifinalist4, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true }) </td>
-        </tr>
-        <tr>
-            <td>Kvartsfinalistlag 1</td>
-            <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
-        </tr>
-        <tr>
-            <td>Kvartsfinalistlag 2</td>
-            <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
-        </tr>
-        <tr>
-            <td>Kvartsfinalistlag 3</td>
-            <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist3, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
-        </tr>
-        <tr>
-            <td>Kvartsfinalistlag 4</td>
-            <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist4, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
-        </tr>
-        <tr>
-            <td>Kvartsfinalistlag 5</td>
-            <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist5, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
-        </tr>
-        <tr>
-            <td>Kvartsfinalistlag 6</td>
-            <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist6, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
-        </tr>
-        <tr>
-            <td>Kvartsfinalistlag 7</td>
-            <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist7, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
-        </tr>
-        <tr>
-            <td>Kvartsfinalistlag 8</td>
-            <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist8, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
-        </tr>
-        <tr>
-            <td>Skytteligavinnare</td>
-            <td> @Html.TextBoxFor(model => model.Bet.TopScorer, new { @required = true })</td>
-        </tr>
-    <tr>
-        <td>Totalt antal mål i turneringen (utslagsfråga)</td>
-        <td> @Html.TextBoxFor(model => model.Bet.TotalGoals, new {@required = true})</td>
-    </tr>
-    
-            <input type="hidden" name="username" value="@Model.CurrentUser" />
-        <input type="submit" value="Skicka" class="btn btn-default center-block" />
-}
-    </table>
-
-
-    
-</div>
-                }
-           
-        }
-
-        else
-        {
-            
-      
-
-    <div class="col-lg-12">
-    <div class="panel panel-default text-center">
-    <div class="" style="background-color: #f9f9f9">
-
-        <table class="table table-condensed table-striped" style="border-collapse: collapse; margin: auto" colspan="7">
-
-
-            @foreach (var item in Model.CurrentUserBet.Matches)
-            {
-                <tr style="height: 25px; overflow: auto; color: black; cursor: pointer;" data-toggle="collapse" data-target="#@item.MatchId" class="accordion-toggle">
-                    <td colspan="9">
-                        <div>
-                            <table style="margin: auto">
-                                <tr style="background-color: #f1f1f1">
-                                    <td class="result-color-@item.ResultColor"></td>
-
-                                    <td class="" style="width: 200px;">
-                                        @item.HomeTeam
-                                    </td>
-                                    <td class="" style="width: 0px;">
-                                        -
-                                    </td>
-                                    <td class="" style="width: 200px;">
-                                        @item.AwayTeam
-                                    </td>
-
-                                    <td class="">@item.HomeScore - @item.AwayScore</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </td>
-                </tr>
-
-                                <td colspan="12" class="hiddenRow">
-                                    <div class="accordian-body collapse" id="@item.MatchId">
-                                        <table class="table table-striped">
-                                            <thead>
-
-                                                @foreach (var result in Model.Result.MatchResults.Where(x => x.AwayTeam == item.AwayTeam && x.HomeTeam == item.HomeTeam))
-                                                {
-
-
-
-                                                    <tr style="color: black">
-                                                        <td colspan="5" style="border-bottom: 1px solid #ddd; padding: 50px; padding-top: 25px;">
-                                                            <div>
-                                                                <table style="margin: auto">
-                                                                    @if (result.Status != null)
-                                                                    {
-                                                                        <h4 style="color: black">@result.Status</h4>
-                                                                    }
-                                                                    
-                                                                    <td>
-                                                                        <img class="flag flag-@result.HomeTeam.Replace(" ", "_")" />
-                                                                    </td>
-                                                                    <td style="width: 80px; font-size: 20px;">0</td>
-
-                                                                    <td style="">
-                                                                        -
-                                                                    </td>
-                                                                    <td style="width: 80px; font-size: 20px;">
-                                                                        0
-                                                                    </td>
-                                                                    <td>
-                                                                        <img class="flag flag-@result.AwayTeam.Replace(" ", "_")" />
-                                                                    </td>
-
-                                                                </table>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-
-                                                }
-
-
-
-                                                @for (var i = 0; i < Model.OtherUsersBet.Count; i++)
-                                                {
-                                                    if ((i % 4) == 0)
-                                                    {
-                                                        @: <tr style="color: black" class="text-center">
-
-                                                            @*<td style="border-top: none !important; width: 150px;"></td>*@
-                                                    }
-
-                                                    foreach (var result in Model.OtherUsersBet[i].UserBet.Matches.Where(x => x.AwayTeam == item.AwayTeam && x.HomeTeam == item.HomeTeam))
-                                                    {
-
-                                                        <td style="border-top: none !important; font-size: 12px;">
-                                                            <div>
-                                                                <b>@Model.OtherUsersBet[i].LoginName: </b>@result.HomeScore-@result.AwayScore
-                                                            </div>
-
-                                                        </td>
-
-                                                        if ((i % 4) == 3)
-                                                        {
-
-                                                            @: </tr>
-
-                                                        }
-                                                    }
-                                                }
-
-
-                                            </thead>
-
-
-                                        </table>
-
-                                    </div>
-                                </td>
-            }
-
-
-        <tr style="height: 25px; overflow: auto; color: black; cursor: pointer;" data-toggle="collapse" data-target="#qfinal" class="accordion-toggle">
-            <td colspan="9">
-                <div>
-                    <table style="margin: auto">
-                        <tr>
-                            <td class="">Lag i kvartsfinal</td>
-                        </tr>
-                    </table>
-                </div>
-            </td>
-        </tr>
-
-
-
-
-        <td colspan="12" class="hiddenRow">
-            <div class="accordian-body collapse" id="qfinal">
+            <div class="col-md-6" id="">
                 <table class="table">
-                    <thead class="quarterfinalBet">
+                    <thead>
                         <tr>
-                            <td class="col-md-1" style="border-top: none;"></td>
-                            <td class="col-md-2">
-                                <img class="flag flag-@Model.CurrentUserBet.QuarterFinalist1.Replace(" ", "_")" />
-                            </td>
-                            <td class="col-md-3">
-                                <img class="flag flag-@Model.CurrentUserBet.QuarterFinalist2.Replace(" ", "_")" />
-                            </td>
-                            <td class="col-md-3">
-                                <img class="flag flag-@Model.CurrentUserBet.QuarterFinalist3.Replace(" ", "_")" />
-                            </td>
-                            <td class="col-md-2">
-                                <img class="flag flag-@Model.CurrentUserBet.QuarterFinalist4.Replace(" ", "_")" />
-                            </td>
-                            <td class="col-md-1" style="border-top: none;"></td>
+                            <th>Gruppspel</th>
+                            <th></th>
 
-                        </tr>
-                        <tr style="color: black;">
-                            <td class="col-md-1" style="border-top: none;"></td>
-                            <td style="border-top: none; color: @Model.CurrentUserBet.QuarterFinalist1Color"> @Model.CurrentUserBet.QuarterFinalist1</td>
-                            <td style="border-top: none; color: @Model.CurrentUserBet.QuarterFinalist2Color"> @Model.CurrentUserBet.QuarterFinalist2</td>
-                            <td style="border-top: none; color: @Model.CurrentUserBet.QuarterFinalist3Color"> @Model.CurrentUserBet.QuarterFinalist3</td>
-                            <td style="border-top: none; color: @Model.CurrentUserBet.QuarterFinalist4Color"> @Model.CurrentUserBet.QuarterFinalist4</td>
-                            <td class="col-md-1" style="border-top: none;"></td>
-
-                        </tr>
-                        <tr>
-                            <td class="col-md-1" style="border-top: none;"></td>
-                            <td style="border-top: none;" class="col-md-2">
-                                <img class="flag flag-@Model.CurrentUserBet.QuarterFinalist5.Replace(" ", "_")" />
-                            </td>
-                            <td style="border-top: none;" class="col-md-3">
-                                <img class="flag flag-@Model.CurrentUserBet.QuarterFinalist6.Replace(" ", "_")" />
-                            </td>
-                            <td style="border-top: none;" class="col-md-3">
-                                <img class="flag flag-@Model.CurrentUserBet.QuarterFinalist7.Replace(" ", "_")" />
-                            </td>
-                            <td style="border-top: none;" class="col-md-2">
-                                <img class="flag flag-@Model.CurrentUserBet.QuarterFinalist8.Replace(" ", "_")" />
-                            </td>
-                            <td class="col-md-1" style="border-top: none;"></td>
-                        </tr>
-                        <tr style="color: black;">
-                            <td class="col-md-1" style="border-top: none;"></td>
-                            <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.QuarterFinalist5Color"> @Model.CurrentUserBet.QuarterFinalist5</td>
-                            <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.QuarterFinalist6Color"> @Model.CurrentUserBet.QuarterFinalist6</td>
-                            <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.QuarterFinalist7Color"> @Model.CurrentUserBet.QuarterFinalist7</td>
-                            <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.QuarterFinalist8Color"> @Model.CurrentUserBet.QuarterFinalist8</td>
-                            <td class="col-md-1" style="border-top: none;"></td>
                         </tr>
                     </thead>
 
-                    @for (var i = 0; i < Model.OtherUsersBet.Count; i++)
+                    @for (int i = 0; i < Model.Bet.Matches.Count; i++)
                     {
-                        if ((i % 4) == 0)
-                        {
-                            @:  <tr style="color: black" class="text-center">
-                                <td class="col-md-1" style="border-top: none;"></td>
-                        }
+                        <tr style="height: 25px; overflow: auto">
+                            <td>
 
-                        <td style="border-top: none !important; font-size: 12px; margin: auto;" data-toggle="collapse" id="@Model.OtherUsersBet[i].LoginName" class="showUserQuarterFinalBet accordion-toggle" data-target="#qfinal-@Model.OtherUsersBet[i].LoginName">
-                            <span style="cursor: pointer;">
-                                <b>@Model.OtherUsersBet[i].LoginName</b>
+                                @Html.HiddenFor(x => x.Bet.Matches[i].HomeTeam)
+                                @Html.DisplayFor(x => x.Bet.Matches[i].HomeTeam) -
 
-                            </span>
-                        </td>
-
-
-                        if ((i % 4) == 3)
-                        {
-                            <td class="col-md-1" style="border-top: none;"></td>
-                            @:</tr>
-                        }
-
+                                @Html.HiddenFor(x => x.Bet.Matches[i].AwayTeam)
+                                @Html.DisplayFor(x => x.Bet.Matches[i].AwayTeam)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(x => x.Bet.Matches[i].HomeScore, new { @Style = "width: 32px", @required = true }) - @Html.TextBoxFor(x => x.Bet.Matches[i].AwayScore, new { @Style = "width: 32px", @required = true })
+                            </td>
+                        </tr>
                     }
-
-                    
-                    @foreach (var bet in Model.OtherUsersBet)
-                    {
-                        <tbody class="accordian-body collapse" id="qfinal-@bet.LoginName" style="margin: 0 auto; color: black; cursor:pointer" data-toggle="collapse" data-target="#qfinal-@bet.LoginName">
-                            <tr >
-                                <td class="col-md-1">@bet.LoginName.First()</td>
-                                <td class="col-md-2" style=""> @bet.UserBet.QuarterFinalist1</td>
-                                <td class="col-md-3">@bet.UserBet.QuarterFinalist2 </td>
-                                <td class="col-md-3">@bet.UserBet.QuarterFinalist3</td>
-                                <td class="col-md-3">@bet.UserBet.QuarterFinalist4 </td>
-
-                            </tr><tr>
-
-                                <td class="col-md-1" style="border-top: none;"></td>
-                                <td class="col-md-2" style="border-top: none; ">@bet.UserBet.QuarterFinalist5</td>
-                                <td class="col-md-3" style="border-top: none;">@bet.UserBet.QuarterFinalist6 </td>
-                                <td class="col-md-3" style="border-top: none;">@bet.UserBet.QuarterFinalist7</td>
-                                <td class="col-md-2" style="border-top: none;">@bet.UserBet.QuarterFinalist8 </td>
-                                <td class="col-md-1" style="border-top: none;"></td>
-
-                            </tr>
-                        </tbody>
-
-                    }
-
 
                 </table>
 
             </div>
-        </td>
-
-            <tr style="height: 25px; overflow: auto; color: black; cursor: pointer;" data-toggle="collapse" data-target="#sfinal" class="accordion-toggle">
-                <td colspan="9">
-                    <div>
-                        <table style="margin: auto">
+                <div class="col-md-6">
+                    <table class="table">
+                        <thead>
                             <tr>
-                                <td class="">Lag i semifinal</td>
+                                <th>Slutspel</th>
+                                <th></th>
+
+                            <tr>
+                        </thead>
+                        @if (Model.Teams != null)
+                        {
+
+                            <tr style="height: 26px; overflow: auto">
+                                <td>Finalistlag 1</td>
+                                <td> @Html.DropDownListFor(x => x.Bet.Finalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
                             </tr>
-                        </table>
-                    </div>
-                </td>
-            </tr>
+                            <tr>
+                                <td>Finalistlag 2</td>
+                                <td> @Html.DropDownListFor(x => x.Bet.Finalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                            </tr>
+                            <tr>
+                                <td>Semifinalistlag 1</td>
+                                <td> @Html.DropDownListFor(x => x.Bet.Semifinalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                            </tr>
 
+                            <tr>
+                                <td>Semifinalistlag 2</td>
+                                <td>@Html.DropDownListFor(x => x.Bet.Semifinalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true }) </td>
+                            </tr>
 
-        <td colspan="12" class="hiddenRow">
-                                            <div class="accordian-body collapse" id="sfinal">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td style="border-top: none;">
-                                                                <img class="flag flag-@Model.CurrentUserBet.Semifinalist1.Replace(" ", "_")" />
-                                                            </td>
-                                                            <td style="border-top: none;">
-                                                                <img class="flag flag-@Model.CurrentUserBet.Semifinalist2.Replace(" ", "_")" />
-                                                            </td>
-                                                            <td style="border-top: none;">
-                                                                <img class="flag flag-@Model.CurrentUserBet.Semifinalist3.Replace(" ", "_")" />
-                                                            </td>
-                                                            <td style="border-top: none;">
-                                                                <img class="flag flag-@Model.CurrentUserBet.Semifinalist4.Replace(" ", "_")" />
-                                                            </td>
-                                                            <td></td>
-                                                        <tr style="color: black;">
-                                                            @*<td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>*@
-                                                            <td class="col-md-1" style="border-top: none;"></td>
-                                                            <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.Semifinalist1Color"> @Model.CurrentUserBet.Semifinalist1</td>
-                                                            <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.Semifinalist2Color"> @Model.CurrentUserBet.Semifinalist2</td>
-                                                            <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.Semifinalist3Color"> @Model.CurrentUserBet.Semifinalist3</td>
-                                                            <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.Semifinalist4Color"> @Model.CurrentUserBet.Semifinalist4</td>
-                                                            <td class="col-md-1" style="border-top: none;"></td>
-
-                                                        </tr>
-                                                    </tr>
-                                                    </thead>
-                                                    @for (var i = 0; i < Model.OtherUsersBet.Count; i++)
-                                                    {
-                                                        if ((i % 4) == 0)
-                                                        {
-                                                            @: <tr style="color: black" class="text-center">
-                                                                <td class="col-md-1" style="border-top: none;"></td>
-                                                        }
-
-                                                        <td style="border-top: none !important; font-size: 12px; margin: auto;" data-toggle="collapse" id="@Model.OtherUsersBet[i].LoginName" class="showUserQuarterFinalBet accordion-toggle" data-target="#sfinal-@Model.OtherUsersBet[i].LoginName">
-                                                            <span style="cursor: pointer;">
-                                                                <b>@Model.OtherUsersBet[i].LoginName</b>
-
-                                                            </span>
-                                                        </td>
-
-
-                                                        if ((i % 4) == 3)
-                                                        {
-                                                            <td class="col-md-1" style="border-top: none;"></td>
-                                                            @: </tr>
+                            <tr>
+                                <td>Semifinalistlag 3</td>
+                                <td>@Html.DropDownListFor(x => x.Bet.Semifinalist3, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true }) </td>
+                            </tr>
+                            <tr>
+                                <td>Semifinalistlag 4</td>
+                                <td>@Html.DropDownListFor(x => x.Bet.Semifinalist4, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true }) </td>
+                            </tr>
+                            <tr>
+                                <td>Kvartsfinalistlag 1</td>
+                                <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                            </tr>
+                            <tr>
+                                <td>Kvartsfinalistlag 2</td>
+                                <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                            </tr>
+                            <tr>
+                                <td>Kvartsfinalistlag 3</td>
+                                <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist3, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                            </tr>
+                            <tr>
+                                <td>Kvartsfinalistlag 4</td>
+                                <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist4, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                            </tr>
+                            <tr>
+                                <td>Kvartsfinalistlag 5</td>
+                                <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist5, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                            </tr>
+                            <tr>
+                                <td>Kvartsfinalistlag 6</td>
+                                <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist6, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                            </tr>
+                            <tr>
+                                <td>Kvartsfinalistlag 7</td>
+                                <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist7, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                            </tr>
+                            <tr>
+                                <td>Kvartsfinalistlag 8</td>
+                                <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist8, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                            </tr>
+                            <tr>
+                                <td>Totalt antal mål i turneringen (utslagsfråga)</td>
+                                <td> @Html.TextBoxFor(model => model.Bet.TotalGoals, new { @required = true, @style = "width: 32px" })</td>
+                            </tr>
                         }
-                                                    }
+                    </table>
+                    <input type="hidden" name="username" value="@Model.CurrentUser" />
+                    <input type="submit" value="Skicka" class="btn btn-default center-block" />
+                </div>
+        }
+
+    }
+
+    else
+    {
 
 
-                                                    @foreach (var bet in Model.OtherUsersBet)
+
+        <div class="col-lg-12">
+            <div class=" text-center panel panel-default">
+                <div class="myBetContainer">
+
+                    <table class="table myBetTable" colspan="7">
+
+
+                        @foreach (var item in Model.CurrentUserBet.Matches)
+                        {
+                            <tr data-toggle="collapse" data-target="#@item.MatchId" class="accordion-toggle showResultsRow" id="accordion">
+                                <td colspan="9">
+                                    <div>
+                                        <table class="showResultTable">
+                                            <tr>
+                                                <td style="width: 40px">
+                                                    <div class="result-color-cirkle-@item.ResultColor"></div>
+                                                </td>
+
+                                                <td class="td-width">
+                                                    @item.HomeTeam
+                                                </td>
+                                                <td class="">
+                                                    -
+                                                </td>
+                                                <td class="td-width">
+                                                    @item.AwayTeam
+                                                </td>
+
+                                                <td class="" style="width: 40px; float: left;">@item.HomeScore - @item.AwayScore</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <td colspan="12" class="hiddenRow">
+                                <div class="accordian-body collapse" id="@item.MatchId">
+                                    <table class="table table-striped">
+                                        <thead>
+
+                                            @foreach (var result in Model.Result.MatchResults.Where(x => x.AwayTeam == item.AwayTeam && x.HomeTeam == item.HomeTeam))
+                                            {
+
+
+
+                                                <tr>
+                                                    <td colspan="5" class="borderFix">
+                                                        <div>
+                                                            <table>
+                                                                @if (result.Status != null)
+                                                                {
+                                                                    <h4 style="color: black">@result.Status</h4>
+                                                                }
+
+                                                                <td>
+                                                                    <img class="flag flag-@result.HomeTeam.Replace(" ", "_")" />
+                                                                </td>
+                                                                <td class="td-fix">0</td>
+
+                                                                <td style="">
+                                                                    -
+                                                                </td>
+                                                                <td class="td-fix">
+                                                                    0
+                                                                </td>
+                                                                <td>
+                                                                    <img class="flag flag-@result.AwayTeam.Replace(" ", "_")" />
+                                                                </td>
+
+                                                            </table>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                            }
+
+
+
+                                            @for (var i = 0; i < Model.OtherUsersBet.Count; i++)
+                                            {
+                                                if ((i % 4) == 0)
+                                                {
+                                                    @:   <tr class="text-center">
+
+
+                                                }
+
+                                                foreach (var result in Model.OtherUsersBet[i].UserBet.Matches.Where(x => x.AwayTeam == item.AwayTeam && x.HomeTeam == item.HomeTeam))
+                                                {
+
+                                                    <td class="otherBets">
+                                                        <div>
+                                                            <b>@Model.OtherUsersBet[i].LoginName: </b>@result.HomeScore-@result.AwayScore
+                                                        </div>
+
+                                                    </td>
+
+                                                    if ((i % 4) == 3)
                                                     {
-                                                        <tbody class="accordian-body collapse" id="sfinal-@bet.LoginName" style="margin: 0 auto; color: black; cursor: pointer; " data-toggle="collapse" data-target="#sfinal-@bet.LoginName">
-                                                            <tr>
-                                                                <td class="col-md-1">@bet.LoginName.First()</td>
-                                                                <td class="col-md-2" style=""> @bet.UserBet.Semifinalist1</td>
-                                                                <td class="col-md-3">@bet.UserBet.Semifinalist2 </td>
-                                                                <td class="col-md-3">@bet.UserBet.Semifinalist3</td>
-                                                                <td class="col-md-3">@bet.UserBet.Semifinalist4 </td>
-                                                            </tr>
-                                                        </tbody>
+
+                                                        @:    </tr>
+
+
                                                     }
-                                                </table>
-                                            </div>
-                                        </td>
-
-                                        <tr style="height: 25px; overflow: auto; color: black; cursor: pointer;" data-toggle="collapse" data-target="#final" class="accordion-toggle">
-                                            <td colspan="9">
-                                                <div>
-                                                    <table style="margin: auto">
-                                                        <tr>
-                                                            <td class="">Lag i final</td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <td colspan="12" class="hiddenRow">
-                                            <div class="accordian-body collapse" id="final">
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            
-                                                            <td class="" colspan="1" style="border-top: none;"></td>
-                                                            <td style="border-top: none;" colspan="3">
-                                                                <img class="flag flag-@Model.CurrentUserBet.Finalist1.Replace(" ", "_")" />
-                                                            </td>
-
-                                                            <td style="border-top: none;" colspan="3">
-                                                                <img class="flag flag-@Model.CurrentUserBet.Finalist2.Replace(" ", "_")" />
-                                                            </td>
-
-                                                            <td class="" colspan="3" style="border-top: none;"></td>
-                                                        </tr>
-                                                        <tr style="color: black">
-                                                            @*<td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>*@
-
-                                                            <td style="border-top: none;" colspan="1"></td>
-                                                            <td style="border-top: none; color: @Model.CurrentUserBet.Finalist1Color" colspan="3">@Model.CurrentUserBet.Finalist1</td>
-
-                                                            <td style="border-top: none; color: @Model.CurrentUserBet.Finalist2Color" colspan="3">@Model.CurrentUserBet.Finalist2</td>
-
-                                                            <td style="border-top: none;" colspan="3"></td>
-                                                        </tr>
+                                                }
+                                            }
 
 
-
-                                                        @for (var i = 0; i < Model.OtherUsersBet.Count; i++)
-                                                        {
-                                                            if ((i % 4) == 0)
-                                                            {
-                                                                @:  <tr style="color: black" class="text-center">
-                                                       
-                                                            }
-
-                                                            <td style="border-top: none !important; font-size: 12px; margin: auto;" data-toggle="collapse" id="@Model.OtherUsersBet[i].LoginName" class="showUserQuarterFinalBet accordion-toggle" data-target="#final-@Model.OtherUsersBet[i].LoginName" colspan="3">
-                                                                <span style="cursor: pointer;">
-                                                                    <b>@Model.OtherUsersBet[i].LoginName</b>
-
-                                                                </span>
-                                                            </td>
-
-
-                                                            if ((i % 4) == 3)
-                                                            {
-                                                             
-                                                                @: </tr>
-                        }
-                                                        }
-                                                    </thead>
-
-                                                    @foreach (var bet in Model.OtherUsersBet)
-                                                    {
-                                                        <tbody class="accordian-body collapse" id="final-@bet.LoginName" style="margin: 0 auto; color: black; cursor: pointer; " data-toggle="collapse" data-target="#final-@bet.LoginName">
-                                                            <tr>
-                                                                <td colspan="1">@bet.LoginName.First()</td>
-                                                                <td colspan="3" style=""> @bet.UserBet.Finalist1</td>
-                                                                <td colspan="3">@bet.UserBet.Finalist2 </td>
-                                                                <td colspan="3"></td>
-                                      
-                                                            </tr>
-                                                        </tbody>
-                                                    }
-
-                                                </table>
-                                            </div>
-                                        </td>
+                                        </thead>
 
 
                                     </table>
 
+                                </div>
+                            </td>
+                        }
 
-                    </div>
 
+                        <tr data-toggle="collapse" data-target="#qfinal" class="accordion-toggle showResultsRow">
+                            <td colspan="9">
+                                <div>
+                                    <table class="showResultTable">
+                                        <tr>
+                                            <td>Lag i kvartsfinal</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+
+
+
+
+                        <td colspan="12" class="hiddenRow">
+                            <div class="accordian-body collapse" id="qfinal">
+                                <table class="table">
+                                    <thead class="quarterfinalBet">
+                                        <tr>
+                                            <td class="col-md-1" style="border-top: none;"></td>
+                                            <td class="col-md-2">
+                                                <img class="flag flag-@Model.CurrentUserBet.QuarterFinalist1.Replace(" ", "_")" />
+                                            </td>
+                                            <td class="col-md-3">
+                                                <img class="flag flag-@Model.CurrentUserBet.QuarterFinalist2.Replace(" ", "_")" />
+                                            </td>
+                                            <td class="col-md-3">
+                                                <img class="flag flag-@Model.CurrentUserBet.QuarterFinalist3.Replace(" ", "_")" />
+                                            </td>
+                                            <td class="col-md-2">
+                                                <img class="flag flag-@Model.CurrentUserBet.QuarterFinalist4.Replace(" ", "_")" />
+                                            </td>
+                                            <td class="col-md-1"></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-1" style="border-top: none;"></td>
+                                            <td style="border-top: none; color: @Model.CurrentUserBet.QuarterFinalist1Color"> @Model.CurrentUserBet.QuarterFinalist1</td>
+                                            <td style="border-top: none; color: @Model.CurrentUserBet.QuarterFinalist2Color"> @Model.CurrentUserBet.QuarterFinalist2</td>
+                                            <td style="border-top: none; color: @Model.CurrentUserBet.QuarterFinalist3Color"> @Model.CurrentUserBet.QuarterFinalist3</td>
+                                            <td style="border-top: none; color: @Model.CurrentUserBet.QuarterFinalist4Color"> @Model.CurrentUserBet.QuarterFinalist4</td>
+                                            <td class="col-md-1" style="border-top: none;"></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-1" style="border-top: none;"></td>
+                                            <td style="border-top: none;" class="col-md-2">
+                                                <img class="flag flag-@Model.CurrentUserBet.QuarterFinalist5.Replace(" ", "_")" />
+                                            </td>
+                                            <td style="border-top: none;" class="col-md-3">
+                                                <img class="flag flag-@Model.CurrentUserBet.QuarterFinalist6.Replace(" ", "_")" />
+                                            </td>
+                                            <td style="border-top: none;" class="col-md-3">
+                                                <img class="flag flag-@Model.CurrentUserBet.QuarterFinalist7.Replace(" ", "_")" />
+                                            </td>
+                                            <td style="border-top: none;" class="col-md-2">
+                                                <img class="flag flag-@Model.CurrentUserBet.QuarterFinalist8.Replace(" ", "_")" />
+                                            </td>
+                                            <td class="col-md-1" style="border-top: none;"></td>
+                                        </tr>
+                                        <tr style="color: black;">
+                                            <td class="col-md-1" style="border-top: none;"></td>
+                                            <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.QuarterFinalist5Color"> @Model.CurrentUserBet.QuarterFinalist5</td>
+                                            <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.QuarterFinalist6Color"> @Model.CurrentUserBet.QuarterFinalist6</td>
+                                            <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.QuarterFinalist7Color"> @Model.CurrentUserBet.QuarterFinalist7</td>
+                                            <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.QuarterFinalist8Color"> @Model.CurrentUserBet.QuarterFinalist8</td>
+                                            <td class="col-md-1" style="border-top: none;"></td>
+                                        </tr>
+                                    </thead>
+
+                                    @for (var i = 0; i < Model.OtherUsersBet.Count; i++)
+                                    {
+                                        if ((i % 4) == 0)
+                                        {
+                                            @:<tr style="color: black" class="text-center">
+                                                <td class="col-md-1" style="border-top: none;"></td>
+                                        }
+
+                                        <td style="border-top: none !important; font-size: 12px; margin: auto;" data-toggle="collapse" id="@Model.OtherUsersBet[i].LoginName" class="showUserQuarterFinalBet accordion-toggle" data-target="#qfinal-@Model.OtherUsersBet[i].LoginName">
+                                            <span style="cursor: pointer;">
+                                               <b>@Model.OtherUsersBet[i].LoginName</b>
+                                            </span>
+                                        </td>
+                                        if ((i % 4) == 3)
+                                        {
+                                            <td class="col-md-1" style="border-top: none;"></td>
+                                            @:</tr>
+                        }
+
+                                    }
+
+
+                                    @foreach (var bet in Model.OtherUsersBet)
+                                    {
+                                        <tbody class="accordian-body collapse" id="qfinal-@bet.LoginName" style="margin: 0 auto; color: black; cursor:pointer" data-toggle="collapse" data-target="#qfinal-@bet.LoginName">
+                                            <tr>
+                                                <td class="col-md-1">@bet.LoginName.First()</td>
+                                                <td class="col-md-2" style=""> @bet.UserBet.QuarterFinalist1</td>
+                                                <td class="col-md-3">@bet.UserBet.QuarterFinalist2 </td>
+                                                <td class="col-md-3">@bet.UserBet.QuarterFinalist3</td>
+                                                <td class="col-md-3">@bet.UserBet.QuarterFinalist4 </td>
+
+                                            </tr>
+                                            <tr>
+
+                                                <td class="col-md-1" style="border-top: none;"></td>
+                                                <td class="col-md-2" style="border-top: none; ">@bet.UserBet.QuarterFinalist5</td>
+                                                <td class="col-md-3" style="border-top: none;">@bet.UserBet.QuarterFinalist6 </td>
+                                                <td class="col-md-3" style="border-top: none;">@bet.UserBet.QuarterFinalist7</td>
+                                                <td class="col-md-2" style="border-top: none;">@bet.UserBet.QuarterFinalist8 </td>
+                                                <td class="col-md-1" style="border-top: none;"></td>
+
+                                            </tr>
+                                        </tbody>
+
+                                    }
+
+
+                                </table>
+
+                            </div>
+                        </td>
+
+                        <tr data-toggle="collapse" data-target="#sfinal" class="accordion-toggle showResultsRow">
+                            <td colspan="9">
+                                <div>
+                                    <table style="margin: auto">
+                                        <tr>
+                                            <td class="">Lag i semifinal</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                        <td colspan="12" class="hiddenRow">
+                            <div class="accordian-body collapse" id="sfinal">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <td></td>
+                                            <td style="border-top: none;">
+                                                <img class="flag flag-@Model.CurrentUserBet.Semifinalist1.Replace(" ", "_")" />
+                                            </td>
+                                            <td style="border-top: none;">
+                                                <img class="flag flag-@Model.CurrentUserBet.Semifinalist2.Replace(" ", "_")" />
+                                            </td>
+                                            <td style="border-top: none;">
+                                                <img class="flag flag-@Model.CurrentUserBet.Semifinalist3.Replace(" ", "_")" />
+                                            </td>
+                                            <td style="border-top: none;">
+                                                <img class="flag flag-@Model.CurrentUserBet.Semifinalist4.Replace(" ", "_")" />
+                                            </td>
+                                            <td></td>
+                                        <tr style="color: black;">
+                                            @*<td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>*@
+                                            <td class="col-md-1" style="border-top: none;"></td>
+                                            <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.Semifinalist1Color"> @Model.CurrentUserBet.Semifinalist1</td>
+                                            <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.Semifinalist2Color"> @Model.CurrentUserBet.Semifinalist2</td>
+                                            <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.Semifinalist3Color"> @Model.CurrentUserBet.Semifinalist3</td>
+                                            <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.Semifinalist4Color"> @Model.CurrentUserBet.Semifinalist4</td>
+                                            <td class="col-md-1" style="border-top: none;"></td>
+
+                                        </tr>
+                                        </tr>
+                                    </thead>
+                                    @for (var i = 0; i < Model.OtherUsersBet.Count; i++)
+                                    {
+                                        if ((i % 4) == 0)
+                                        {
+                                            @:<tr style="color: black" class="text-center">
+                                                    <td class="col-md-1" style="border-top: none;"></td>
+                                        }
+
+                                        <td style="border-top: none !important; font-size: 12px; margin: auto;" data-toggle="collapse" id="@Model.OtherUsersBet[i].LoginName" class="showUserQuarterFinalBet accordion-toggle" data-target="#sfinal-@Model.OtherUsersBet[i].LoginName">
+                                            <span style="cursor: pointer;">
+                                                <b>@Model.OtherUsersBet[i].LoginName</b>
+
+                                            </span>
+                                        </td>
+
+
+                                        if ((i % 4) == 3)
+                                        {
+                                            <td class="col-md-1" style="border-top: none;"></td>
+                                                            @:</tr>
+                        }
+                                    }
+
+
+                                    @foreach (var bet in Model.OtherUsersBet)
+                                    {
+                                        <tbody class="accordian-body collapse" id="sfinal-@bet.LoginName" style="margin: 0 auto; color: black; cursor: pointer; " data-toggle="collapse" data-target="#sfinal-@bet.LoginName">
+                                            <tr>
+                                                <td class="col-md-1">@bet.LoginName.First()</td>
+                                                <td class="col-md-2" style=""> @bet.UserBet.Semifinalist1</td>
+                                                <td class="col-md-3">@bet.UserBet.Semifinalist2 </td>
+                                                <td class="col-md-3">@bet.UserBet.Semifinalist3</td>
+                                                <td class="col-md-3">@bet.UserBet.Semifinalist4 </td>
+                                            </tr>
+                                        </tbody>
+                                    }
+                                </table>
+                            </div>
+                        </td>
+
+                        <tr data-toggle="collapse" data-target="#final" class="accordion-toggle showResultsRow">
+                            <td colspan="9">
+                                <div>
+                                    <table style="margin: auto">
+                                        <tr>
+                                            <td class="">Lag i final</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    <td colspan="12" class="hiddenRow">
+                        <div class="accordian-body collapse" id="final">
+                            <table class="table">
+                                <thead>
+                                <tr>
+
+                                    <td class="" colspan="1" style="border-top: none;"></td>
+                                    <td style="border-top: none;" colspan="3">
+                                        <img class="flag flag-@Model.CurrentUserBet.Finalist1.Replace(" ", "_")"/>
+                                    </td>
+
+                                    <td style="border-top: none;" colspan="3">
+                                        <img class="flag flag-@Model.CurrentUserBet.Finalist2.Replace(" ", "_")"/>
+                                    </td>
+
+                                    <td class="" colspan="3" style="border-top: none;"></td>
+                                </tr>
+                                <tr style="color: black">
+                                    @*<td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>*@
+
+                                    <td style="border-top: none; border-bottom: 1px solid #ddd;" colspan="1"></td>
+                                    <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.Finalist1Color" colspan="3">@Model.CurrentUserBet.Finalist1</td>
+
+                                    <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.Finalist2Color" colspan="3">@Model.CurrentUserBet.Finalist2</td>
+                                    <td style="border-top: none; border-bottom: 1px solid #ddd;" colspan="3"></td>
+
+                                </tr>
+
+
+
+                                @for (var i = 0; i < Model.OtherUsersBet.Count; i++)
+                                {
+                                    if ((i%4) == 0)
+                                    {
+                                        @: <tr style="color: black" class="text-center">
+
+
+                                    }
+
+                                    <td style="border-top: none !important; font-size: 12px; margin: auto;" data-toggle="collapse" id="@Model.OtherUsersBet[i].LoginName" class="showUserQuarterFinalBet accordion-toggle" data-target="#final-@Model.OtherUsersBet[i].LoginName" colspan="3">
+                                        <span style="cursor: pointer;">
+                                                    <b>@Model.OtherUsersBet[i].LoginName</b>
+
+                                                </span>
+                                    </td>
+
+
+                                    if ((i%4) == 3)
+                                    {
+
+                                        @:</tr>
+                                    }
+                                }
+                                </thead>
+
+                                @foreach (var bet in Model.OtherUsersBet)
+                                {
+                                    <tbody class="accordian-body collapse" id="final-@bet.LoginName" style="margin: 0 auto; color: black; background-color: #f1f1f1; cursor: pointer;" data-toggle="collapse" data-target="#final-@bet.LoginName">
+                                    <tr>
+                                        <td colspan="1">@bet.LoginName.First()</td>
+                                        <td colspan="3" style=""> @bet.UserBet.Finalist1</td>
+                                        <td colspan="3">@bet.UserBet.Finalist2 </td>
+                                        <td colspan="3"></td>
+
+                                    </tr>
+                                    </tbody>
+                                }
+
+                            </table>
+                        </div>
+                    </td>
+                        <tr data-toggle="collapse" data-target="#goals" class="accordion-toggle">
+                            <td colspan="9">
+                                <div>
+                                    <table style="margin: auto">
+                                        <tr>
+                                            <td>Totalt antal mål i turneringen (utslagsfrågan)</td>
+                                            
+                                            <td class="">@Model.Bet.TotalGoals</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-
             </div>
-        }
+        </div>
+    }
 
 
 
 
-    </div>
 </div>
 <script>
 
-    $("showUserQuarterFinalBet").on("click", "span.btn", function() {
+    $("showUserQuarterFinalBet").on("click", "span.btn", function () {
         var childId = $(this).parents("tr").prop("id");
         $(".child-" + childId).toggle("slow");
     });
@@ -563,75 +565,3 @@
 
 </script>
 
-
-
-@*<td colspan="12" class="hiddenRow">
-    <div class="accordian-body collapse" id="final">
-        <table class="table">
-            <thead>
-                <tr>
-
-                    <td class="col-md-4"></td>
-                    <td style="border-top: none;" class="col-md-2">
-                        <img class="flag flag-@Model.CurrentUserBet.Finalist1.Replace(" ", "_")" />
-                    </td>
-
-
-                    <td style="border-top: none;" class="col-md-2">
-                        <img class="flag flag-@Model.CurrentUserBet.Finalist2.Replace(" ", "_")" />
-                    </td>
-                    <td class="col-md-4"></td>
-
-                <tr style="color: black;">
-
-                    <td class="col-md-4" style="border-top: none;"></td>
-                    <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.Finalist1Color" class="col-md-2">  @Model.CurrentUserBet.Finalist1</td>
-
-                    <td style="border-top: none; border-bottom: 1px solid #ddd; color: @Model.CurrentUserBet.Finalist2Color" class="col-md-2"> @Model.CurrentUserBet.Finalist2</td>
-                    <td class="col-md-4" style="border-top: none;"></td>
-
-
-                </tr>
-                </tr>
-            </thead>
-            @for (var i = 0; i < Model.OtherUsersBet.Count; i++)
-            {
-                if ((i % 4) == 0)
-                {
-                    @:
-                    <tr style="color: black" class="text-center">
-                        <td class="col-md-2" style="border-top: none;"></td>
-                }
-
-                <td style="border-top: none !important; font-size: 12px; margin: auto;" data-toggle="collapse" id="@Model.OtherUsersBet[i].LoginName" class="showUserQuarterFinalBet accordion-toggle col-md-4" data-target="#final-@Model.OtherUsersBet[i].LoginName">
-                    <span style="cursor: pointer;">
-                        <b>@Model.OtherUsersBet[i].LoginName</b>
-
-                    </span>
-                </td>
-
-
-                if ((i % 4) == 3)
-                {
-                    <td class="col-md-2" style="border-top: none;"></td>
-                                @:
-                            </tr>
-                        }
-            }
-
-
-            @foreach (var bet in Model.OtherUsersBet)
-            {
-                <tbody class="accordian-body collapse" id="final-@bet.LoginName" style="margin: 0 auto; color: black; cursor: pointer; " data-toggle="collapse" data-target="#final-@bet.LoginName">
-                    <tr>
-
-                        <td class="col-md-1">@bet.LoginName.First()</td>
-                        <td class="col-md-2" style=""> @bet.UserBet.Finalist1</td>
-                        <td class="col-md-3">@bet.UserBet.Finalist2 </td>
-
-                    </tr>
-                </tbody>
-            }
-        </table>
-    </div>
-</td>*@

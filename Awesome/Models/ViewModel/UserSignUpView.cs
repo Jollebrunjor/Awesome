@@ -30,18 +30,18 @@ namespace Awesome.Models.ViewModel
         public int UserId { get; set; }
 
         [Required(ErrorMessage = "*")]
-        [Display(Name = "Login Name")]
+        [Display(Name = "Användarnamn")]
         public string LoginName { get; set; }
 
         [Required(ErrorMessage = "*")]
-        [Display(Name = "Password")]
+        [Display(Name = "Lösenord")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "*")]
-        [Display(Name = "First Name")]
+        [Display(Name = "Förnamn")]
         public string FirstName { get; set; }
         [Required(ErrorMessage = "*")]
-        [Display(Name = "Last Name")]
+        [Display(Name = "Efternamn")]
         public string LastName { get; set; }
 
         public object ErrorMessage { get; set; }

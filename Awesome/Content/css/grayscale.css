@@ -8,15 +8,17 @@ body {
     width: 100%;
     height: 100%;
     font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    color: #fff;
-    background-color: #000;
+    color: #8c8c8c;
+    background-color: #F2F1ED;
 }
 
 html {
     width: 100%;
     height: 100%;
 }
-
+h1 {
+    color: white !important;
+}
 h1,
 h2,
 h3,
@@ -28,6 +30,7 @@ h6 {
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
+    color: black;
 }
 
 p {
@@ -142,7 +145,7 @@ a:focus {
 .intro {
     display: table;
     width: 100%;
-    height: auto;
+    height: 100%;
     padding: 100px 0;
     text-align: center;
     color: #fff;
@@ -368,7 +371,7 @@ body {
     webkit-tap-highlight-color: rgba(255,255,255,.2);
 }   
 .footer {
- background: url('../img/field-footer-grayscale.jpg') no-repeat top center scroll;
+ background: url('../img/foooter.png') no-repeat top center scroll;
     width: 100%;
     padding: 180px 0;
 

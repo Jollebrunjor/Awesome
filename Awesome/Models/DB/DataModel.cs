@@ -107,6 +107,7 @@ namespace Awesome.Models.DB
         public int Matchday { get; set; }
         public string Date { get; set; }
 
+
     }
 
     public class Result

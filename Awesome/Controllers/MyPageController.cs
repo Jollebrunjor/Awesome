@@ -84,8 +84,8 @@ namespace Awesome.Controllers
             JsonTeamResult teams = client.GetTeams();
 
             MyPageViewModel currentGamlePage = new MyPageViewModel(teams, groupStageMatches);
-
-             return View(currentGamlePage);
+            
+            return View(currentGamlePage);
             
         }
 

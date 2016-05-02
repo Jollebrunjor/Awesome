@@ -26,11 +26,11 @@ namespace Awesome.Models.ViewModel
         public int UserId { get; set; }
 
         [Required(ErrorMessage = "*")]
-        [Display(Name = "Login Name")]
+        [Display(Name = "Användarnamn")]
         public string LoginName { get; set; }
 
         [Required(ErrorMessage = "*")]
-        [Display(Name = "Password")]
+        [Display(Name = "Lösenord")]
         public string Password { get; set; }
 
         public object ErrorMessage { get; set; }

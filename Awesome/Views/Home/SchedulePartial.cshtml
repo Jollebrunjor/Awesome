@@ -1,43 +1,63 @@
-﻿<h2 class="text-center">Spelschema</h2>
+﻿@using System.Security.Policy
+<h2 class="text-center">Spelschema</h2>
 
 
-    <table class="table">
+
+<table class="table noBorder">
+
+
+    @foreach (var group in Model.Matches)
+    {
         <thead>
-        <tr>
-            <th></th>
-            <th class="">Datum</th>
-            <th>Macth</th>
-            <th>Resultat</th>
+        <tr class="text-center">
+            <th class="noBorder" colspan="8">@group[0].Date</th>
+
         </tr>
         </thead>
 
-        @foreach (var match in Model.Matches)
-        {
-            <tr style="height: 25px; overflow: auto">
-                <td></td>
-                <td>
-                    @match.Date
 
+        foreach (var match in group)
+        {
+            <tbody>
+            <tr>
+                <td class="noBorder">@match.Time</td>
+
+                <td class="noBorder text-right hidden-xs">
+                    @match.HomeTeam
                 </td>
-                <td>
-                    @match.HomeTeam -
+
+                <td class="flag-@match.HomeTeam.Replace(" ", "_") noBorder" style="height: 40px; border-top: none;" title="@match.HomeTeam"></td>
+                <td class="noBorder">
+                    vs
+                </td>
+                <td class="flag-@match.AwayTeam.Replace(" ", "_") noBorder" style="height: 40px; border: none;" title="@match.AwayTeam"></td>
+                <td class="noBorder text-left hidden-xs">
                     @match.AwayTeam
                 </td>
-            
-                    @if (@match.Status == "FINISHED")
-                    {
-                        <td>
-                            @match.HomeScore -
-                            @match.AwayScore
-                        </td>
-                    }
-                    else
-                    {
-                        <td></td>
-                    }
+
+
+
+
+                @if (match.Status == "FINISHED")
+                {
+                    <td class="noBorder">
+                        @match.HomeScore -
+                        @match.AwayScore
+                    </td>
+                }
+                else
+                {
+                    <td class="noBorder"></td>
+                }
 
 
             </tr>
+            </tbody>
         }
 
-    </table>
+
+
+    }
+
+</table>
+

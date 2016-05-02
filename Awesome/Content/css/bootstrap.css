@@ -182,10 +182,12 @@ optgroup {
 table {
   border-spacing: 0;
   border-collapse: collapse;
+
 }
 td,
 th {
   padding: 0;
+
 }
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
@@ -2277,6 +2279,7 @@ th {
   vertical-align: top;
   border-top: 1px solid #ddd;
 }
+
 .table > thead > tr > th {
   vertical-align: bottom;
   border-bottom: 2px solid #ddd;
@@ -2293,7 +2296,7 @@ th {
   border-top: 2px solid #ddd;
 }
 .table .table {
-  background-color: #fff;
+  /*background-color: #f1f1f1;*/
 }
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
@@ -6758,20 +6761,45 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+.result-color-cirkle- {
+   height: 20px;
+    width: 20px;
 
-.result-color-green::after {
-    color: green;
-    content: "3 p";
+    display: block;
+    border: 1px solid black;
+
+    border-radius: 100px;
+}
+
+.result-color-cirkle-green {
+    height: 20px;
+    width: 20px;
+    display: block;
+    border: 1px solid black;
+    background: rgba(60, 118, 62, 0.64);
+    border-radius: 100px;
 
 }
-.result-color-yellow::after {
-   color: yellow;
-    content: "1 p";
+.result-color-cirkle-yellow {
+
+    height: 20px;
+    width: 20px;
+    display: block;
+    border: 1px solid black;
+    background: #FFFFC0;
+    border-radius: 100px;
+
 }
-.result-color-red::after {
-    color: red;
-    content: "0 p";
+
+.result-color-cirkle-red {
+    height: 20px;
+    width: 20px;
+    display: block;
+    border: 1px solid black;
+    background: rgba(255, 2, 2, 0.71);
+    border-radius: 100px;
 }
+
 
 .flag {
     height: 50px;
@@ -6853,4 +6881,63 @@ button.close {
 }
 .flag-Wales  {
     content: url('../Flags/wales.png');
+}
+
+
+
+
+/*MyBetPage*/
+
+.myBetContainer {
+
+        /*background-color: #f9f9f9;*/
+       
+}
+.myBetTable {
+        border-collapse: collapse;
+        margin: auto;
+        color: black;
+        background: #F2F1ED;  
+}
+
+.myBetTable.td {
+    color: #F2F1ED;
+}
+.showResultsRow {
+    height: 25px;
+     overflow: auto; 
+     cursor: pointer;
+    color: #8c8c8c;
+}
+.showResultTable {
+    margin: auto;
+}
+.showResultTable.tr.td {
+    background-color: #f1f1f1;
+
+}
+.td-width {
+    width: 170px;
+}
+
+.borderFix {
+    border-bottom: 1px solid #ddd;
+    padding: 50px !important;
+    padding-top: 25px !important;
+}
+.borderFix, div, table {
+    margin: auto;
+}
+.td-fix {
+    width: 80px;
+    font-size: 20px
+}
+
+.otherBets {
+    border-top: none !important;
+         font-size: 12px;
+}
+
+.noBorder {
+    border-top: none !important;
 }
