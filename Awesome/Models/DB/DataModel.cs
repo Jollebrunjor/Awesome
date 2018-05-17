@@ -1,19 +1,8 @@
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Configuration;
-using System.Data.Entity.Core.Objects;
-using System.Data.Entity.Infrastructure;
-using System.Web.DynamicData;
-using System.Web.Services.Protocols;
-using System.Web.UI;
-using Awesome.Models.ViewModel;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Awesome.Models.DB
 {
-    using System;
     using System.Data.Entity;
-    using System.Linq;
 
     public class DataModel : DbContext
     {
@@ -76,6 +65,22 @@ namespace Awesome.Models.DB
         public string QuarterFinalist6 { get; set; }
         public string QuarterFinalist7 { get; set; }
         public string QuarterFinalist8 { get; set; }
+        public string Qualified1 { get; set; }
+        public string Qualified2 { get; set; }
+        public string Qualified3 { get; set; }
+        public string Qualified4 { get; set; }
+        public string Qualified5 { get; set; }
+        public string Qualified6 { get; set; }
+        public string Qualified7 { get; set; }
+        public string Qualified8 { get; set; }
+        public string Qualified9 { get; set; }
+        public string Qualified10 { get; set; }
+        public string Qualified11 { get; set; }
+        public string Qualified12 { get; set; }
+        public string Qualified13 { get; set; }
+        public string Qualified14 { get; set; }
+        public string Qualified15 { get; set; }
+        public string Qualified16 { get; set; }
         public string TopScorer { get; set; }
         public int TotalGoals { get; set; }
         public string Finalist1Color { get; set; }
@@ -92,6 +97,22 @@ namespace Awesome.Models.DB
         public string QuarterFinalist6Color { get; set; }
         public string QuarterFinalist7Color { get; set; }
         public string QuarterFinalist8Color { get; set; }
+        public string Qualified1Color { get; set; }
+        public string Qualified2Color { get; set; }
+        public string Qualified3Color { get; set; }
+        public string Qualified4Color { get; set; }
+        public string Qualified5Color { get; set; }
+        public string Qualified6Color { get; set; }
+        public string Qualified7Color { get; set; }
+        public string Qualified8Color { get; set; }
+        public string Qualified9Color { get; set; }
+        public string Qualified10Color { get; set; }
+        public string Qualified11Color { get; set; }
+        public string Qualified12Color { get; set; }
+        public string Qualified13Color { get; set; }
+        public string Qualified14Color { get; set; }
+        public string Qualified15Color { get; set; }
+        public string Qualified16Color { get; set; }
     }
 
 
@@ -132,6 +153,23 @@ namespace Awesome.Models.DB
         public string QuarterFinalist6 { get; set; }
         public string QuarterFinalist7 { get; set; }
         public string QuarterFinalist8 { get; set; }
+        public string Qualified1 { get; set; }
+        public string Qualified2 { get; set; }
+        public string Qualified3 { get; set; }
+        public string Qualified4 { get; set; }
+        public string Qualified5 { get; set; }
+        public string Qualified6 { get; set; }
+        public string Qualified7 { get; set; }
+        public string Qualified8 { get; set; }
+        public string Qualified9 { get; set; }
+        public string Qualified10 { get; set; }
+        public string Qualified11 { get; set; }
+        public string Qualified12 { get; set; }
+        public string Qualified13 { get; set; }
+        public string Qualified14 { get; set; }
+        public string Qualified15 { get; set; }
+        public string Qualified16 { get; set; }
+
         public string TopScorer { get; set; }
         public int TotalGoals { get; set; }
 
@@ -146,9 +184,7 @@ namespace Awesome.Models.DB
         public int AwayScore { get; set; }
         public string Status { get; set; }
         public bool ManuallyUpdated { get; set; }
-        
 
- 
     }
 
 }

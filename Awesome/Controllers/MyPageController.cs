@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 using Awesome.ApiIntegration.JsonGroupStageResult;
 using Awesome.ApiIntegration.JsonTeamResult;
 using Awesome.Models;
@@ -33,6 +30,7 @@ namespace Awesome.Controllers
         {
             if (!ModelState.IsValid)
             {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
                 ModelState.AddModelError("", "The password provided is incorrect.");
                 return new RedirectResult(Url.Action("Index") + "#myBet");
             }
@@ -64,6 +62,22 @@ namespace Awesome.Controllers
                 userBet.QuarterFinalist6 = placedBet.Bet.QuarterFinalist6;
                 userBet.QuarterFinalist7 = placedBet.Bet.QuarterFinalist7;
                 userBet.QuarterFinalist8 = placedBet.Bet.QuarterFinalist8;
+                userBet.Qualified1 = placedBet.Bet.Qualified1;
+                userBet.Qualified2 = placedBet.Bet.Qualified2;
+                userBet.Qualified3 = placedBet.Bet.Qualified3;
+                userBet.Qualified4 = placedBet.Bet.Qualified4;
+                userBet.Qualified5 = placedBet.Bet.Qualified5;
+                userBet.Qualified6 = placedBet.Bet.Qualified6;
+                userBet.Qualified7 = placedBet.Bet.Qualified7;
+                userBet.Qualified8 = placedBet.Bet.Qualified8;
+                userBet.Qualified9 = placedBet.Bet.Qualified9;
+                userBet.Qualified10 = placedBet.Bet.Qualified10;
+                userBet.Qualified11 = placedBet.Bet.Qualified11;
+                userBet.Qualified12 = placedBet.Bet.Qualified12;
+                userBet.Qualified13 = placedBet.Bet.Qualified13;
+                userBet.Qualified14 = placedBet.Bet.Qualified14;
+                userBet.Qualified15 = placedBet.Bet.Qualified15;
+                userBet.Qualified16 = placedBet.Bet.Qualified16;
                 userBet.TopScorer = placedBet.Bet.TopScorer;
                 userBet.TotalGoals = placedBet.Bet.TotalGoals;
 
@@ -90,15 +104,15 @@ namespace Awesome.Controllers
         }
 
 
-        [Authorize]
-        public ActionResult MyResultsPage()
-        {
-            FootballApiClient client = new FootballApiClient();
+        //[Authorize]
+        //public ActionResult MyResultsPage()
+        //{
+        //    FootballApiClient client = new FootballApiClient();
 
-            BetPageViewModel bet = new BetPageViewModel();
+        //    BetPageViewModel bet = new BetPageViewModel();
 
-            return View(bet);
-        }
+        //    return View(bet);
+        //}
 
 
 

@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Security;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
-using System.Web.UI.WebControls;
-using Awesome.Models.DB;
 using Awesome.Models.EntityManager;
 using Awesome.Models.ViewModel;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Awesome.Controllers
 {

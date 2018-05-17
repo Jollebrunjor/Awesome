@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using Awesome.ApiIntegration.JsonGroupStageResult;
 using Awesome.Models.DB;
 using Awesome.Models.EntityManager;
@@ -38,6 +35,23 @@ namespace Awesome.Models
         public string QuarterFinalist6 { get; set; }
         public string QuarterFinalist7 { get; set; }
         public string QuarterFinalist8 { get; set; }
+
+        public string Qualified1 { get; set; }
+        public string Qualified2 { get; set; }
+        public string Qualified3 { get; set; }
+        public string Qualified4 { get; set; }
+        public string Qualified5 { get; set; }
+        public string Qualified6 { get; set; }
+        public string Qualified7 { get; set; }
+        public string Qualified8 { get; set; }
+        public string Qualified9 { get; set; }
+        public string Qualified10 { get; set; }
+        public string Qualified11 { get; set; }
+        public string Qualified12 { get; set; }
+        public string Qualified13 { get; set; }
+        public string Qualified14 { get; set; }
+        public string Qualified15 { get; set; }
+        public string Qualified16 { get; set; }
         public string TopScorer { get; set; }
         public int TotalGoals { get; set; }
 

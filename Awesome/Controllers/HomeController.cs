@@ -1,11 +1,6 @@
-﻿
-using System.Linq;
-using System.Web.Mvc;
-using System.Web.Security;
+﻿using System.Web.Mvc;
 using Awesome.ApiIntegration.JsonGroupStageResult;
-using Awesome.ApiIntegration.JsonTeamResult;
 using Awesome.Models;
-using Awesome.Models.EntityManager;
 using Awesome.Models.ViewModel;
 
 namespace Awesome.Controllers

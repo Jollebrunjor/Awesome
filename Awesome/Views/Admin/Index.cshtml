@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h1 class="brand-heading">EM Tipset 2016</h1>
+                    <h1 class="brand-heading">VM Tipset 2018</h1>
                     <p class="intro-text">
                         @ViewData["Logout"]
                         @if (@ViewData["Logout"] == null)
@@ -87,6 +87,41 @@
                             <h6>Kvartsfinalistlag 8</h6>
                             @Html.DropDownListFor(x => x.ReportedResult.QuarterFinalist8, new SelectList(Model.Teams, "name", "name"), "Välj lag")
 
+                            <h6>Åttondel 1</h6>
+                            @Html.DropDownListFor(x => x.ReportedResult.Qualified1, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                            
+                            <h6>Åttondel 2</h6>
+                            @Html.DropDownListFor(x => x.ReportedResult.Qualified2, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                            
+                            <h6>Åttondel 3</h6>
+                            @Html.DropDownListFor(x => x.ReportedResult.Qualified3, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                            <h6>Åttondel 4</h6>
+                            @Html.DropDownListFor(x => x.ReportedResult.Qualified4, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                            <h6>Åttondel 5</h6>
+                            @Html.DropDownListFor(x => x.ReportedResult.Qualified5, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                            <h6>Åttondel 6</h6>
+                            @Html.DropDownListFor(x => x.ReportedResult.Qualified6, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                            <h6>Åttondel 7</h6>
+                            @Html.DropDownListFor(x => x.ReportedResult.Qualified7, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                            <h6>Åttondel 8</h6>
+                            @Html.DropDownListFor(x => x.ReportedResult.Qualified8, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                            <h6>Åttondel 9</h6>
+                            @Html.DropDownListFor(x => x.ReportedResult.Qualified9, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                            <h6>Åttondel 10</h6>
+                            @Html.DropDownListFor(x => x.ReportedResult.Qualified10, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                            <h6>Åttondel 11</h6>
+                            @Html.DropDownListFor(x => x.ReportedResult.Qualified11, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                            <h6>Åttondel 12</h6>
+                            @Html.DropDownListFor(x => x.ReportedResult.Qualified12, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                            <h6>Åttondel 13</h6>
+                            @Html.DropDownListFor(x => x.ReportedResult.Qualified13, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                            <h6>Åttondel 14</h6>
+                            @Html.DropDownListFor(x => x.ReportedResult.Qualified14, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                            <h6>Åttondel 15</h6>
+                            @Html.DropDownListFor(x => x.ReportedResult.Qualified15, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                            <h6>Åttondel 16</h6>
+                            @Html.DropDownListFor(x => x.ReportedResult.Qualified16, new SelectList(Model.Teams, "name", "name"), "Välj lag")
+                                
 
                             <h6>Skytteligavinnare</h6>
                             @Html.TextBoxFor(model => model.ReportedResult.TopScorer)

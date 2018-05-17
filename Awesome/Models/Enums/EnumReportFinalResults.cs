@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Awesome.Models.Enums
+﻿namespace Awesome.Models.Enums
 {
     public class EnumReportFinalResults
     {

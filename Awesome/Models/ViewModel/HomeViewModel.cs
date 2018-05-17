@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Awesome.ApiIntegration.JsonGroupStageResult;
 using Awesome.Models.DB;
 using Awesome.Models.EntityManager;
@@ -75,6 +73,25 @@ namespace Awesome.Models.ViewModel
 
         private void SetNumberOfFinals(User user, Standing standing)
         {
+            List<string> qualified = new List<string>()
+            {
+                user.UserBet.Qualified1Color,
+                user.UserBet.Qualified2Color,
+                user.UserBet.Qualified3Color,
+                user.UserBet.Qualified4Color,
+                user.UserBet.Qualified5Color,
+                user.UserBet.Qualified6Color,
+                user.UserBet.Qualified7Color,
+                user.UserBet.Qualified8Color,
+                user.UserBet.Qualified9Color,
+                user.UserBet.Qualified10Color,
+                user.UserBet.Qualified11Color,
+                user.UserBet.Qualified12Color,
+                user.UserBet.Qualified13Color,
+                user.UserBet.Qualified14Color,
+                user.UserBet.Qualified15Color,
+                user.UserBet.Qualified16Color,
+            };
 
             List<string> quarterfinals = new List<string>()
                 {
@@ -100,6 +117,15 @@ namespace Awesome.Models.ViewModel
                     user.UserBet.Finalist1Color,
                     user.UserBet.Finalist2Color
                 };
+
+            int numberOfQualified = 0;
+            foreach (var qualify in qualified)
+            {
+                if (qualify == "green")
+                {
+                    numberOfQualified += 1;
+                }
+            }
 
             int numberOfQuarterfinals = 0;
             foreach (var quarterfinal in quarterfinals)
@@ -127,6 +153,7 @@ namespace Awesome.Models.ViewModel
                     numberOfFinals += 1;
                 }
             }
+            standing.NumberOfQualified = numberOfQualified;
             standing.NumberOfQuarterFinals = numberOfQuarterfinals;
             standing.NumberOfSemiFinals = numberOfSemifinals;
             standing.NumberOfFinals = numberOfFinals;

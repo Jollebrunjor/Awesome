@@ -12,7 +12,7 @@ namespace Awesome.Models
         public JsonGroupStageResult GetGroupStageMatches()
         {
 
-            var url = "http://api.football-data.org/v1/soccerseasons/424/fixtures";
+            var url = "http://api.football-data.org/v1/soccerseasons/467/fixtures";
             var groupstagematches = _download_serialized_json_data<JsonGroupStageResult>(url);
 
             return groupstagematches;
@@ -20,7 +20,7 @@ namespace Awesome.Models
 
         public JsonTeamResult GetTeams()
         {
-            var url = "http://api.football-data.org/v1/soccerseasons/424/teams";
+            var url = "http://api.football-data.org/v1/soccerseasons/467/teams";
             JsonTeamResult teams = _download_serialized_json_data<JsonTeamResult>(url);
 
             return teams;

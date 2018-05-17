@@ -6,11 +6,9 @@
     var loginErrorMessage = $('#loginErrorMessage').attr('value');
     var signupErrorMessage = $('#signupErrorMessage').attr('value');
 
-    console.log(loginErrorMessage);
     if (loginErrorMessage === "value") {
         $('#login').show();
     }
-    console.log(signupErrorMessage);
     if (signupErrorMessage === "value") {
         $('#signup').show();
     }

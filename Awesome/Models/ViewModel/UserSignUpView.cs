@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.WebPages;
-using Awesome.Models.DB;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Awesome.Models.ViewModel
 {

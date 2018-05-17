@@ -26,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -178,6 +179,10 @@
     <Compile Include="Migrations\201604200916085_init.Designer.cs">
       <DependentUpon>201604200916085_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805171412012_init1.cs" />
+    <Compile Include="Migrations\201805171412012_init1.Designer.cs">
+      <DependentUpon>201805171412012_init1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bet.cs" />
     <Compile Include="Models\DB\DataModel.cs" />
@@ -237,9 +242,12 @@
     <Content Include="Content\img\field-footer-grayscale.jpg" />
     <Content Include="Content\img\field_footer.png" />
     <Content Include="Content\img\foooter.png" />
+    <Content Include="Content\img\footer.jpg" />
     <Content Include="Content\img\great_icon.png" />
     <Content Include="Content\img\intro-bg.jpg" />
     <Content Include="Content\img\map-marker.png" />
+    <Content Include="Content\img\vm-banner1.jpg" />
+    <Content Include="Content\img\vm-footer1.jpg" />
     <Content Include="Content\img\zlatan-bg.png" />
     <Content Include="Content\img\zlatan-ibrahimovic.jpg" />
     <Content Include="Content\img\okay_icon.png" />
@@ -325,13 +333,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="Views\Account\LogIn.cshtml" />
-    <Content Include="Views\MyPage\Index.cshtml" />
     <Content Include="Views\MyPage\OthersBetPartial.cshtml" />
     <Content Include="Views\MyPage\MyResultsPage.cshtml" />
     <Content Include="Views\MyPage\MyBetPagePartial.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Home\RulesPartial.cshtml" />
     <Content Include="Views\Home\SchedulePartial.cshtml" />
+    <Content Include="Views\MyPage\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -347,6 +355,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201604200916085_init.resx">
       <DependentUpon>201604200916085_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805171412012_init1.resx">
+      <DependentUpon>201805171412012_init1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

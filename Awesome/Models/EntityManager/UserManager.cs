@@ -2,12 +2,8 @@
 using System.Data;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Net;
-using Awesome.ApiIntegration.JsonGroupStageResult;
 using Awesome.Models.DB;
 using Awesome.Models.ViewModel;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Result = Awesome.Models.DB.Result;
 
 namespace Awesome.Models.EntityManager
@@ -94,6 +90,22 @@ namespace Awesome.Models.EntityManager
                         QuarterFinalist6 = bet.QuarterFinalist6,
                         QuarterFinalist7 = bet.QuarterFinalist7,
                         QuarterFinalist8 = bet.QuarterFinalist8,
+                        Qualified1 = bet.Qualified1,
+                        Qualified2 = bet.Qualified2,
+                        Qualified3 = bet.Qualified3,
+                        Qualified4 = bet.Qualified4,
+                        Qualified5 = bet.Qualified5,
+                        Qualified6 = bet.Qualified6,
+                        Qualified7 = bet.Qualified7,
+                        Qualified8 = bet.Qualified8,
+                        Qualified9 = bet.Qualified9,
+                        Qualified10 = bet.Qualified10,
+                        Qualified11 = bet.Qualified11,
+                        Qualified12 = bet.Qualified12,
+                        Qualified13 = bet.Qualified13,
+                        Qualified14 = bet.Qualified14,
+                        Qualified15 = bet.Qualified15,
+                        Qualified16 = bet.Qualified16,
                         TotalGoals = bet.TotalGoals,
                         TopScorer = bet.TopScorer,
                         Matches = bet.Matches
@@ -257,7 +269,7 @@ namespace Awesome.Models.EntityManager
             }
         }
 
-        public static void SetFinalistsColor(User user, List<string> correctFinalists, List<string> correctSemifinalists, List<string> correctQuarterfinalists)
+        public static void SetFinalistsColor(User user, List<string> correctFinalists, List<string> correctSemifinalists, List<string> correctQuarterfinalists, List<string> correctQualified)
         {
             using (DataModel db = new DataModel())
             {
@@ -301,6 +313,42 @@ namespace Awesome.Models.EntityManager
                         selecteduser.UserBet.QuarterFinalist7Color = "green";
                     if (quarterfinalist == selecteduser.UserBet.QuarterFinalist8)
                         selecteduser.UserBet.QuarterFinalist8Color = "green";
+                }
+
+                foreach (var qualified in  correctQualified)
+                {
+                    if (qualified == selecteduser.UserBet.Qualified1)
+                        selecteduser.UserBet.Qualified1Color = "green";
+                    if (qualified == selecteduser.UserBet.Qualified2)
+                        selecteduser.UserBet.Qualified2Color = "green";
+                    if (qualified == selecteduser.UserBet.Qualified3)
+                        selecteduser.UserBet.Qualified3Color = "green";
+                    if (qualified == selecteduser.UserBet.Qualified4)
+                        selecteduser.UserBet.Qualified4Color = "green";
+                    if (qualified == selecteduser.UserBet.Qualified5)
+                        selecteduser.UserBet.Qualified5Color = "green";
+                    if (qualified == selecteduser.UserBet.Qualified6)
+                        selecteduser.UserBet.Qualified6Color = "green";
+                    if (qualified == selecteduser.UserBet.Qualified7)
+                        selecteduser.UserBet.Qualified7Color = "green";
+                    if (qualified == selecteduser.UserBet.Qualified8)
+                        selecteduser.UserBet.Qualified8Color = "green";
+                    if (qualified == selecteduser.UserBet.Qualified9)
+                        selecteduser.UserBet.Qualified9Color = "green";
+                    if (qualified == selecteduser.UserBet.Qualified10)
+                        selecteduser.UserBet.Qualified10Color = "green";
+                    if (qualified == selecteduser.UserBet.Qualified11)
+                        selecteduser.UserBet.Qualified11Color = "green";
+                    if (qualified == selecteduser.UserBet.Qualified12)
+                        selecteduser.UserBet.Qualified12Color = "green";
+                    if (qualified == selecteduser.UserBet.Qualified13)
+                        selecteduser.UserBet.Qualified13Color = "green";
+                    if (qualified == selecteduser.UserBet.Qualified14)
+                        selecteduser.UserBet.Qualified14Color = "green";
+                    if (qualified == selecteduser.UserBet.Qualified15)
+                        selecteduser.UserBet.Qualified15Color = "green";
+                    if (qualified == selecteduser.UserBet.Qualified16)
+                        selecteduser.UserBet.Qualified16Color = "green";
                 }
 
                 db.SaveChanges();

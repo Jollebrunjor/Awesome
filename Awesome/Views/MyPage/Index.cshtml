@@ -1,0 +1,110 @@
+﻿@using System.Diagnostics.Eventing.Reader
+@using Microsoft.Ajax.Utilities
+@model Awesome.Models.ViewModel.MyPageViewModel
+
+@{
+    ViewBag.Title = "VM Tipset 2018 - Mitt spel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<header class="intro">
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    @if (TempData["Welcome"] != null)
+                    {
+                        <div class="fadeOutSection">
+                            <h1 class="brand-heading">
+                                @TempData["Welcome"]
+                            </h1>
+                            <p class="intro-text">Har du vad som krävs?</p>
+                            <a href="#myBet" class="btn btn-circle page-scroll">
+                                <i class="fa fa-angle-double-down animated"></i>
+                            </a>
+                        </div>
+                        <div class="fadeInSection" hidden>
+                            <h1 class="brand-heading">VM TIPSET 2018</h1>
+                            <p class="intro-text">Har du vad som krävs?</p>
+                            <a href="#myBet" class="btn btn-circle page-scroll">
+                                <i class="fa fa-angle-double-down animated"></i>
+                            </a>
+                        </div>
+                    }
+
+                    else if (TempData["Thanks"] != null)
+                    {
+                        <div class="fadeOutSection">
+                            <h1 class="brand-heading">
+                                @TempData["Thanks"] @User.Identity.Name
+                            </h1>
+                            <p class="intro-text">Nu håller vi tummarna!</p>
+                            <a href="#myBet" class="btn btn-circle page-scroll">
+                                <i class="fa fa-angle-double-down animated"></i>
+                            </a>
+                        </div>
+                        <div class="fadeInSection" hidden>
+                            <h1 class="brand-heading">VM TIPSET 2018</h1>
+                            <p class="intro-text">Har du vad som krävs?</p>
+                            <a href="#myBet" class="btn btn-circle page-scroll">
+                                <i class="fa fa-angle-double-down animated"></i>
+                            </a>
+                        </div>
+                    }
+
+                    else
+                    {
+                        <h1 class="brand-heading welcomeText2">VM TIPSET 2018</h1>
+                        <p class="intro-text">Har du vad som krävs?</p>
+                        <a href="#myBet" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="myBet" class="container content-section">
+    <h2 class="text-center">Mitt spel</h2>
+    <div class="row">
+        @if (!Model.HasBetted)
+        {
+            if (TempData["Fail"] != null)
+            {
+                <div class="text-center">@TempData["Fail"]</div>
+            }
+            @Html.Partial("MyBetPagePartial", Model)
+        }
+        else
+        {
+            @Html.Partial("MyResultsPage", Model)
+        }
+    </div>
+</section>
+
+<section id="othersBet" class="container content-section text-center">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            @Html.Partial("OthersBetPartial", Model)
+        </div>
+    </div>
+</section>
+
+
+
+
+<script>
+    $(function () {
+
+        $(".dropdown-menu li").click(function () {
+            var dropDownId = (this.id);
+            $('body').find('.otherBet').hide();
+            $('body').find('[data-id="' + dropDownId + '"]').show();
+        });
+    });
+
+    $(".fadeOutSection").show().delay(5000).fadeOut();
+    $(".fadeInSection").delay(5500).fadeIn();
+
+</script>

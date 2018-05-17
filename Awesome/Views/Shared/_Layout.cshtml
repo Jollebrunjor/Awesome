@@ -27,7 +27,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-play-circle"></i>  <span class="light">Em-Tipset 2016</span>
+                    <i class="fa fa-play-circle"></i>  <span class="light">VM Tipset 2018</span>
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -39,7 +39,7 @@
                         <a href="#page-top"></a>
                     </li>
 
-                    @if (Request.Url.AbsoluteUri == "http://tipset.azurewebsites.net/") //Ändra till faktisk url
+                    @if (Request.Url.AbsoluteUri == "http://www.sporttipset.nu/") //Ändra till faktisk url
                     {
                         <li> <a class="page-scroll" href="#page-top">Start</a></li>
                         <li> <a class="page-scroll" href="#standings">Tabell</a></li>
@@ -47,19 +47,19 @@
                         <li> <a class="page-scroll" href="#rules">Regler</a></li>
                         if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
                         {
-                            <li id="dropDownList"class="dropdown">
+                            <li id="dropDownList" class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                   
+
                                     <li>@Html.ActionLink("Mitt spel", "Index", "MyPage", null, null, "myBet", null, null)</li>
-                                    
+
                                     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                                     {
                                         <li role="separator" class="divider"></li>
                                         <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
                                     }
                                     <li role="separator" class="divider"></li>
-                                    <li>@Html.ActionLink("Signout", "SignOut", "Account")</li>
+                                    <li>@Html.ActionLink("Logga ut", "SignOut", "Account")</li>
                                 </ul>
                             </li>
                         }
@@ -79,16 +79,16 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                   
-                                   <li>@Html.ActionLink("Mitt spel", "Index", "MyPage", null, null, "myBet", null, null)</li>
-                                   
+
+                                    <li>@Html.ActionLink("Mitt spel", "Index", "MyPage", null, null, "myBet", null, null)</li>
+
                                     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                                     {
                                         <li role="separator" class="divider"></li>
                                         <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
                                     }
                                     <li role="separator" class="divider"></li>
-                                    <li>@Html.ActionLink("Signout", "SignOut", "Account")</li>
+                                    <li>@Html.ActionLink("Logga ut", "SignOut", "Account")</li>
                                 </ul>
                             </li>
                         }
@@ -107,7 +107,7 @@
     <!-- Footer -->
     <footer>
         <div class="text-center footer">
-           
+
         </div>
     </footer>
     <!-- jQuery -->

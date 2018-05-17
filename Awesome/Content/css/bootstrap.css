@@ -6799,82 +6799,127 @@ button.close {
     background: rgba(255, 2, 2, 0.71);
     border-radius: 100px;
 }
-
-
 .flag {
     height: 50px;
 }
-.flag-France  {
-    content: url('../Flags/france.png');
-
-
+.flag-France {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/fra');
 }
-.flag-Albania  {
-    content: url('../Flags/albania.png');
 
-
+.flag-Saudi_Arabia {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/ksa ');
 }
+
+.flag-Egypt {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/egy ');
+}
+
+.flag-Uruguay {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/uru ');
+}
+.flag-Morocco {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/mar ');
+}
+.flag-Iran {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/irn ');
+}
+.flag-Australia {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/aus ');
+}
+.flag-Argentina {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/arg ');
+}
+.flag-Nigeria {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/nga ');
+}
+.flag-Costa_Rica {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/crc ');
+}
+.flag-Serbia {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/srb ');
+}
+.flag-Germany {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/ger ');
+}
+.flag-Mexico {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/mex ');
+}
+
+
 .flag-Austria  {
     content: url('../Flags/austria.png');
 
 
 }
-.flag-Belgium  {
-    content: url('../Flags/belgium.png');
+.flag-Belgium {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/bel ');
 }
-.flag-Croatia  {
-    content: url('../Flags/croatia.png');
+.flag-Croatia {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/cro ');
 }
 .flag-Czech_Republic  {
     content: url('../Flags/czcechrepublic.png');
 }
-.flag-England  {
-    content: url('../Flags/england.png');
+.flag-England {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/eng ');
 }
-.flag-Germany  {
-    content: url('../Flags/germany.png');
+.flag-Tunisia {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/tun ');
 }
-.flag-Hungary  {
-    content: url('../Flags/hungary.png');
+.flag-Iceland {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/isl ');
 }
-.flag-Iceland  {
-    content: url('../Flags/iceland.png');
+.flag-Peru {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/per ');
 }
-.flag-Republic_of_Ireland	  {
-    content: url('../Flags/ireland.png');
+.flag-Denmark {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/den ');
 }
-.flag-Italy  {
-    content: url('../Flags/italy.png');
+.flag-Brazil {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/bra ');
+}
+.flag-Colombia {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/col ');
+}
+.flag-Japan {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/jpn ');
 }
 .flag-Northern_Ireland  {
     content: url('../Flags/northernirland.png');
 }
-.flag-Poland  {
-    content: url('../Flags/poland.png');
+.flag-Poland {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/pol ');
 }
-.flag-Portugal  {
-    content: url('../Flags/portugal.png');
+.flag-Portugal {
+    content: url(https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/por);
 }
 .flag-Romania  {
     content: url('../Flags/romaina.png');
 }
-.flag-Russia  {
-    content: url('../Flags/russia.png');
+.flag-Russia {
+    content: url(https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/rus);
 }
 .flag-Slovakia  {
     content: url('../Flags/slovakia.png');
 }
 .flag-Spain  {
-    content: url('../Flags/spain.png');
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/esp ');
 }
-.flag-Sweden  {
-    content: url('../Flags/sweden.png');
+
+.flag-Sweden {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/swe ');
 }
-.flag-Switzerland  {
-    content: url('../Flags/switzerland.png');
+.flag-Switzerland {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/sui ');
 }
-.flag-Turkey  {
-    content: url('../Flags/turkey.png');
+.flag-Korea_Republic {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/kor ');
+}
+.flag-Panama {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/pan ');
+}
+.flag-Senegal {
+    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/sen ');
 }
 .flag-Ukraine  {
     content: url('../Flags/ukraine.png');

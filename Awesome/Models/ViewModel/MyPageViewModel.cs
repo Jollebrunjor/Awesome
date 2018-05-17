@@ -1,10 +1,6 @@
 ﻿
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Security.Principal;
-using System.Web.Caching;
-using System.Web.Security;
 using Awesome.ApiIntegration.JsonGroupStageResult;
 using Awesome.ApiIntegration.JsonTeamResult;
 using Awesome.Models.DB;
@@ -51,6 +47,7 @@ namespace Awesome.Models.ViewModel
         {
 
             DB.Result result = UserManager.GetResult();
+            if (result?.MatchResults != null)
             foreach (var match in result.MatchResults)
             {
                 if (match.Status == "TIMED")
