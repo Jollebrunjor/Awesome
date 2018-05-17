@@ -201,7 +201,6 @@
     <Compile Include="Models\ViewModel\MyPageViewModel.cs" />
     <Compile Include="Models\ViewModel\UserLoginView.cs" />
     <Compile Include="Models\ViewModel\UserSignUpView.cs" />
-    <Compile Include="Models\ViewResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

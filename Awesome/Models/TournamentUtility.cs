@@ -19,25 +19,24 @@ namespace Awesome.Models
             int num = 1;
             foreach (Fixture fixture in groupStageMatches.fixtures)
             {
-                Match match1 = new Match
+                if (fixture.status != "SCHEDULED")
                 {
-                    HomeTeam = fixture.homeTeamName,
-                    AwayTeam = fixture.awayTeamName
-                };
-                int? goalsHomeTeam = fixture.result.goalsHomeTeam;
-                match1.HomeScore = goalsHomeTeam.HasValue ? goalsHomeTeam.GetValueOrDefault() : 0;
-                goalsHomeTeam = fixture.result.goalsAwayTeam;
-                match1.AwayScore = goalsHomeTeam.HasValue ? goalsHomeTeam.GetValueOrDefault() : 0;
-                match1.MatchId = num++;
-                match1.Status = fixture.status;
-                match1.Date = fixture.date.ToLongDateString();
-                match1.Matchday = fixture.matchday;
-                Match item = match1;
-                if (match1.Status == "TIMED")
-                {
+                    Match match1 = new Match
+                    {
+                        HomeTeam = fixture.homeTeamName,
+                        AwayTeam = fixture.awayTeamName
+                    };
+                    int? goalsHomeTeam = fixture.result.goalsHomeTeam;
+                    match1.HomeScore = goalsHomeTeam.HasValue ? goalsHomeTeam.GetValueOrDefault() : 0;
+                    goalsHomeTeam = fixture.result.goalsAwayTeam;
+                    match1.AwayScore = goalsHomeTeam.HasValue ? goalsHomeTeam.GetValueOrDefault() : 0;
+                    match1.MatchId = num++;
+                    match1.Status = fixture.status;
+                    match1.Date = fixture.date.ToLongDateString();
+                    match1.Matchday = fixture.matchday;
+                    Match item = match1;
                     list.Add(item);
                 }
-                
             }
             return list;
         }
@@ -52,11 +51,18 @@ namespace Awesome.Models
             int num = 1;
             foreach (Fixture fixture in groupStageMatches.fixtures)
             {
-                Schedule schedule1 = new Schedule
+                Schedule schedule1 = new Schedule();
+                if (fixture.status == "SCHEDULED")
                 {
-                    HomeTeam = fixture.homeTeamName,
-                    AwayTeam = fixture.awayTeamName
-                };
+                    schedule1.HomeTeam = "TBD";
+                    schedule1.AwayTeam = "TBD";
+                }
+                else
+                {
+                    schedule1.HomeTeam = fixture.homeTeamName;
+                    schedule1.AwayTeam = fixture.awayTeamName;
+                }
+
                 int? goalsHomeTeam = fixture.result.goalsHomeTeam;
                 schedule1.HomeScore = goalsHomeTeam.HasValue ? goalsHomeTeam.GetValueOrDefault() : 0;
                 goalsHomeTeam = fixture.result.goalsAwayTeam;
@@ -83,24 +89,5 @@ namespace Awesome.Models
             }
             return source.ToList<Team>();
         }
-
-        // Nested Types
-    //    [Serializable, CompilerGenerated]
-    //    private sealed class <>c
-    //{
-    //    // Fields
-    //    public static readonly TournamentUtility = new TournamentUtility.();
-    //    public static Func<Schedule, string> 
-    //    public static Func<IGrouping<string, Schedule>, List<Schedule>> <>9__2_1;
-
-    //    // Methods
-    //    internal string CreateSchedule(Schedule u) =>
-    //        u.Date;
-
-    //    internal List<Schedule> CreateSchedule(IGrouping<string, Schedule> group) =>
-    //        group.ToList<Schedule>();
-    //}
-}
-
-
+    }
 }

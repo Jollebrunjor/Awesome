@@ -55,8 +55,8 @@
                 List<string> correctQuarterfinalists = UpdateQuarterFinalists(user, result);
                 List<string> correctQualified = UpdateQualified(user, result);
                 UserManager.SetFinalistsColor(user, correctFinalists, correctSemifinalists, correctQuarterfinalists, correctQualified);
-                points += correctFinalists.Count * 5;
-                points += correctSemifinalists.Count * 4;
+                points += correctFinalists.Count * 7;
+                points += correctSemifinalists.Count * 5;
                 points += correctQuarterfinalists.Count * 3;
                 points += correctQualified.Count * 2;
                 UserManager.SaveUserTotalPoints(user, points);
