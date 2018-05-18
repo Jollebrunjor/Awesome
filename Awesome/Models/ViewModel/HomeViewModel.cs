@@ -38,6 +38,7 @@ namespace Awesome.Models.ViewModel
                 SetNumberOfFinals(user, standing);
                 SetNumberOfMatches(user, standing);
                 standing.LoginName = user.LoginName;
+                standing.RealName = string.Format("{0} {1}", user.FirstName, user.LastName);
                 standing.TotalPoints = user.TotalPoints;
                 resultTable.Add(standing);
             }

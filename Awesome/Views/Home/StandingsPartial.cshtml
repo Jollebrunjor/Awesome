@@ -1,4 +1,6 @@
-﻿@using Microsoft.Owin.Security.DataHandler.Encoder
+﻿@using System.Web.UI.WebControls
+@using Microsoft.Owin.Security.DataHandler.Encoder
+@using WebGrease.Css.Ast
 
 <h2 class="text-center">Tabell</h2>
 
@@ -23,7 +25,7 @@
             {
                 <tr>
                     <td>@i</td>
-                    <td>@item.LoginName </td>
+                    <td title="@item.RealName">@item.LoginName </td>
                     <td>@item.NumberOfZeroPoints</td>
                     <td>@item.NumberOfOnePoints</td>
                     <td>@item.NumberOfThreePoints</td>

@@ -20,8 +20,8 @@ namespace Awesome.Migrations
                {
                    FirstName = "Joakim",
                    LastName = "Wågström",
-                   LoginName = "Jocke",
-                   Password = "asd123",
+                   LoginName = "Jollebrunjor",
+                   Password = "Password1",
                    Roles = new List<Role>()
                    {
                         new Role()
