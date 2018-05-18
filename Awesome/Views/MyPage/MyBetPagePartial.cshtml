@@ -25,7 +25,7 @@
                             @Html.DisplayFor(x => x.Bet.Matches[i].AwayTeam)
                         </td>
                         <td>
-                            @Html.TextBoxFor(x => x.Bet.Matches[i].HomeScore, new { @Style = "width: 32px", @required = true }) - @Html.TextBoxFor(x => x.Bet.Matches[i].AwayScore, new { @Style = "width: 32px", @required = true })
+                            @Html.TextBoxFor(x => x.Bet.Matches[i].HomeScore, new { @Style = "width: 45px", @class = "form-control", @required = true }) - @Html.TextBoxFor(x => x.Bet.Matches[i].AwayScore, new { @Style = "width: 45px", @class = "form-control", @required = true })
                         </td>
                     </tr>
                 }
@@ -45,131 +45,131 @@
                 @if (Model.Teams != null)
                 {
 
-                    <tr style="height: 26px; overflow: auto">
+                    <tr>
                         <td>Finalistlag 1</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Finalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Finalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Finalistlag 2</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Finalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Finalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Semifinalistlag 1</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Semifinalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Semifinalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
 
                     <tr>
                         <td>Semifinalistlag 2</td>
-                        <td>@Html.DropDownListFor(x => x.Bet.Semifinalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true }) </td>
+                        <td>@Html.DropDownListFor(x => x.Bet.Semifinalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true }) </td>
                     </tr>
 
                     <tr>
                         <td>Semifinalistlag 3</td>
-                        <td>@Html.DropDownListFor(x => x.Bet.Semifinalist3, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true }) </td>
+                        <td>@Html.DropDownListFor(x => x.Bet.Semifinalist3, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true }) </td>
                     </tr>
                     <tr>
                         <td>Semifinalistlag 4</td>
-                        <td>@Html.DropDownListFor(x => x.Bet.Semifinalist4, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true }) </td>
+                        <td>@Html.DropDownListFor(x => x.Bet.Semifinalist4, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true }) </td>
                     </tr>
                     <tr>
                         <td>Kvartsfinalistlag 1</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist1, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Kvartsfinalistlag 2</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist2, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Kvartsfinalistlag 3</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist3, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist3, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Kvartsfinalistlag 4</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist4, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist4, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Kvartsfinalistlag 5</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist5, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist5, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Kvartsfinalistlag 6</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist6, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist6, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Kvartsfinalistlag 7</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist7, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist7, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Kvartsfinalistlag 8</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist8, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.QuarterFinalist8, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Åttondelsfinalistlag 1</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Qualified1, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Qualified1, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Åttondelsfinalistlag 2</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Qualified2, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Qualified2, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Åttondelsfinalistlag 3</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Qualified3, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Qualified3, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Åttondelsfinalistlag 4</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Qualified4, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Qualified4, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Åttondelsfinalistlag 5</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Qualified5, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Qualified5, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Åttondelsfinalistlag 6</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Qualified6, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Qualified6, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Åttondelsfinalistlag 7</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Qualified7, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Qualified7, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Åttondelsfinalistlag 8</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Qualified8, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Qualified8, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Åttondelsfinalistlag 9</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Qualified9, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Qualified9, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Åttondelsfinalistlag 10</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Qualified10, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Qualified10, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Åttondelsfinalistlag 11</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Qualified11, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Qualified11, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Åttondelsfinalistlag 12</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Qualified12, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Qualified12, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Åttondelsfinalistlag 13</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Qualified13, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Qualified13, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Åttondelsfinalistlag 14</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Qualified14, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Qualified14, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Åttondelsfinalistlag 15</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Qualified15, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Qualified15, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Åttondelsfinalistlag 16</td>
-                        <td> @Html.DropDownListFor(x => x.Bet.Qualified16, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @Style = "height: 26px", @required = true })</td>
+                        <td> @Html.DropDownListFor(x => x.Bet.Qualified16, new SelectList(Model.Teams, "name", "name"), "Välj lag", new { @class = "form-control", @required = true })</td>
                     </tr>
                     <tr>
                         <td>Totalt antal mål i turneringen (utslagsfråga)</td>
-                        <td> @Html.TextBoxFor(model => model.Bet.TotalGoals, new { @required = true, @style = "width: 32px" })</td>
+                        <td> @Html.TextBoxFor(model => model.Bet.TotalGoals, new { @required = true, @class = "form-control" })</td>
                     </tr>
                 }
             </table>
@@ -184,7 +184,7 @@
                 <div class="text-center" style="margin-top: 60px">
                     <input type="checkbox" required /> Ja, jag har swishat Jocke 200 kr på nummer 0738399902.<br />
                     <input type="checkbox" required /> Jag är nöjd med min rad och är medveten om att jag inte kommer kunna göra några ändringar.
-                    <input type="submit" value="Spela" style="margin-top: 10px" class="btn btn-default center-block" />
+                    <input type="submit" value="Spela" style="margin-top: 10px" class="btn btn-primary center-block" />
                 </div>
             }
         </div>
