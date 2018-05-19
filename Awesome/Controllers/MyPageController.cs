@@ -146,11 +146,10 @@ namespace Awesome.Controllers
             list.Add(bet.Semifinalist2);
             list.Add(bet.Semifinalist3);
             list.Add(bet.Semifinalist4);
-
-            bool qflag = list2.GroupBy(n => n).Any(c => c.Count() > 1);
-            bool sfinalFlag = list.GroupBy(n => n).Any(c => c.Count() > 1);
-
-            return (!(list1.GroupBy(n => n).Any(c => c.Count() > 1) && !sfinalFlag && !qflag) && (bet.Finalist1 != bet.Finalist2));
+            bool flag = (from x in list group x by x into g where g.Count<string>() > 1 select g.Key).Any<string>();
+            bool flag2 = (from x in list1 group x by x into g where g.Count<string>() > 1 select g.Key).Any<string>();
+            return ((!(from x in list2 group x by x into g where g.Count<string>() > 1 select g.Key).Any<string>() && !flag && !flag2) 
+                && (bet.Finalist1 != bet.Finalist2));
         }
     }
 }

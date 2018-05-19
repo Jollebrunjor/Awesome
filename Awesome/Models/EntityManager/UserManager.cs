@@ -57,6 +57,15 @@ namespace Awesome.Models.EntityManager
         {
             using (DataModel model = new DataModel())
             {
+                var usrs = GetUsers();
+                foreach (var u in usrs)
+                {
+                    foreach (var match in u.UserBet.Matches)
+                    {
+                        match.ResultColor = "";
+                    }
+                }
+
                 foreach (UserBet local1 in model.UserBet)
                 {
                     local1.Qualified1Color = "";
@@ -93,8 +102,6 @@ namespace Awesome.Models.EntityManager
                 model.SaveChanges();
             }
         }
-
-
 
         public static bool DeleteUser(string userName)
         {
