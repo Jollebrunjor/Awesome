@@ -54,6 +54,48 @@ namespace Awesome.Models.EntityManager
             }
         }
 
+        public static void ResetStandings()
+        {
+            using (DataModel model = new DataModel())
+            {
+                foreach (UserBet local1 in model.UserBet)
+                {
+                    local1.Qualified1Color = "";
+                    local1.Qualified2Color = "";
+                    local1.Qualified3Color = "";
+                    local1.Qualified4Color = "";
+                    local1.Qualified5Color = "";
+                    local1.Qualified6Color = "";
+                    local1.Qualified7Color = "";
+                    local1.Qualified8Color = "";
+                    local1.Qualified9Color = "";
+                    local1.Qualified10Color = "";
+                    local1.Qualified11Color = "";
+                    local1.Qualified12Color = "";
+                    local1.Qualified13Color = "";
+                    local1.Qualified14Color = "";
+                    local1.Qualified15Color = "";
+                    local1.Qualified16Color = "";
+                    local1.QuarterFinalist1Color = "";
+                    local1.QuarterFinalist2Color = "";
+                    local1.QuarterFinalist3Color = "";
+                    local1.QuarterFinalist4Color = "";
+                    local1.QuarterFinalist5Color = "";
+                    local1.QuarterFinalist6Color = "";
+                    local1.QuarterFinalist7Color = "";
+                    local1.QuarterFinalist8Color = "";
+                    local1.Semifinalist1Color = "";
+                    local1.Semifinalist2Color = "";
+                    local1.Semifinalist3Color = "";
+                    local1.Semifinalist4Color = "";
+                    local1.Finalist1Color = "";
+                    local1.Finalist2Color = "";
+                }
+                model.SaveChanges();
+            }
+        }
+
+
 
 
         public static void EditBet(UserBet bet, string userName)
@@ -117,71 +159,75 @@ namespace Awesome.Models.EntityManager
             }
         }
 
-
-
         public static void AddResult(Result result, bool manuallyUpdate)
         {
             result.ResultId = 1;
-            using (DataModel db = new DataModel())
+            using (DataModel model = new DataModel())
             {
-                Result existingResult = db.Results.Include("MatchResults").FirstOrDefault(r => r.ResultId == result.ResultId);
-
-                if (existingResult != null)
+                Result result2 = model.Results.Include("MatchResults").FirstOrDefault(r => r.ResultId == result.ResultId);
+                if (result2 != null)
                 {
-
-                    foreach (var newMatch in result.MatchResults)
+                    foreach (MatchResult newMatch in result.MatchResults)
                     {
-                        foreach (var oldMatch in existingResult.MatchResults.Where(x => x.MatchResultId == newMatch.MatchResultId))
+                        foreach (var result3 in result2.MatchResults.Where(x => x.MatchResultId == newMatch.MatchResultId))
                         {
-                            if (oldMatch.ManuallyUpdated && !manuallyUpdate)
+                            if (result3.ManuallyUpdated && !manuallyUpdate)
                             {
-                                break;
+                                continue;
                             }
-
-                            if (manuallyUpdate)
+                            if (manuallyUpdate && ((result3.AwayScore != newMatch.AwayScore) || (result3.HomeScore != newMatch.HomeScore)))
                             {
-                                if (oldMatch.AwayScore != newMatch.AwayScore ||
-                                    oldMatch.HomeScore != newMatch.HomeScore)
-                                {
-                                    oldMatch.ManuallyUpdated = true;
-                                }
+                                result3.ManuallyUpdated = true;
+                                result3.Status = "FINISHED";
                             }
-                            oldMatch.AwayScore = newMatch.AwayScore;
-                            oldMatch.AwayTeam = newMatch.AwayTeam;
-                            oldMatch.HomeScore = newMatch.HomeScore;
-                            oldMatch.HomeTeam = newMatch.HomeTeam;
-
-
+                            result3.AwayScore = newMatch.AwayScore;
+                            result3.AwayTeam = newMatch.AwayTeam;
+                            result3.HomeScore = newMatch.HomeScore;
+                            result3.HomeTeam = newMatch.HomeTeam;
+                            result3.Status = newMatch.Status;
                         }
-
                     }
                     if (manuallyUpdate)
                     {
-                        existingResult.Finalist1 = result.Finalist1;
-                        existingResult.Finalist2 = result.Finalist2;
-                        existingResult.Semifinalist1 = result.Semifinalist1;
-                        existingResult.Semifinalist2 = result.Semifinalist2;
-                        existingResult.Semifinalist3 = result.Semifinalist3;
-                        existingResult.Semifinalist4 = result.Semifinalist4;
-                        existingResult.QuarterFinalist1 = existingResult.QuarterFinalist1;
-                        existingResult.QuarterFinalist2 = existingResult.QuarterFinalist2;
-                        existingResult.QuarterFinalist3 = existingResult.QuarterFinalist3;
-                        existingResult.QuarterFinalist4 = existingResult.QuarterFinalist4;
-                        existingResult.QuarterFinalist5 = existingResult.QuarterFinalist5;
-                        existingResult.QuarterFinalist6 = existingResult.QuarterFinalist6;
-                        existingResult.QuarterFinalist7 = existingResult.QuarterFinalist7;
-                        existingResult.QuarterFinalist8 = existingResult.QuarterFinalist8;
-                        existingResult.TopScorer = result.TopScorer;
-                        existingResult.TotalGoals = result.TotalGoals;
+                        result2.Finalist1 = result.Finalist1;
+                        result2.Finalist2 = result.Finalist2;
+                        result2.Semifinalist1 = result.Semifinalist1;
+                        result2.Semifinalist2 = result.Semifinalist2;
+                        result2.Semifinalist3 = result.Semifinalist3;
+                        result2.Semifinalist4 = result.Semifinalist4;
+                        result2.QuarterFinalist1 = result.QuarterFinalist1;
+                        result2.QuarterFinalist2 = result.QuarterFinalist2;
+                        result2.QuarterFinalist3 = result.QuarterFinalist3;
+                        result2.QuarterFinalist4 = result.QuarterFinalist4;
+                        result2.QuarterFinalist5 = result.QuarterFinalist5;
+                        result2.QuarterFinalist6 = result.QuarterFinalist6;
+                        result2.QuarterFinalist7 = result.QuarterFinalist7;
+                        result2.QuarterFinalist8 = result.QuarterFinalist8;
+                        result2.Qualified1 = result.Qualified1;
+                        result2.Qualified2 = result.Qualified2;
+                        result2.Qualified3 = result.Qualified3;
+                        result2.Qualified4 = result.Qualified4;
+                        result2.Qualified5 = result.Qualified5;
+                        result2.Qualified6 = result.Qualified6;
+                        result2.Qualified7 = result.Qualified7;
+                        result2.Qualified8 = result.Qualified8;
+                        result2.Qualified9 = result.Qualified9;
+                        result2.Qualified10 = result.Qualified10;
+                        result2.Qualified11 = result.Qualified11;
+                        result2.Qualified12 = result.Qualified12;
+                        result2.Qualified13 = result.Qualified13;
+                        result2.Qualified14 = result.Qualified14;
+                        result2.Qualified15 = result.Qualified15;
+                        result2.Qualified16 = result.Qualified16;
+                        result2.TotalGoals = result.TotalGoals;
                     }
-
-
-                    db.SaveChanges();
+                    model.SaveChanges();
                 }
                 else
                 {
-                    db.Results.AddOrUpdate(result);
-                    db.SaveChanges();
+                    Result[] entities = new Result[] { result };
+                    model.Results.AddOrUpdate<Result>(entities);
+                    model.SaveChanges();
                 }
             }
         }
@@ -191,7 +237,7 @@ namespace Awesome.Models.EntityManager
             using (DataModel db = new DataModel())
             {
                 Result result = db.Results.Include("MatchResults").FirstOrDefault();
-                
+
                 return result;
             }
 
@@ -315,7 +361,7 @@ namespace Awesome.Models.EntityManager
                         selecteduser.UserBet.QuarterFinalist8Color = "green";
                 }
 
-                foreach (var qualified in  correctQualified)
+                foreach (var qualified in correctQualified)
                 {
                     if (qualified == selecteduser.UserBet.Qualified1)
                         selecteduser.UserBet.Qualified1Color = "green";

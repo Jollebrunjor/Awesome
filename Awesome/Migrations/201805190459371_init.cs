@@ -1,7 +1,8 @@
 namespace Awesome.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
-
+    
     public partial class init : DbMigration
     {
         public override void Up()
@@ -25,6 +26,22 @@ namespace Awesome.Migrations
                         QuarterFinalist6 = c.String(),
                         QuarterFinalist7 = c.String(),
                         QuarterFinalist8 = c.String(),
+                        Qualified1 = c.String(),
+                        Qualified2 = c.String(),
+                        Qualified3 = c.String(),
+                        Qualified4 = c.String(),
+                        Qualified5 = c.String(),
+                        Qualified6 = c.String(),
+                        Qualified7 = c.String(),
+                        Qualified8 = c.String(),
+                        Qualified9 = c.String(),
+                        Qualified10 = c.String(),
+                        Qualified11 = c.String(),
+                        Qualified12 = c.String(),
+                        Qualified13 = c.String(),
+                        Qualified14 = c.String(),
+                        Qualified15 = c.String(),
+                        Qualified16 = c.String(),
                         TopScorer = c.String(),
                         TotalGoals = c.Int(nullable: false),
                     })
@@ -91,6 +108,22 @@ namespace Awesome.Migrations
                         QuarterFinalist6 = c.String(),
                         QuarterFinalist7 = c.String(),
                         QuarterFinalist8 = c.String(),
+                        Qualified1 = c.String(),
+                        Qualified2 = c.String(),
+                        Qualified3 = c.String(),
+                        Qualified4 = c.String(),
+                        Qualified5 = c.String(),
+                        Qualified6 = c.String(),
+                        Qualified7 = c.String(),
+                        Qualified8 = c.String(),
+                        Qualified9 = c.String(),
+                        Qualified10 = c.String(),
+                        Qualified11 = c.String(),
+                        Qualified12 = c.String(),
+                        Qualified13 = c.String(),
+                        Qualified14 = c.String(),
+                        Qualified15 = c.String(),
+                        Qualified16 = c.String(),
                         TopScorer = c.String(),
                         TotalGoals = c.Int(nullable: false),
                         Finalist1Color = c.String(),
@@ -107,6 +140,22 @@ namespace Awesome.Migrations
                         QuarterFinalist6Color = c.String(),
                         QuarterFinalist7Color = c.String(),
                         QuarterFinalist8Color = c.String(),
+                        Qualified1Color = c.String(),
+                        Qualified2Color = c.String(),
+                        Qualified3Color = c.String(),
+                        Qualified4Color = c.String(),
+                        Qualified5Color = c.String(),
+                        Qualified6Color = c.String(),
+                        Qualified7Color = c.String(),
+                        Qualified8Color = c.String(),
+                        Qualified9Color = c.String(),
+                        Qualified10Color = c.String(),
+                        Qualified11Color = c.String(),
+                        Qualified12Color = c.String(),
+                        Qualified13Color = c.String(),
+                        Qualified14Color = c.String(),
+                        Qualified15Color = c.String(),
+                        Qualified16Color = c.String(),
                     })
                 .PrimaryKey(t => t.UserBetId);
             

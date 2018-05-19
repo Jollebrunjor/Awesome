@@ -74,9 +74,7 @@ namespace Awesome.Controllers
                     result.Qualified16 = viewModel.ReportedResult.Qualified16;
                 result.TopScorer = viewModel.ReportedResult.TopScorer;
                 result.TotalGoals = viewModel.ReportedResult.TotalGoals;
-
             }
-
             
             UserManager.AddResult(result, true);
 
@@ -84,6 +82,16 @@ namespace Awesome.Controllers
             viewModel.HasReported = true;
         
             return View("Index", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult ResetStandings()
+        {
+            UserManager.ResetStandings();
+            AdminViewModel model = new AdminViewModel();
+
+            ViewBag.Message = "Tabellen nollst\x00e4lld";
+            return base.View("Index", model);
         }
     }
 }
