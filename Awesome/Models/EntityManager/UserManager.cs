@@ -35,7 +35,6 @@ namespace Awesome.Models.EntityManager
                 var userBet = user?.UserBet;
                 return userBet;
             }
-
         }
 
 
@@ -97,7 +96,24 @@ namespace Awesome.Models.EntityManager
 
 
 
+        public static bool DeleteUser(string userName)
+        {
+            if (userName == null) return false;
+            using (DataModel db = new DataModel())
+            {
+                User user = db.Users.Include("UserBet.Matches").FirstOrDefault(o => o.LoginName == userName);
+                if (user != null)
+                {
+                    db.Users.Remove(user);
+                    db.SaveChanges();
+                    return true;
+                }
+                
+                return false;
+            }
 
+
+        }
         public static void EditBet(UserBet bet, string userName)
         {
 

@@ -93,5 +93,23 @@ namespace Awesome.Controllers
             ViewBag.Message = "Tabellen nollst\x00e4lld";
             return base.View("Index", model);
         }
+
+        [HttpPost]
+        public ActionResult DeleteUser(string user)
+        {
+            bool success = UserManager.DeleteUser(user);
+            AdminViewModel model = new AdminViewModel();
+
+            if (success)
+            {
+                ViewBag.Message = $"Användaren {user} borttagen";
+            }
+            else
+            {
+                ViewBag.Message = "Gick ej att ta bort användaren";
+            }
+            
+            return base.View("Index", model);
+        }
     }
 }

@@ -30,16 +30,14 @@
                     <i class="fa fa-play-circle"></i>  <span class="light">VM Tipset 2018</span>
                 </a>
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 
                 <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
 
-                    @if (Request.Url.AbsoluteUri == "http://www.tipset.azurewebsites.net/") //Ändra till faktisk url
+                    @if (Request.Url.AbsoluteUri == "https://www.tipset.azurewebsites.net/") //Ändra till faktisk url
                     {
                         <li> <a class="page-scroll" href="#page-top">Start</a></li>
                         <li> <a class="page-scroll" href="#standings">Tabell</a></li>
@@ -96,12 +94,8 @@
 
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container -->
     </nav>
-    <!-- Intro Header -->
-
 
     @RenderBody()
     <!-- Footer -->

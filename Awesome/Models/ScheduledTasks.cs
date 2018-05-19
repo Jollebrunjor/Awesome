@@ -16,7 +16,7 @@
             {
                 int points = 0;
                 foreach (MatchResult r in from x in result.MatchResults
-                                          where x.Status == "TIMED"
+                                          where x.Status == "FINISHED"
                                           select x)
                 {
 
@@ -82,7 +82,7 @@
                     Awesome.Models.DB.Result result = new Awesome.Models.DB.Result();
                     foreach (Match match in TournamentUtility.CreateMatchList(groupStageMatches))
                     {
-                        if (match.Status == "TIMED")
+                        if (match.Status == "FINISHED")
                         {
                             MatchResult item = new MatchResult
                             {
@@ -107,7 +107,7 @@
             Awesome.Models.DB.Result result = new Awesome.Models.DB.Result();
             foreach (MatchResult result2 in currentResult.MatchResults)
             {
-                if ((result2.Status == "TIMED") && !result2.ManuallyUpdated)
+                if ((result2.Status == "FINISHED") && !result2.ManuallyUpdated)
                 {
                     MatchResult item = new MatchResult
                     {
