@@ -52,17 +52,10 @@ namespace Awesome.Models
             foreach (Fixture fixture in groupStageMatches.fixtures)
             {
                 Schedule schedule1 = new Schedule();
-                if (fixture.status == "SCHEDULED")
-                {
-                    schedule1.HomeTeam = "TBD";
-                    schedule1.AwayTeam = "TBD";
-                }
-                else
-                {
+
                     schedule1.HomeTeam = fixture.homeTeamName;
                     schedule1.AwayTeam = fixture.awayTeamName;
-                }
-
+                
                 int? goalsHomeTeam = fixture.result.goalsHomeTeam;
                 schedule1.HomeScore = goalsHomeTeam.HasValue ? goalsHomeTeam.GetValueOrDefault() : 0;
                 goalsHomeTeam = fixture.result.goalsAwayTeam;

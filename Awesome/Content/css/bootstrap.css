@@ -6801,6 +6801,9 @@ button.close {
 .flag {
     height: 50px;
 }
+.flag-:before {
+    content: 'TBD';
+}
 .flag-France {
     content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/fra');
 }
