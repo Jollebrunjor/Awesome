@@ -33,11 +33,11 @@
         <div class="col-md-6" id="">
             <table class="table">
                 <thead>
-                    <tr>
-                        <th>Gruppspel</th>
-                        <th>(Fyll bara i om något resultat blir fel från API:et)</th>
+                <tr>
+                    <th>Gruppspel</th>
+                    <th>(Fyll bara i om något resultat blir fel från API:et)</th>
 
-                    </tr>
+                </tr>
                 </thead>
 
                 @for (int i = 0; i < Model.ReportedResult.Result.MatchResults.Count; i++)
@@ -53,7 +53,7 @@
                         </td>
                         <td>
 
-                            @Html.TextBoxFor(x => x.ReportedResult.Matches[i].HomeScore, new { @Value = Model.ReportedResult.Result.MatchResults[i].HomeScore }) - @Html.TextBoxFor(x => x.ReportedResult.Matches[i].AwayScore, new { @Value = Model.ReportedResult.Result.MatchResults[i].AwayScore })
+                            @Html.TextBoxFor(x => x.ReportedResult.Matches[i].HomeScore, new {@Value = Model.ReportedResult.Result.MatchResults[i].HomeScore}) - @Html.TextBoxFor(x => x.ReportedResult.Matches[i].AwayScore, new {@Value = Model.ReportedResult.Result.MatchResults[i].AwayScore})
                         </td>
                     </tr>
                 }
@@ -63,11 +63,11 @@
         <div class="col-md-6">
             <table class="table">
                 <thead>
-                    <tr>
-                        <th>Slutspel</th>
-                        <th></th>
+                <tr>
+                <th>Slutspel</th>
+                <th></th>
 
-                    <tr>
+                <tr>
                 </thead>
                 <tr style="height: 26px; overflow: auto">
                     <td>Finalistlag 1</td>
@@ -253,9 +253,16 @@
                 </tr>
 
             </table>
-            <input type="submit" value="Uppdatera resultat" class="btn btn-primary" />
+            <input type="submit" value="Uppdatera resultat" class="btn btn-primary"/>
         </div>
-        <div class="col-md-6" style="padding-top: 10px">
+    }
+    <div class="col-md-6" style="padding-top: 10px">
+        @using (Html.BeginForm("ResetStandings", "Admin", FormMethod.Post))
+        {
+            <input type="submit" value="Nollställ tabellen" class="btn btn-primary" style="background: red" />
+        }
+    </div>  
+    <div class="col-md-6" style="padding-top: 10px">
             @using (Html.BeginForm("DeleteUser", "Admin", FormMethod.Post))
             {
                 <input type="submit" value="Ta bort användare" class="btn btn-primary" style="background: red" />
@@ -266,17 +273,7 @@
                 </tr>
 
             }
-        </div>
-        <div class="col-md-6" style="padding-top: 10px">
-            @using (Html.BeginForm("ResetStandings", "Admin", FormMethod.Post))
-            {
-                <input type="submit" value="Nollställ tabellen" class="btn btn-primary" style="background: red" />
-            }
-        </div>
-
-    }
+        </div>  
 }
-
-
 
 @ViewBag.Message

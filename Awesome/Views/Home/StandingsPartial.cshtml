@@ -4,42 +4,61 @@
 
 <h2 class="text-center">Tabell</h2>
 
-    <table class="table" >
-        <thead>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Namn</th>
+            <th>0p</th>
+            <th>1p</th>
+            <th>3p</th>
+            <th>Å</th>
+            <th>K</th>
+            <th>S</th>
+            <th>F</th>
+            <th>Totalt</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int i = 1;}
+        @foreach (var item in Model.ResultTable)
+        {
             <tr>
-                <th></th>
-                <th>Namn</th>
-                <th>0p</th>
-                <th>1p</th>
-                <th>3p</th>
-                <th>Å</th>
-                <th>K</th>
-                <th>S</th>
-                <th>F</th>
-                <th>Totalt</th>
+                <td>@i</td>
+                <td title="@item.RealName">@item.LoginName </td>
+                <td>@item.NumberOfZeroPoints</td>
+                <td>@item.NumberOfOnePoints</td>
+                <td>@item.NumberOfThreePoints</td>
+                <td>@item.NumberOfQualified</td>
+                <td>@item.NumberOfQuarterFinals</td>
+                <td>@item.NumberOfSemiFinals</td>
+                <td>@item.NumberOfFinals</td>
+                <td>@item.TotalPoints</td>
             </tr>
+            i++;
+        }
+    </tbody>
+</table>
+@if (DateTime.Now < new DateTime(2018, 6, 14, 17, 0, 0))
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Väntar på tips från...</th>
+        </tr>
         </thead>
         <tbody>
-            @{int i = 1;}
-            @foreach (var item in Model.ResultTable)
-            {
-                <tr>
-                    <td>@i</td>
-                    <td title="@item.RealName">@item.LoginName </td>
-                    <td>@item.NumberOfZeroPoints</td>
-                    <td>@item.NumberOfOnePoints</td>
-                    <td>@item.NumberOfThreePoints</td>
-                    <td>@item.NumberOfQualified</td>
-                    <td>@item.NumberOfQuarterFinals</td>
-                    <td>@item.NumberOfSemiFinals</td>
-                    <td>@item.NumberOfFinals</td>
-                    <td>@item.TotalPoints</td>                   
-                </tr>
-                i++;
-            }
+        @foreach (var item in Model.UsersWithNoBet)
+        {
+            <tr>
+                <td title="@item.FirstName @item.LastName">@item.LoginName </td>
+            </tr>
+        }
         </tbody>
+        <thead>
+        <tr>
+            <th>Lämna in senast 14 Juni 17:00 för att vara med!</th>
+        </tr>
+        </thead>
     </table>
-
-
-
-
+}

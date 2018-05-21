@@ -14,6 +14,7 @@ namespace Awesome.Models.ViewModel
             UserLoginView = new UserLoginView();
             UserSignUpView = new UserSignUpView();
             Matches = TournamentUtility.CreateSchedule(groupStageMatches);
+            UsersWithNoBet = UserManager.GetUsersWithNoBet();
             SignupErrorMessage = "";
             LoginErrorMessage = "";
 
@@ -24,6 +25,7 @@ namespace Awesome.Models.ViewModel
         public UserLoginView UserLoginView { get; set; }
        public List<Standing> ResultTable { get; set; }
        public List<List<Schedule>> Matches { get; set; }
+        public List<User> UsersWithNoBet { get; set; }
 
     public List<Standing> GetResultTable()
         {

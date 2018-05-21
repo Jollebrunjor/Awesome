@@ -27,13 +27,21 @@ namespace Awesome.Models.EntityManager
 
         public static UserBet GetBet(string userName)
         {
-
             using (DataModel db = new DataModel())
             {
                 User user = db.Users.Include("UserBet.Matches").FirstOrDefault(o => o.LoginName == userName);
 
                 var userBet = user?.UserBet;
                 return userBet;
+            }
+        }
+        public static List<User> GetUsersWithNoBet()
+        {
+            using (DataModel db = new DataModel())
+            {
+                if (db.Users != null)
+                    return db.Users.Include("UserBet.Matches").Where(x => x.UserBet == null).ToList();
+                return new List<User>();
             }
         }
 
@@ -306,8 +314,8 @@ namespace Awesome.Models.EntityManager
                     return db.Users.Include("UserBet.Matches").ToList();
                 return new List<User>();
             }
-
         }
+
 
         public string GetUserPassword(string loginName)
         {

@@ -113,7 +113,7 @@ namespace Awesome.Controllers
         public bool IsValidUserBet(Bet bet)
         {
             List<string> list = new List<string>();
-            List<string> list1 = new List<string> {
+            List<string> list2 = new List<string> {
                 bet.QuarterFinalist1,
                 bet.QuarterFinalist2,
                 bet.QuarterFinalist3,
@@ -123,7 +123,7 @@ namespace Awesome.Controllers
                 bet.QuarterFinalist7,
                 bet.QuarterFinalist8
             };
-            List<string> list2 = new List<string>()
+            List<string> list3 = new List<string>()
             {
                 bet.Qualified1,
                 bet.Qualified2,
@@ -134,7 +134,7 @@ namespace Awesome.Controllers
                 bet.Qualified7,
                 bet.Qualified8,
                 bet.Qualified9,
-                bet.Qualified1,
+                bet.Qualified10,
                 bet.Qualified11,
                 bet.Qualified12,
                 bet.Qualified13,
@@ -146,10 +146,19 @@ namespace Awesome.Controllers
             list.Add(bet.Semifinalist2);
             list.Add(bet.Semifinalist3);
             list.Add(bet.Semifinalist4);
-            bool flag = (from x in list group x by x into g where g.Count<string>() > 1 select g.Key).Any<string>();
-            bool flag2 = (from x in list1 group x by x into g where g.Count<string>() > 1 select g.Key).Any<string>();
-            return ((!(from x in list2 group x by x into g where g.Count<string>() > 1 select g.Key).Any<string>() && !flag && !flag2) 
-                && (bet.Finalist1 != bet.Finalist2));
+
+            var duplicateSemiTeams = list.GroupBy(x => x)
+                .Where(group => group.Count() > 1)
+                .Select(group => group.Key).Any();
+            var duplicateQuarterTeams = list2.GroupBy(x => x)
+                .Where(group => group.Count() > 1)
+                .Select(group => group.Key).Any();
+            var duplicateQualifiedTeams = list3.GroupBy(x => x)
+                .Where(group => group.Count() > 1)
+                .Select(group => group.Key).Any();
+
+            return !duplicateSemiTeams && !duplicateQuarterTeams && !duplicateQualifiedTeams && (bet.Finalist1 != bet.Finalist2);
+
         }
     }
 }
