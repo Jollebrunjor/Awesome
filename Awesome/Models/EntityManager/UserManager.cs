@@ -59,42 +59,45 @@ namespace Awesome.Models.EntityManager
             {               
                 foreach (var user in model.Users.Include("UserBet.Matches").ToList())
                 {
-                    user.UserBet.Qualified1Color = "";
-                    user.UserBet.Qualified2Color = "";
-                    user.UserBet.Qualified3Color = "";
-                    user.UserBet.Qualified4Color = "";
-                    user.UserBet.Qualified5Color = "";
-                    user.UserBet.Qualified6Color = "";
-                    user.UserBet.Qualified7Color = "";
-                    user.UserBet.Qualified8Color = "";
-                    user.UserBet.Qualified9Color = "";
-                    user.UserBet.Qualified10Color = "";
-                    user.UserBet.Qualified11Color = "";
-                    user.UserBet.Qualified12Color = "";
-                    user.UserBet.Qualified13Color = "";
-                    user.UserBet.Qualified14Color = "";
-                    user.UserBet.Qualified15Color = "";
-                    user.UserBet.Qualified16Color = "";
-                    user.UserBet.QuarterFinalist1Color = "";
-                    user.UserBet.QuarterFinalist2Color = "";
-                    user.UserBet.QuarterFinalist3Color = "";
-                    user.UserBet.QuarterFinalist4Color = "";
-                    user.UserBet.QuarterFinalist5Color = "";
-                    user.UserBet.QuarterFinalist6Color = "";
-                    user.UserBet.QuarterFinalist7Color = "";
-                    user.UserBet.QuarterFinalist8Color = "";
-                    user.UserBet.Semifinalist1Color = "";
-                    user.UserBet.Semifinalist2Color = "";
-                    user.UserBet.Semifinalist3Color = "";
-                    user.UserBet.Semifinalist4Color = "";
-                    user.UserBet.Finalist1Color = "";
-                    user.UserBet.Finalist2Color = "";
-                    foreach (var u in user.UserBet.Matches)
+                    if (user.UserBet != null)
                     {
-                        u.ResultColor = "";
-                        u.Status = "TIMED";
+                        user.UserBet.Qualified1Color = "";
+                        user.UserBet.Qualified2Color = "";
+                        user.UserBet.Qualified3Color = "";
+                        user.UserBet.Qualified4Color = "";
+                        user.UserBet.Qualified5Color = "";
+                        user.UserBet.Qualified6Color = "";
+                        user.UserBet.Qualified7Color = "";
+                        user.UserBet.Qualified8Color = "";
+                        user.UserBet.Qualified9Color = "";
+                        user.UserBet.Qualified10Color = "";
+                        user.UserBet.Qualified11Color = "";
+                        user.UserBet.Qualified12Color = "";
+                        user.UserBet.Qualified13Color = "";
+                        user.UserBet.Qualified14Color = "";
+                        user.UserBet.Qualified15Color = "";
+                        user.UserBet.Qualified16Color = "";
+                        user.UserBet.QuarterFinalist1Color = "";
+                        user.UserBet.QuarterFinalist2Color = "";
+                        user.UserBet.QuarterFinalist3Color = "";
+                        user.UserBet.QuarterFinalist4Color = "";
+                        user.UserBet.QuarterFinalist5Color = "";
+                        user.UserBet.QuarterFinalist6Color = "";
+                        user.UserBet.QuarterFinalist7Color = "";
+                        user.UserBet.QuarterFinalist8Color = "";
+                        user.UserBet.Semifinalist1Color = "";
+                        user.UserBet.Semifinalist2Color = "";
+                        user.UserBet.Semifinalist3Color = "";
+                        user.UserBet.Semifinalist4Color = "";
+                        user.UserBet.Finalist1Color = "";
+                        user.UserBet.Finalist2Color = "";
+                        foreach (var u in user.UserBet.Matches)
+                        {
+                            u.ResultColor = "";
+                            u.Status = "TIMED";
+                        }
+                        user.TotalPoints = 0;
                     }
-                   user.TotalPoints = 0;
                 }
                 model.SaveChanges();
             }
