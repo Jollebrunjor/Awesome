@@ -31,8 +31,6 @@ namespace Awesome.Controllers
 
         public ActionResult Standings()
         {
-            
-
             ViewBag.Message = "Tabellen.";
 
             return View();

@@ -172,6 +172,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyPageController.cs" />
+    <Compile Include="Controllers\PlayerBetController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -234,7 +235,6 @@
     <Content Include="Content\img\bad_icon.png" />
     <Content Include="Content\img\error_icon.png" />
     <Content Include="Content\img\downloads-bg.jpg" />
-    <Content Include="Content\img\favvis.png" />
     <Content Include="Content\img\field-footer-grayscale.jpg" />
     <Content Include="Content\img\field_footer.png" />
     <Content Include="Content\img\foooter.png" />
@@ -337,6 +337,8 @@
     <Content Include="Views\Home\RulesPartial.cshtml" />
     <Content Include="Views\Home\SchedulePartial.cshtml" />
     <Content Include="Views\MyPage\Index.cshtml" />
+    <Content Include="Views\PlayerBet\OtherPlayerResultPartial.cshtml" />
+    <Content Include="Views\PlayerBet\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

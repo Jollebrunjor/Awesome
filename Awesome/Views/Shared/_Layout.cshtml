@@ -49,7 +49,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
 
-                                    <li>@Html.ActionLink("Mitt spel", "Index", "MyPage", null, null, "myBet", null, null)</li>
+                                    <li>@Html.ActionLink("Mitt spel", "Index", "MyPage", null, null, "bet", null, null)</li>
 
                                     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                                     {
@@ -78,7 +78,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
 
-                                    <li>@Html.ActionLink("Mitt spel", "Index", "MyPage", null, null, "myBet", null, null)</li>
+                                    <li>@Html.ActionLink("Mitt spel", "Index", "MyPage", null, null, "bet", null, null)</li>
 
                                     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                                     {

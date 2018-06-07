@@ -185,6 +185,13 @@ a:focus {
     }
 }
 
+.zoom {
+    cursor: pointer;
+}
+.zoom:hover {
+    transform: scale(1.01);
+}
+
 .btn-circle {
     width: 70px;
     height: 70px;

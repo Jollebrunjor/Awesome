@@ -32,7 +32,7 @@ namespace Awesome.Controllers
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("", "The password provided is incorrect.");
-                return new RedirectResult(Url.Action("Index") + "#myBet");
+                return new RedirectResult(Url.Action("Index") + "#bet");
             }
 
             UserBet userBet = new UserBet();
@@ -88,7 +88,7 @@ namespace Awesome.Controllers
                 {
                     base.TempData.Add("Fail", "N\x00e5got blev tokigt, f\x00f6rs\x00f6k igen. T\x00e4nk p\x00e5 att ange olika lag i åttondelsfinal, kvartsfinal, semifinal och final.");
                 }
-                return new RedirectResult(base.Url.Action("Index") + "#myBet");
+                return new RedirectResult(base.Url.Action("Index") + "#bet");
             }
             UserManager.AddBet(userBet, username);
             if (base.TempData["Thanks"] == null)
@@ -105,9 +105,22 @@ namespace Awesome.Controllers
             JsonGroupStageResult groupStageMatches = client.GetGroupStageMatches();
             JsonTeamResult teams = client.GetTeams();
 
-            MyPageViewModel currentGamlePage = new MyPageViewModel(teams, groupStageMatches);
+            MyPageViewModel currentGamlePage = new MyPageViewModel(teams, groupStageMatches, null);
             
             return View(currentGamlePage);            
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult Index(string userName)
+        {
+            FootballApiClient client = new FootballApiClient();
+            JsonGroupStageResult groupStageMatches = client.GetGroupStageMatches();
+            JsonTeamResult teams = client.GetTeams();
+
+            MyPageViewModel currentGamlePage = new MyPageViewModel(teams, groupStageMatches, userName);
+
+            return View(currentGamlePage);
         }
 
         public bool IsValidUserBet(Bet bet)

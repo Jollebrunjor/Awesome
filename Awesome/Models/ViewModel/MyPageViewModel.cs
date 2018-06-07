@@ -16,7 +16,7 @@ namespace Awesome.Models.ViewModel
             
         }
 
-        public MyPageViewModel(JsonTeamResult teams, JsonGroupStageResult groupStageMatches)
+        public MyPageViewModel(JsonTeamResult teams, JsonGroupStageResult groupStageMatches, string userName)
         {
             Teams = TournamentUtility.CreateTeamList(teams);
             CurrentUser = System.Web.HttpContext.Current.User.Identity.Name;
@@ -27,10 +27,14 @@ namespace Awesome.Models.ViewModel
             CurrentUserBet = GetBetForCurrentUser(CurrentUser);
             OtherUsersBet = GetOtherUsersBet();
             ResultList = GetResultList(CurrentUserBet);
+            UserBet = GetBetForCurrentUser(userName);
+            OtherBet = userName != null;
+            UserName = userName + "s";
+
         }
 
-       
-
+       public string UserName { get; set; }
+        public bool OtherBet { get; set; }
         public bool HasBetted { get; set; }
         public Dictionary<int, Fixture> GroupStageMatches { get; set; }
         public List<Team> Teams { get; set; }
@@ -42,6 +46,7 @@ namespace Awesome.Models.ViewModel
         public List<string> ResultList { get; set; }
         public List<User> OtherUsersBet { get; set; }
         public UserBet CurrentUserBet { get; set; }
+        public UserBet UserBet { get; set; }
 
         public DB.Result ResultsInVMyPage()
         {

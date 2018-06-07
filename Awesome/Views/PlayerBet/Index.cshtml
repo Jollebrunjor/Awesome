@@ -64,30 +64,22 @@
 </header>
 
 <section id="bet" class="container content-section">
-    <h2 class="text-center">Mitt spel</h2>
-    <div class="row">
-        @if (!Model.HasBetted)
-        {
-            if (TempData["Fail"] != null)
-            {
-                <div class="text-center">@TempData["Fail"]</div>
-            }
-            @Html.Partial("MyBetPagePartial", Model)
-        }
-        else
-        {
-            @Html.Partial("MyResultsPage", Model)
-        }
-    </div>
+    @if (Model.OtherBet && Model.HasBetted)
+    {
+        <h2 class="text-center">@Model.UserName spel</h2>
+        <div class="row">
+            @Html.Partial("OtherPlayerResultPartial", Model)
+        </div>
+    }
 </section>
 
-<section id="othersBet" class="container content-section text-center">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-            @Html.Partial("OthersBetPartial", Model)
+@*<section id="othersBet" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                @Html.Partial("OthersBetPartial", Model)
+            </div>
         </div>
-    </div>
-</section>
+    </section>*@
 
 
 
