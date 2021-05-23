@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Awesome.ApiIntegration.JsonGroupStageResult;
 using Awesome.ApiIntegration.JsonTeamResult;
 using Awesome.Models.DB;
+using Match = Awesome.Models.DB.Match;
 
 namespace Awesome.Models
 {
@@ -11,29 +13,29 @@ namespace Awesome.Models
         // Methods
         public static List<Match> CreateMatchList(Awesome.ApiIntegration.JsonGroupStageResult.JsonGroupStageResult groupStageMatches)
         {
-            if (groupStageMatches.fixtures == null)
+            if (groupStageMatches.matches == null)
             {
                 return new List<Match>();
             }
             List<Match> list = new List<Match>();
             int num = 1;
-            foreach (Fixture fixture in groupStageMatches.fixtures)
+            foreach (ApiIntegration.JsonGroupStageResult.Match match in groupStageMatches.matches)
             {
-                if (fixture.status != "SCHEDULED")
+                if (match.stage == "GROUP_STAGE")
                 {
                     Match match1 = new Match
                     {
-                        HomeTeam = fixture.homeTeamName,
-                        AwayTeam = fixture.awayTeamName
+                        HomeTeam = match.homeTeam.name,
+                        AwayTeam = match.awayTeam.name
                     };
-                    int? goalsHomeTeam = fixture.result.goalsHomeTeam;
-                    match1.HomeScore = goalsHomeTeam.HasValue ? goalsHomeTeam.GetValueOrDefault() : 0;
-                    goalsHomeTeam = fixture.result.goalsAwayTeam;
-                    match1.AwayScore = goalsHomeTeam.HasValue ? goalsHomeTeam.GetValueOrDefault() : 0;
+                    object goalsHomeTeam = match.score.fullTime.homeTeam;
+                    match1.HomeScore = goalsHomeTeam != null ? Convert.ToInt32(goalsHomeTeam) : 0;
+                    object goalsAwayTeam = match.score.fullTime.awayTeam;
+                    match1.AwayScore = goalsAwayTeam != null ? Convert.ToInt32(goalsHomeTeam) : 0;
                     match1.MatchId = num++;
-                    match1.Status = fixture.status;
-                    match1.Date = fixture.date.ToLongDateString();
-                    match1.Matchday = fixture.matchday;
+                    match1.Status = match.status;
+                    match1.Date = match.utcDate.ToLongDateString();
+                    match1.Matchday = match.matchday;
                     Match item = match1;
                     list.Add(item);
                 }
@@ -43,28 +45,29 @@ namespace Awesome.Models
 
         public static List<List<Schedule>> CreateSchedule(Awesome.ApiIntegration.JsonGroupStageResult.JsonGroupStageResult groupStageMatches)
         {
-            if (groupStageMatches.fixtures == null)
+            if (groupStageMatches.matches == null)
             {
                 return new List<List<Schedule>>();
             }
             List<Schedule> list = new List<Schedule>();
             int num = 1;
-            foreach (Fixture fixture in groupStageMatches.fixtures)
+            foreach (var match in groupStageMatches.matches.Where(x => x.stage == "GROUP_STAGE"))
             {
                 Schedule schedule1 = new Schedule();
 
-                    schedule1.HomeTeam = fixture.homeTeamName;
-                    schedule1.AwayTeam = fixture.awayTeamName;
-                
-                int? goalsHomeTeam = fixture.result.goalsHomeTeam;
-                schedule1.HomeScore = goalsHomeTeam.HasValue ? goalsHomeTeam.GetValueOrDefault() : 0;
-                goalsHomeTeam = fixture.result.goalsAwayTeam;
-                schedule1.AwayScore = goalsHomeTeam.HasValue ? goalsHomeTeam.GetValueOrDefault() : 0;
+                    schedule1.HomeTeam = match.homeTeam.name;
+                    schedule1.AwayTeam = match.awayTeam.name;
+
+                object goalsHomeTeam = match.score.fullTime.homeTeam;
+                schedule1.HomeScore = goalsHomeTeam != null ? Convert.ToInt32(goalsHomeTeam) : 0;
+                object goalsAwayTeam = match.score.fullTime.awayTeam;
+                schedule1.AwayScore = goalsAwayTeam != null ? Convert.ToInt32(goalsHomeTeam) : 0;
+
                 schedule1.MatchId = num++;
-                schedule1.Status = fixture.status;
-                schedule1.Date = fixture.date.ToString("MMMM dd");
-                schedule1.Matchday = fixture.matchday;
-                schedule1.Time = fixture.date.AddHours(2.0).ToString("H:mm");
+                schedule1.Status = match.status;
+                schedule1.Date = match.utcDate.ToString("MMMM dd");
+                schedule1.Matchday = match.matchday;
+                schedule1.Time = match.utcDate.AddHours(2.0).ToString("H:mm");
                 Schedule item = schedule1;
                 list.Add(item);
             }

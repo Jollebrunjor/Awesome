@@ -6804,8 +6804,14 @@ button.close {
 .flag-:before {
     content: 'TBD';
 }
+.flag-Turkey {
+    content: url(https://i.eurosport.com/_iss_/geo/country/flag/medium/2786.png);
+}
+.flag-Italy {
+    content: url(https://i.eurosport.com/_iss_/geo/country/flag/medium/2210.png);
+}
 .flag-France {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/fra');
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2202.png');
 }
 
 .flag-Saudi_Arabia {
@@ -6841,33 +6847,29 @@ button.close {
     content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/srb ');
 }
 .flag-Germany {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/ger ');
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2206.png ');
 }
 .flag-Mexico {
     content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/mex ');
 }
-
-
-.flag-Austria  {
-    content: url('../Flags/austria.png');
-
-
+.flag-Austria {
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2219.png');
 }
 .flag-Belgium {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/bel ');
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2205.png ');
 }
 .flag-Croatia {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/cro ');
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/4354.png ');
 }
-.flag-Czech_Republic  {
-    content: url('../Flags/czcechrepublic.png');
+.flag-Czech_Republic {
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2240.png');
 }
 .flag-England {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/eng ');
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2208.png ');
 }
 .flag-Tunisia {
     content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/tun ');
-}
+}   
 .flag-Iceland {
     content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/isl ');
 }
@@ -6875,7 +6877,7 @@ button.close {
     content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/per ');
 }
 .flag-Denmark {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/den ');
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2220.png ');
 }
 .flag-Brazil {
     content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/bra ');
@@ -6890,29 +6892,29 @@ button.close {
     content: url('../Flags/northernirland.png');
 }
 .flag-Poland {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/pol ');
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2214.png ');
 }
 .flag-Portugal {
-    content: url(https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/por);
+    content: url(https://i.eurosport.com/_iss_/geo/country/flag/medium/2223.png);
 }
 .flag-Romania  {
     content: url('../Flags/romaina.png');
 }
 .flag-Russia {
-    content: url(https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/rus);
+    content: url(https://i.eurosport.com/_iss_/geo/country/flag/medium/2204.png);
 }
-.flag-Slovakia  {
-    content: url('../Flags/slovakia.png');
+.flag-Slovakia {
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2233.png');
 }
-.flag-Spain  {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/esp ');
+.flag-Spain {
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2203.png');
 }
 
 .flag-Sweden {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/swe ');
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2222.png ');
 }
 .flag-Switzerland {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/sui ');
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2213.png');
 }
 .flag-Korea_Republic {
     content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/kor ');
@@ -6923,13 +6925,27 @@ button.close {
 .flag-Senegal {
     content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/sen ');
 }
-.flag-Ukraine  {
-    content: url('../Flags/ukraine.png');
+.flag-Ukraine {
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2232.png');
 }
-.flag-Wales  {
-    content: url('../Flags/wales.png');
+.flag-Wales {
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/4386.png');
 }
-
+.flag-Finland {
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2237.png');
+}
+.flag-Netherlands {
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2201.png');
+}
+.flag-North_Macedonia {
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/4358.png');
+}
+.flag-Scotland {
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2245.png');
+}
+.flag-Hungary {
+    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2776.png');
+}
 
 
 
@@ -6953,8 +6969,7 @@ button.close {
 .showResultsRow {
     height: 25px;
      overflow: auto; 
-     cursor: pointer;
-    color: #8c8c8c;
+        color: #8c8c8c;
 }
 .showResultTable {
     margin: auto;
@@ -6988,3 +7003,14 @@ button.close {
 .noBorder {
     border-top: none !important;
 }
+.result-finalist {
+    border-top: none;
+    border-bottom: 1px solid #ddd;
+    background: rgba(255, 2, 2, 0.71);
+    border-radius: 50px;
+}
+.result-finalist-green {
+    background: rgba(60, 118, 62, 0.64);
+    border-radius: 50px;
+}
+    

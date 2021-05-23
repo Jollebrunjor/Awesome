@@ -39,7 +39,7 @@ namespace Awesome.Controllers
 
             foreach (var bet in placedBet.Bet.Matches)
             {
-                Match match = new Match()
+                Models.DB.Match match = new Models.DB.Match()
                 {
                     HomeTeam = bet.HomeTeam,
                     AwayTeam = bet.AwayTeam,

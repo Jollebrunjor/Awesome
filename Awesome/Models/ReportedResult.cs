@@ -2,6 +2,7 @@
 using Awesome.ApiIntegration.JsonGroupStageResult;
 using Awesome.Models.DB;
 using Awesome.Models.EntityManager;
+using Match = Awesome.Models.DB.Match;
 using Result = Awesome.Models.DB.Result;
 
 namespace Awesome.Models

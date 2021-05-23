@@ -1,58 +1,67 @@
-﻿namespace Awesome.ApiIntegration.JsonTeamResult
+﻿using System;
+
+namespace Awesome.ApiIntegration.JsonTeamResult
 {
 
     public class JsonTeamResult
     {
-        public _Links _links { get; set; }
         public int count { get; set; }
+        public Filters filters { get; set; }
+        public Competition competition { get; set; }
+        public Season season { get; set; }
         public Team[] teams { get; set; }
     }
 
-    public class _Links
+    public class Filters
     {
-        public Self self { get; set; }
-        public Soccerseason soccerseason { get; set; }
     }
 
-    public class Self
+    public class Competition
     {
-        public string href { get; set; }
+        public int id { get; set; }
+        public Area area { get; set; }
+        public string name { get; set; }
+        public string code { get; set; }
+        public string plan { get; set; }
+        public DateTime lastUpdated { get; set; }
     }
 
-    public class Soccerseason
+    public class Area
     {
-        public string href { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+    }
+
+    public class Season
+    {
+        public int id { get; set; }
+        public string startDate { get; set; }
+        public string endDate { get; set; }
+        public int currentMatchday { get; set; }
+        public object winner { get; set; }
     }
 
     public class Team
     {
-        public _Links1 _links { get; set; }
+        public int id { get; set; }
+        public Area1 area { get; set; }
         public string name { get; set; }
-        public object code { get; set; }
         public string shortName { get; set; }
-        public object squadMarketValue { get; set; }
+        public string tla { get; set; }
         public string crestUrl { get; set; }
+        public string address { get; set; }
+        public string phone { get; set; }
+        public string website { get; set; }
+        public string email { get; set; }
+        public int founded { get; set; }
+        public string clubColors { get; set; }
+        public string venue { get; set; }
+        public DateTime lastUpdated { get; set; }
     }
 
-    public class _Links1
+    public class Area1
     {
-        public Self1 self { get; set; }
-        public Fixtures fixtures { get; set; }
-        public Players players { get; set; }
-    }
-
-    public class Self1
-    {
-        public string href { get; set; }
-    }
-
-    public class Fixtures
-    {
-        public string href { get; set; }
-    }
-
-    public class Players
-    {
-        public string href { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
     }
 }

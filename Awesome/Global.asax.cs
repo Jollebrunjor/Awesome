@@ -20,7 +20,7 @@ namespace Awesome
                                   string.Empty,
                                   null,
                                   Cache.NoAbsoluteExpiration,
-                                  TimeSpan.FromMinutes(1), // Every 1 hour
+                                  TimeSpan.FromMinutes(10), // Every 1 hour
                                   CacheItemPriority.NotRemovable,
                                   new CacheItemRemovedCallback(PerformScheduledTasks));
         }

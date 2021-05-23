@@ -3,7 +3,7 @@ namespace Awesome.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -54,8 +54,8 @@ namespace Awesome.Migrations
                         MatchResultId = c.Int(nullable: false, identity: true),
                         HomeTeam = c.String(),
                         AwayTeam = c.String(),
-                        HomeScore = c.Int(nullable: false),
-                        AwayScore = c.Int(nullable: false),
+                        HomeScore = c.Int(nullable: true),
+                        AwayScore = c.Int(nullable: true),
                         Status = c.String(),
                         ManuallyUpdated = c.Boolean(nullable: false),
                         Result_ResultId = c.Int(),

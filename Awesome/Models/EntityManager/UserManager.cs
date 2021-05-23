@@ -102,7 +102,7 @@ namespace Awesome.Models.EntityManager
                         foreach (var u in user.UserBet.Matches)
                         {
                             u.ResultColor = "";
-                            u.Status = "TIMED";
+                            u.Status = "SCHEDULED";
                         }
                         user.TotalPoints = 0;
                     }
@@ -207,8 +207,6 @@ namespace Awesome.Models.EntityManager
                                 continue;
                             }
 
-                            result3.Status = newMatch.Status;
-
                             if (manuallyUpdate && ((result3.AwayScore != newMatch.AwayScore) || (result3.HomeScore != newMatch.HomeScore)))
                             {
                                 result3.ManuallyUpdated = true;
@@ -218,6 +216,7 @@ namespace Awesome.Models.EntityManager
                             result3.AwayTeam = newMatch.AwayTeam;
                             result3.HomeScore = newMatch.HomeScore;
                             result3.HomeTeam = newMatch.HomeTeam;
+                            result3.Status = newMatch.Status;
                         }
                     }
                     if (manuallyUpdate)

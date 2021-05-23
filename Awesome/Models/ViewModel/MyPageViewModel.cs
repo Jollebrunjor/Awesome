@@ -5,7 +5,7 @@ using Awesome.ApiIntegration.JsonGroupStageResult;
 using Awesome.ApiIntegration.JsonTeamResult;
 using Awesome.Models.DB;
 using Awesome.Models.EntityManager;
-
+using Match = Awesome.Models.DB.Match;
 
 namespace Awesome.Models.ViewModel
 {
@@ -36,7 +36,7 @@ namespace Awesome.Models.ViewModel
        public string UserName { get; set; }
         public bool OtherBet { get; set; }
         public bool HasBetted { get; set; }
-        public Dictionary<int, Fixture> GroupStageMatches { get; set; }
+        public Dictionary<int, ApiIntegration.JsonGroupStageResult.Match> GroupStageMatches { get; set; }
         public List<Team> Teams { get; set; }
         public string CurrentUser { get; set; }
         public Bet Bet { get; set; }
@@ -55,7 +55,7 @@ namespace Awesome.Models.ViewModel
             if (result?.MatchResults != null)
             foreach (var match in result.MatchResults)
             {
-                if (match.Status == "TIMED")
+                if (match.Status == "SCHEDULED")
                 {
                     match.Status = "Ej spelad";
                 }

@@ -27,7 +27,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-play-circle"></i>  <span class="light">VM Tipset 2018</span>
+                    <i class="fa fa-play-circle"></i>  <span class="light">EM Tipset 2021</span>
                 </a>
             </div>
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
@@ -38,59 +38,61 @@
                     </li>
 
                     @if (Request.Url.AbsoluteUri == "https://www.tipset.azurewebsites.net/") //Ändra till faktisk url
-                    {
-                        <li> <a class="page-scroll" href="#page-top">Start</a></li>
-                        <li> <a class="page-scroll" href="#standings">Tabell</a></li>
-                        <li> <a class="page-scroll" href="#schedule">Spelschema</a></li>
-                        <li> <a class="page-scroll" href="#rules">Regler</a></li>
-                        if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
-                        {
-                            <li id="dropDownList" class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
+    {
+                <li> <a class="page-scroll" href="#page-top">Start</a></li>
+              //<li> <a class="page-scroll" href="#page-top">Slutsummering</a></li>
+                <li> <a class="page-scroll" href="#standings">Tabell</a></li>
+                <li> <a class="page-scroll" href="#schedule">Spelschema</a></li>
+                <li> <a class="page-scroll" href="#rules">Regler</a></li>
+if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+{
+                <li id="dropDownList" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
 
-                                    <li>@Html.ActionLink("Mitt spel", "Index", "MyPage", null, null, "bet", null, null)</li>
+                        <li>@Html.ActionLink("Mitt spel", "Index", "MyPage", null, null, "bet", null, null)</li>
 
-                                    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
-                                    {
-                                        <li role="separator" class="divider"></li>
-                                        <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
-                                    }
-                                    <li role="separator" class="divider"></li>
-                                    <li>@Html.ActionLink("Logga ut", "SignOut", "Account")</li>
-                                </ul>
-                            </li>
-                        }
+                        @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+        {
+                <li role="separator" class="divider"></li>
+                <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+}
+                        <li role="separator" class="divider"></li>
+                        <li>@Html.ActionLink("Logga ut", "SignOut", "Account")</li>
+                    </ul>
+                </li>
+}
 
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Start", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Tabell", "Index", "Home", null, null, "standings", null, null)</li>
-                        <li>@Html.ActionLink("Spelschema", "Index", "Home", null, null, "schedule", null, null)</li>
-                        <li>@Html.ActionLink("Regler", "Index", "Home", null, null, "rules", null, null)</li>
+}
+else
+{
+                <li>@Html.ActionLink("Start", "Index", "Home")</li>
+                //<li>@Html.ActionLink("Slutsummering", "Index", "Home", null, null, "summary", null, null)</li>
+                <li>@Html.ActionLink("Tabell", "Index", "Home", null, null, "standings", null, null)</li>
+                <li>@Html.ActionLink("Spelschema", "Index", "Home", null, null, "schedule", null, null)</li>
+                <li>@Html.ActionLink("Regler", "Index", "Home", null, null, "rules", null, null)</li>
 
 
-                        if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
-                        {
+if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+{
 
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
 
-                                    <li>@Html.ActionLink("Mitt spel", "Index", "MyPage", null, null, "bet", null, null)</li>
+                        <li>@Html.ActionLink("Mitt spel", "Index", "MyPage", null, null, "bet", null, null)</li>
 
-                                    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
-                                    {
-                                        <li role="separator" class="divider"></li>
-                                        <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
-                                    }
-                                    <li role="separator" class="divider"></li>
-                                    <li>@Html.ActionLink("Logga ut", "SignOut", "Account")</li>
-                                </ul>
-                            </li>
-                        }
-                    }
+                        @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+        {
+                <li role="separator" class="divider"></li>
+                <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+}
+                        <li role="separator" class="divider"></li>
+                        <li>@Html.ActionLink("Logga ut", "SignOut", "Account")</li>
+                    </ul>
+                </li>
+}
+}
 
                 </ul>
             </div>

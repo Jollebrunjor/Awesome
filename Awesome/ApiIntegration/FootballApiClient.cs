@@ -12,7 +12,7 @@ namespace Awesome.Models
         public JsonGroupStageResult GetGroupStageMatches()
         {
 
-            var url = "http://api.football-data.org/v1/soccerseasons/467/fixtures";
+            var url = "http://api.football-data.org/v2/competitions/EC/matches";
             var groupstagematches = _download_serialized_json_data<JsonGroupStageResult>(url);
 
             return groupstagematches;
@@ -20,7 +20,7 @@ namespace Awesome.Models
 
         public JsonTeamResult GetTeams()
         {
-            var url = "http://api.football-data.org/v1/soccerseasons/467/teams";
+            var url = "http://api.football-data.org/v2/competitions/EC/teams";
             JsonTeamResult teams = _download_serialized_json_data<JsonTeamResult>(url);
 
             return teams;
@@ -30,15 +30,15 @@ namespace Awesome.Models
         {
             List<string> results = new List<string>();
             var matches = GetGroupStageMatches();
-            var fixtures = matches.fixtures;
+            var fixtures = matches.matches;
             if (fixtures != null)
             {
                 foreach (var f in fixtures)
                 {
-                    string match = f.homeTeamName + f.awayTeamName;
+                    string match = f.homeTeam.name + f.awayTeam.name;
                     if (teamList.Contains(match))
                     {
-                        results.Add(f.result.goalsHomeTeam + "-" + f.result.goalsAwayTeam);
+                        results.Add(f.score.fullTime.homeTeam + "-" + f.score.fullTime.awayTeam);
                     }
                 }
             }

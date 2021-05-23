@@ -12,6 +12,7 @@ namespace Awesome.Models.DB
 
             Database.SetInitializer<DataModel>(new DropCreateDatabaseIfModelChanges<DataModel>());
 
+
         }
 
 

@@ -14,15 +14,14 @@ namespace Awesome.Migrations
 
         protected override void Seed(Awesome.Models.DB.DataModel context)
         {
-
             //context.Users.AddOrUpdate(
-            //   new User
-            //   {
-            //       FirstName = "Joakim",
-            //       LastName = "Wågström",
-            //       LoginName = "Jollebrunjor",
-            //       Password = "Password1",
-            //       Roles = new List<Role>()
+            //new User
+            //{
+            //    FirstName = "Joakim",
+            //    LastName = "Wågström",
+            //    LoginName = "Jollebrunjor",
+            //    Password = "Password1",
+            //    Roles = new List<Role>()
             //       {
             //            new Role()
             //            {
@@ -30,7 +29,7 @@ namespace Awesome.Migrations
             //                Rolename = "Admin"
             //            }
             //       }
-            //   });
+            //});
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
