@@ -45,6 +45,7 @@
                     <tr style="height: 25px; overflow: auto">
                         <td>
                             @Html.HiddenFor(x => x.ReportedResult.Matches[i].MatchId)
+                            @Html.HiddenFor(x => x.ReportedResult.Matches[i].Status)
                             @Html.HiddenFor(x => x.ReportedResult.Matches[i].HomeTeam)
                             @Html.DisplayFor(x => x.ReportedResult.Matches[i].HomeTeam) -
 

@@ -210,13 +210,17 @@ namespace Awesome.Models.EntityManager
                             if (manuallyUpdate && ((result3.AwayScore != newMatch.AwayScore) || (result3.HomeScore != newMatch.HomeScore)))
                             {
                                 result3.ManuallyUpdated = true;
-                                result3.Status = "FINISHED";
                             }
                             result3.AwayScore = newMatch.AwayScore;
                             result3.AwayTeam = newMatch.AwayTeam;
                             result3.HomeScore = newMatch.HomeScore;
                             result3.HomeTeam = newMatch.HomeTeam;
                             result3.Status = newMatch.Status;
+
+                            if (result3.ManuallyUpdated)
+                            {
+                                result3.Status = "FINISHED";
+                            }
                         }
                     }
                     if (manuallyUpdate)
