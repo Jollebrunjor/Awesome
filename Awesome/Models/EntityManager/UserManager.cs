@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Security;
+using System.Text;
 using Awesome.Models.DB;
 using Awesome.Models.ViewModel;
 using Result = Awesome.Models.DB.Result;
@@ -10,6 +14,7 @@ namespace Awesome.Models.EntityManager
 {
     public class UserManager
     {
+        public DataProtectionScope Scope { get; private set; }
 
         public static bool HasBetted(string userName)
         {
@@ -289,7 +294,7 @@ namespace Awesome.Models.EntityManager
 
 
                 user.LoginName = currentUser.LoginName;
-                user.Password = currentUser.Password;
+                user.Password = Encrypt(currentUser.Password);
                 user.FirstName = currentUser.FirstName;
                 user.LastName = currentUser.LastName;
                 user.UserId = currentUser.UserId;
@@ -330,10 +335,31 @@ namespace Awesome.Models.EntityManager
                 var hej = test.Local.Count;
                 var user = test.Where(o => o.LoginName.ToLower().Equals(loginName));
                 if (user.Any())
-                    return user.FirstOrDefault()?.Password;
+                    return Decrypt(user.FirstOrDefault()?.Password);
                 else
                     return string.Empty;
             }
+        }
+
+        public string Encrypt(string plainText)
+        {
+            if (plainText == null) throw new ArgumentNullException("plainText");
+
+            var data = Encoding.Unicode.GetBytes(plainText);
+            byte[] encrypted = ProtectedData.Protect(data, null, Scope);
+
+            return Convert.ToBase64String(encrypted);
+        }
+
+
+        public string Decrypt(string cipher)
+        {
+            if (cipher == null) throw new ArgumentNullException("cipher");
+
+            byte[] data = Convert.FromBase64String(cipher);
+
+            byte[] decrypted = ProtectedData.Unprotect(data, null, Scope);
+            return Encoding.Unicode.GetString(decrypted);
         }
 
         public static void SetMatchColor(Match match, User user)
