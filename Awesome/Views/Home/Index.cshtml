@@ -1,7 +1,7 @@
 ﻿@using Awesome.Models.ViewModel
 @model Awesome.Models.ViewModel.HomeViewModel
 @{
-    ViewBag.Title = "EM Tipset 2021";
+    ViewBag.Title = "VM Tipset 2022";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
@@ -13,13 +13,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h1 class="brand-heading">EM Tipset 2021</h1>
+                    <h1 class="brand-heading">VM Tipset 2022</h1>
                     <p class="intro-text">
                         @ViewData["Logout"]
                         @if (@ViewData["Logout"] == null)
                         {
                             @String.Format("Ingen kommer ihåg en fegis!")
-                        } 
+                        }
                     </p>
                     @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
                     {
@@ -32,8 +32,8 @@
                         <a class="page-scroll btn btn-primary" href="#login" id="loginButton">Logga in</a>
                         <a class="page-scroll btn btn-primary" href="#signup" id="signupButton">Registrera</a>
                     }
-                           
-</div>
+
+                </div>
             </div>
         </div>
     </div>

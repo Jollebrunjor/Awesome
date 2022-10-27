@@ -3119,62 +3119,62 @@ fieldset[disabled] .btn-default.focus {
   background-color: #333;
 }
 .btn-primary {
-  color: #fff;
-  background-color: #337ab7;
-  border-color: #2e6da4;
+    color: #fff;
+    background-color: #6C1D45;
+    border-color: #6C1D45;
 }
-.btn-primary:focus,
-.btn-primary.focus {
-  color: #fff;
-  background-color: #286090;
-  border-color: #122b40;
-}
-.btn-primary:hover {
-  color: #fff;
-  background-color: #286090;
-  border-color: #204d74;
-}
-.btn-primary:active,
-.btn-primary.active,
-.open > .dropdown-toggle.btn-primary {
-  color: #fff;
-  background-color: #286090;
-  border-color: #204d74;
-}
-.btn-primary:active:hover,
-.btn-primary.active:hover,
-.open > .dropdown-toggle.btn-primary:hover,
-.btn-primary:active:focus,
-.btn-primary.active:focus,
-.open > .dropdown-toggle.btn-primary:focus,
-.btn-primary:active.focus,
-.btn-primary.active.focus,
-.open > .dropdown-toggle.btn-primary.focus {
-  color: #fff;
-  background-color: #204d74;
-  border-color: #122b40;
-}
+    .btn-primary:focus,
+    .btn-primary.focus {
+        color: #fff;
+        background-color: #561234;
+        border-color: #561234;
+    }
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #561234;
+        border-color: #561234;
+    }
+    .btn-primary:active,
+    .btn-primary.active,
+    .open > .dropdown-toggle.btn-primary {
+        color: #fff;
+        background-color: #561234;
+        border-color: #561234;
+    }
+        .btn-primary:active:hover,
+        .btn-primary.active:hover,
+        .open > .dropdown-toggle.btn-primary:hover,
+        .btn-primary:active:focus,
+        .btn-primary.active:focus,
+        .open > .dropdown-toggle.btn-primary:focus,
+        .btn-primary:active.focus,
+        .btn-primary.active.focus,
+        .open > .dropdown-toggle.btn-primary.focus {
+            color: #fff;
+            background-color: #490e2b;
+            border-color: #490e2b;
+        }
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   background-image: none;
 }
-.btn-primary.disabled:hover,
-.btn-primary[disabled]:hover,
-fieldset[disabled] .btn-primary:hover,
-.btn-primary.disabled:focus,
-.btn-primary[disabled]:focus,
-fieldset[disabled] .btn-primary:focus,
-.btn-primary.disabled.focus,
-.btn-primary[disabled].focus,
-fieldset[disabled] .btn-primary.focus {
-  background-color: #337ab7;
-  border-color: #2e6da4;
-}
-.btn-primary .badge {
-  color: #337ab7;
-  background-color: #fff;
-}
+    .btn-primary.disabled:hover,
+    .btn-primary[disabled]:hover,
+    fieldset[disabled] .btn-primary:hover,
+    .btn-primary.disabled:focus,
+    .btn-primary[disabled]:focus,
+    fieldset[disabled] .btn-primary:focus,
+    .btn-primary.disabled.focus,
+    .btn-primary[disabled].focus,
+    fieldset[disabled] .btn-primary.focus {
+        background-color: #6C1D45;
+        border-color: #2e6da4;
+    }
+    .btn-primary .badge {
+        color: #6C1D45;
+        background-color: #fff;
+    }
 .btn-success {
   color: #fff;
   background-color: #5cb85c;
@@ -6804,6 +6804,18 @@ button.close {
 .flag-:before {
     content: 'TBD';
 }
+.flag-Qatar {
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/QAT);
+}
+.flag-Ecuador {
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/ECU);
+}
+.flag-United_States {
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/USA);
+}
+.flag-South_Korea {
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/KOR);
+}
 .flag-Turkey {
     content: url(https://i.eurosport.com/_iss_/geo/country/flag/medium/2786.png);
 }
@@ -6811,91 +6823,90 @@ button.close {
     content: url(https://i.eurosport.com/_iss_/geo/country/flag/medium/2210.png);
 }
 .flag-France {
-    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2202.png');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/FRA);
 }
 
 .flag-Saudi_Arabia {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/ksa ');
+    content: url('https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/KSA');
 }
 
-.flag-Egypt {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/egy ');
+
+
+.flag-Canada {
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/CAN);
+}
+.flag-Cameroon {
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/CMR);
+}
+
+.flag-Ghana {
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/GHA);
 }
 
 .flag-Uruguay {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/uru ');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/URU);
 }
 .flag-Morocco {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/mar ');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/MAR);
 }
 .flag-Iran {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/irn ');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/IRN);
 }
 .flag-Australia {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/aus ');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/AUS);
 }
 .flag-Argentina {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/arg ');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/ARG);
 }
-.flag-Nigeria {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/nga ');
-}
+
 .flag-Costa_Rica {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/crc ');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/CRC);
 }
 .flag-Serbia {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/srb ');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/SRB);
 }
 .flag-Germany {
-    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2206.png ');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/GER);
 }
 .flag-Mexico {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/mex ');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/MEX);
 }
 .flag-Austria {
     content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2219.png');
 }
 .flag-Belgium {
-    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2205.png ');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/BEL);
 }
 .flag-Croatia {
-    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/4354.png ');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/CRO);
 }
 .flag-Czech_Republic {
     content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2240.png');
 }
 .flag-England {
-    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2208.png ');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/ENG);
 }
 .flag-Tunisia {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/tun ');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/TUN);
 }   
-.flag-Iceland {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/isl ');
-}
-.flag-Peru {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/per ');
-}
 .flag-Denmark {
-    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2220.png ');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/DEN);
 }
 .flag-Brazil {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/bra ');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/BRA);
 }
-.flag-Colombia {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/col ');
-}
+
 .flag-Japan {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/jpn ');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/JPN);
 }
 .flag-Northern_Ireland  {
     content: url('../Flags/northernirland.png');
 }
 .flag-Poland {
-    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2214.png ');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/POL);
 }
 .flag-Portugal {
-    content: url(https://i.eurosport.com/_iss_/geo/country/flag/medium/2223.png);
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/POR);
 }
 .flag-Romania  {
     content: url('../Flags/romaina.png');
@@ -6907,35 +6918,30 @@ button.close {
     content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2233.png');
 }
 .flag-Spain {
-    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2203.png');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/ESP);
 }
 
 .flag-Sweden {
     content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2222.png ');
 }
 .flag-Switzerland {
-    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2213.png');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/SUI);
 }
-.flag-Korea_Republic {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/kor ');
-}
-.flag-Panama {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/pan ');
-}
+
 .flag-Senegal {
-    content: url('https://fsprdcdnpublic.azureedge.net/global-pictures/flags-fwc2018-4/sen ');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/SEN);
 }
 .flag-Ukraine {
     content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2232.png');
 }
 .flag-Wales {
-    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/4386.png');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/WAL);
 }
 .flag-Finland {
     content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2237.png');
 }
 .flag-Netherlands {
-    content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/2201.png');
+    content: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/NED);
 }
 .flag-North_Macedonia {
     content: url('https://i.eurosport.com/_iss_/geo/country/flag/medium/4358.png');

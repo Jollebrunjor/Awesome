@@ -12,7 +12,7 @@ namespace Awesome.Models
         public JsonGroupStageResult GetGroupStageMatches()
         {
 
-            var url = "http://api.football-data.org/v2/competitions/EC/matches";
+            var url = "http://api.football-data.org/v2/competitions/WC/matches";
             var groupstagematches = _download_serialized_json_data<JsonGroupStageResult>(url);
 
             return groupstagematches;
@@ -20,7 +20,7 @@ namespace Awesome.Models
 
         public JsonTeamResult GetTeams()
         {
-            var url = "http://api.football-data.org/v2/competitions/EC/teams";
+            var url = "http://api.football-data.org/v2/competitions/WC/teams";
             JsonTeamResult teams = _download_serialized_json_data<JsonTeamResult>(url);
 
             return teams;
@@ -48,6 +48,11 @@ namespace Awesome.Models
 
         private static T _download_serialized_json_data<T>(string url) where T : new()
         {
+            var settings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                MissingMemberHandling = MissingMemberHandling.Ignore
+            };
             string apiKey = "cb605b1101d342efba66b2ccbeb8dc2d";
             using (var w = new WebClient())
             {
@@ -55,11 +60,11 @@ namespace Awesome.Models
                 try
                 {
                     w.Headers.Add("X-Auth-Token", apiKey);
-                    json_data = w.DownloadString(url);
+                    json_data = w.DownloadString(url);  
                 }
 
                 catch (Exception) { }
-                return !string.IsNullOrEmpty(json_data) ? JsonConvert.DeserializeObject<T>(json_data) : new T();
+                return !string.IsNullOrEmpty(json_data) ? JsonConvert.DeserializeObject<T>(json_data, settings) : new T();
             }
         }
     }

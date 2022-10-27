@@ -18,6 +18,7 @@ namespace Awesome.Models.ViewModel
 
         public MyPageViewModel(JsonTeamResult teams, JsonGroupStageResult groupStageMatches, string userName)
         {
+
             Teams = TournamentUtility.CreateTeamList(teams);
             CurrentUser = System.Web.HttpContext.Current.User.Identity.Name;
             HasBetted = UserManager.HasBetted(CurrentUser);
@@ -42,7 +43,6 @@ namespace Awesome.Models.ViewModel
         public Bet Bet { get; set; }
         public List<Match> Matches { get; set; }
         public DB.Result Result { get; set; } 
-
         public List<string> ResultList { get; set; }
         public List<User> OtherUsersBet { get; set; }
         public UserBet CurrentUserBet { get; set; }

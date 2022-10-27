@@ -294,7 +294,7 @@ namespace Awesome.Models.EntityManager
 
 
                 user.LoginName = currentUser.LoginName;
-                user.Password = Encrypt(currentUser.Password);
+                user.Password = currentUser.Password;
                 user.FirstName = currentUser.FirstName;
                 user.LastName = currentUser.LastName;
                 user.UserId = currentUser.UserId;
@@ -335,7 +335,7 @@ namespace Awesome.Models.EntityManager
                 var hej = test.Local.Count;
                 var user = test.Where(o => o.LoginName.ToLower().Equals(loginName));
                 if (user.Any())
-                    return Decrypt(user.FirstOrDefault()?.Password);
+                    return user.FirstOrDefault()?.Password;
                 else
                     return string.Empty;
             }

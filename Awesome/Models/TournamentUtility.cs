@@ -17,6 +17,7 @@ namespace Awesome.Models
             {
                 return new List<Match>();
             }
+           
             List<Match> list = new List<Match>();
             int num = 1;
             foreach (ApiIntegration.JsonGroupStageResult.Match match in groupStageMatches.matches)
@@ -31,7 +32,7 @@ namespace Awesome.Models
                     object goalsHomeTeam = match.score.fullTime.homeTeam;
                     match1.HomeScore = goalsHomeTeam != null ? Convert.ToInt32(goalsHomeTeam) : 0;
                     object goalsAwayTeam = match.score.fullTime.awayTeam;
-                    match1.AwayScore = goalsAwayTeam != null ? Convert.ToInt32(goalsHomeTeam) : 0;
+                    match1.AwayScore = goalsAwayTeam != null ? Convert.ToInt32(goalsAwayTeam) : 0;
                     match1.MatchId = num++;
                     match1.Status = match.status;
                     match1.Date = match.utcDate.ToLongDateString();
@@ -61,7 +62,7 @@ namespace Awesome.Models
                 object goalsHomeTeam = match.score.fullTime.homeTeam;
                 schedule1.HomeScore = goalsHomeTeam != null ? Convert.ToInt32(goalsHomeTeam) : 0;
                 object goalsAwayTeam = match.score.fullTime.awayTeam;
-                schedule1.AwayScore = goalsAwayTeam != null ? Convert.ToInt32(goalsHomeTeam) : 0;
+                schedule1.AwayScore = goalsAwayTeam != null ? Convert.ToInt32(goalsAwayTeam) : 0;
 
                 schedule1.MatchId = num++;
                 schedule1.Status = match.status;

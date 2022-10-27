@@ -66,7 +66,7 @@ namespace Awesome.Controllers
                 {
                     if (ULV.Password.Equals(password))
                     {
-                        FormsAuthentication.SetAuthCookie(ULV.LoginName, false);
+                        FormsAuthentication.SetAuthCookie(ULV.LoginName, true);
 
                         TempData.Clear();
                         TempData.Add("Welcome", "Välkommen " + ULV.LoginName);
